@@ -286,21 +286,6 @@ INSERT INTO `game` VALUES
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `participants`
---
-
-DROP TABLE IF EXISTS `participants`;
-/*!50001 DROP VIEW IF EXISTS `participants`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `participants` AS SELECT
- 1 AS `Week`,
-  1 AS `Team`,
-  1 AS `Home?`,
-  1 AS `Versus` */;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `score`
 --
 
@@ -1302,24 +1287,6 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `participants`
---
-
-/*!50001 DROP VIEW IF EXISTS `participants`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_unicode_520_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `participants` AS select `g`.`week` AS `Week`,`t`.`name` AS `Team`,'Yes' AS `Home?`,`o`.`name` AS `Versus` from ((`game` `g` join `team` `t` on(`g`.`home` = `t`.`pkey`)) join `team` `o` on(`o`.`pkey` = `g`.`away`)) union select `g`.`week` AS `Week`,`t`.`name` AS `Team`,'No' AS `Home?`,`o`.`name` AS `Versus` from ((`game` `g` join `team` `t` on(`g`.`away` = `t`.`pkey`)) join `team` `o` on(`o`.`pkey` = `g`.`home`)) */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
 -- Final view structure for view `season`
 --
 
@@ -1346,4 +1313,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-29 15:01:56
+-- Dump completed on 2024-10-29 17:24:28
