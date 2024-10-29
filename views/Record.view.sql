@@ -21,6 +21,10 @@ SELECT g.week       'week'
      , (q1o.amount + q2o.amount + q3o.amount + q4o.amount) 'game_against'
      , (q1t.amount + q2t.amount + q3t.amount + q4t.amount) - (q1o.amount + q2o.amount + q3o.amount + q4o.amount)
        'game_net'
+     , if ( (q1t.amount + q2t.amount + q3t.amount + q4t.amount) > (q1o.amount + q2o.amount + q3o.amount + q4o.amount)
+          , 1
+          , 0
+          ) 'won_game'
 FROM game g
      inner join team t on g.home = t.pkey
      inner join team o on g.away = o.pkey
@@ -57,6 +61,10 @@ SELECT g.week       'week'
      , (q1o.amount + q2o.amount + q3o.amount + q4o.amount) 'game_against'
      , (q1t.amount + q2t.amount + q3t.amount + q4t.amount) - (q1o.amount + q2o.amount + q3o.amount + q4o.amount)
        'game_net'
+     , if ( (q1t.amount + q2t.amount + q3t.amount + q4t.amount) > (q1o.amount + q2o.amount + q3o.amount + q4o.amount)
+          , 1
+          , 0
+          ) 'won_game'
 FROM game g
      inner join team t on g.away = t.pkey
      inner join team o on g.home = o.pkey

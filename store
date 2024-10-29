@@ -2,8 +2,11 @@
 ######################################################################################################################### export db
 ########################################################################################################################
 
+# A User with Read access to the database
+USER=custodial
+
 # Run from owning directory
 cd $(dirname $0)
 
-mysqldump -u pbk nfl > nfl.sql
+mysqldump -u $USER nfl > nfl.sql
 
