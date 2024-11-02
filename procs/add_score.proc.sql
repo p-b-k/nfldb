@@ -9,14 +9,20 @@ CREATE PROCEDURE add_score
 , IN q4           INT
 )
 BEGIN
-  INSERT INTO score (week, team, quarter, amount)
-              values (week_no, (select pkey from team where name = team_name), 1, q1);
-  INSERT INTO score (week, team, quarter, amount)
-              values (week_no, (select pkey from team where name = team_name), 2, q2);
-  INSERT INTO score (week, team, quarter, amount)
-              values (week_no, (select pkey from team where name = team_name), 3, q3);
-  INSERT INTO score (week, team, quarter, amount)
-              values (week_no, (select pkey from team where name = team_name), 4, q4);
+  DECLARE team_id INT;
+  DECLARE game_id INT;
+
+  SELECT pkey INTO team_id FROM team WHERE name = team_name;
+
+  SELECT g.pkey INTO game_id FROM game g
+                INNER JOIN team h ON h.pkey = g.home
+                INNER JOIN team a ON a.pkey = g.away
+                WHERE g.week = week_no AND team_name IN (h.name, a.name);
+
+  INSERT INTO score (game, team, quarter, amount) values ( game_id, team_id, 1, q1);
+  INSERT INTO score (game, team, quarter, amount) values ( game_id, team_id, 2, q2);
+  INSERT INTO score (game, team, quarter, amount) values ( game_id, team_id, 3, q3);
+  INSERT INTO score (game, team, quarter, amount) values ( game_id, team_id, 4, q4);
 END;
 //
 
