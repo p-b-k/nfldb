@@ -12,7 +12,9 @@ get.nfl.connection <- function () {
 }
 
 get.team.record <- function (conn, name, through) {
-  fields <- paste( "oponent, at_home, game_for, game_against, q1_for, q1_against, "
+  fields <- paste( "oponent, at_home, "
+                 , "in_conference, in_division, "
+                 , "game_for, game_against, q1_for, q1_against, "
                  , "q2_for, q2_against, q3_for, q3_against, q4_for, q4_against, ot_for, ot_against"
                  )
   query <- paste( "SELECT "
@@ -28,14 +30,14 @@ get.team.record <- function (conn, name, through) {
 }
 
 get.div.record <- function (conn, cname, dname, through) {
-  fields <- paste( "oponent, at_home, game_for, game_against, q1_for, q1_against, "
+  fields <- paste( "team, oponent, at_home, game_for, game_against, q1_for, q1_against, "
                  , "q2_for, q2_against, q3_for, q3_against, q4_for, q4_against, ot_for, ot_against"
                  )
   query <- paste( "SELECT "
                 , fields
                 , " FROM Record"
-                , " WHERE UPPER(division) = UPPER('" , dname , "')"
-                , " AND conference = UPPER('" , cname , "')"
+                , " WHERE UPPER(team_division) = UPPER('" , dname , "')"
+                , " AND team_conference = UPPER('" , cname , "')"
                 , " AND week <= " , through
                 , " ORDER BY week"
                 , sep=""
@@ -89,13 +91,13 @@ T.Rams           = get.team.record(conn, "Rams", 8)
 T.49ers          = get.team.record(conn, "49ers", 8)
 T.Seahawks       = get.team.record(conn, "Seahawks", 8)
 
-T.afc.e          = get.div.record(conn, 'afc', 'east', 8)
-T.afc.w          = get.div.record(conn, 'afc', 'west', 8)
-T.afc.n          = get.div.record(conn, 'afc', 'north', 8)
-T.afc.s          = get.div.record(conn, 'afc', 'south', 8)
-T.nfc.e          = get.div.record(conn, 'nfc', 'east', 8)
-T.nfc.w          = get.div.record(conn, 'nfc', 'west', 8)
-T.nfc.n          = get.div.record(conn, 'nfc', 'north', 8)
-T.nfc.s          = get.div.record(conn, 'nfc', 'south', 8)
+D.afc.e          = get.div.record(conn, 'afc', 'east', 8)
+D.afc.w          = get.div.record(conn, 'afc', 'west', 8)
+D.afc.n          = get.div.record(conn, 'afc', 'north', 8)
+D.afc.s          = get.div.record(conn, 'afc', 'south', 8)
+D.nfc.e          = get.div.record(conn, 'nfc', 'east', 8)
+D.nfc.w          = get.div.record(conn, 'nfc', 'west', 8)
+D.nfc.n          = get.div.record(conn, 'nfc', 'north', 8)
+D.nfc.s          = get.div.record(conn, 'nfc', 'south', 8)
 
 dbDisconnect(conn)

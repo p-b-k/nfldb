@@ -1,20 +1,26 @@
 CREATE VIEW Record as
-SELECT g.week       'week'
-     , upper(c.tag) 'conference'
-     , d.name       'division'
-     , t.name       'team'
-     , 'Yes'     as 'at_home'
-     , o.name       'oponent'
-     , q1t.amount   'q1_for'
-     , q2t.amount   'q2_for'
-     , q3t.amount   'q3_for'
-     , q4t.amount   'q4_for'
-     , ott.amount   'ot_for'
-     , q1o.amount   'q1_against'
-     , q2o.amount   'q2_against'
-     , q3o.amount   'q3_against'
-     , q4o.amount   'q4_against'
-     , oto.amount   'ot_against'
+SELECT g.week        'week'
+     , upper(tc.tag) 'team_conference'
+     , td.name       'team_division'
+     , t.name        'team'
+     , upper(oc.tag) 'oponent_conference'
+     , od.name       'oponent_division'
+     , o.name        'oponent'
+     , 1             'at_home'
+     , if (tc.tag = oc.tag, 1, 0)
+                     'in_conference'
+     , if (tc.tag = oc.tag and td.name = od.name, 1, 0)
+                     'in_division'
+     , q1t.amount    'q1_for'
+     , q2t.amount    'q2_for'
+     , q3t.amount    'q3_for'
+     , q4t.amount    'q4_for'
+     , ott.amount    'ot_for'
+     , q1o.amount    'q1_against'
+     , q2o.amount    'q2_against'
+     , q3o.amount    'q3_against'
+     , q4o.amount    'q4_against'
+     , oto.amount    'ot_against'
      , (q1t.amount - q1o.amount) 'q1_net'
      , (q2t.amount - q2o.amount) 'q2_net'
      , (q3t.amount - q3o.amount) 'q3_net'
@@ -34,8 +40,10 @@ SELECT g.week       'week'
 FROM game g
      inner join team t on g.home = t.pkey
      inner join team o on g.away = o.pkey
-     inner join division d on t.dvsn = d.pkey
-     inner join conference c on d.conf = c.pkey
+     inner join division td on t.dvsn = td.pkey
+     inner join conference tc on td.conf = tc.pkey
+     inner join division od on o.dvsn = od.pkey
+     inner join conference oc on od.conf = oc.pkey
      left outer join score q1t on q1t.team = t.pkey and q1t.quarter = 1 and q1t.game = g.pkey
      left outer join score q2t on q2t.team = t.pkey and q2t.quarter = 2 and q2t.game = g.pkey
      left outer join score q3t on q3t.team = t.pkey and q3t.quarter = 3 and q3t.game = g.pkey
@@ -47,22 +55,28 @@ FROM game g
      left outer join score q4o on q4o.team = o.pkey and q4o.quarter = 4 and q4o.game = g.pkey
      left outer join score oto on oto.team = o.pkey and oto.quarter = 5 and oto.game = g.pkey
 UNION
-SELECT g.week       'week'
-     , upper(c.tag) 'conference'
-     , d.name       'division'
-     , t.name       'team'
-     , 'No'      as 'at_home'
-     , o.name       'oponent'
-     , q1t.amount   'q1_for'
-     , q2t.amount   'q2_for'
-     , q3t.amount   'q3_for'
-     , q4t.amount   'q4_for'
-     , ott.amount   'ot_for'
-     , q1o.amount   'q1_against'
-     , q2o.amount   'q2_against'
-     , q3o.amount   'q3_against'
-     , q4o.amount   'q4_against'
-     , oto.amount   'ot_against'
+SELECT g.week        'week'
+     , upper(tc.tag) 'team_conference'
+     , td.name       'team_division'
+     , t.name        'team'
+     , upper(oc.tag) 'oponent_conference'
+     , od.name       'oponent_division'
+     , o.name        'oponent'
+     , 0             'at_home'
+     , if (tc.tag = oc.tag, 1, 0)
+                     'in_conference'
+     , if (tc.tag = oc.tag and td.name = od.name, 1, 0)
+                     'in_division'
+     , q1t.amount    'q1_for'
+     , q2t.amount    'q2_for'
+     , q3t.amount    'q3_for'
+     , q4t.amount    'q4_for'
+     , ott.amount    'ot_for'
+     , q1o.amount    'q1_against'
+     , q2o.amount    'q2_against'
+     , q3o.amount    'q3_against'
+     , q4o.amount    'q4_against'
+     , oto.amount    'ot_against'
      , (q1t.amount - q1o.amount) 'q1_net'
      , (q2t.amount - q2o.amount) 'q2_net'
      , (q3t.amount - q3o.amount) 'q3_net'
@@ -82,8 +96,10 @@ SELECT g.week       'week'
 FROM game g
      inner join team t on g.away = t.pkey
      inner join team o on g.home = o.pkey
-     inner join division d on t.dvsn = d.pkey
-     inner join conference c on d.conf = c.pkey
+     inner join division td on t.dvsn = td.pkey
+     inner join conference tc on td.conf = tc.pkey
+     inner join division od on o.dvsn = od.pkey
+     inner join conference oc on od.conf = oc.pkey
      left outer join score q1t on q1t.team = t.pkey and q1t.quarter = 1 and q1t.game = g.pkey
      left outer join score q2t on q2t.team = t.pkey and q2t.quarter = 2 and q2t.game = g.pkey
      left outer join score q3t on q3t.team = t.pkey and q3t.quarter = 3 and q3t.game = g.pkey

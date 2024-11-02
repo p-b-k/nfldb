@@ -1,4 +1,5 @@
 # NFL DB and R playing around thing
+Just keeping a record of the 2024 NFL season, mostly to have some data to play around with in R.
 
 ## Connection Info
 * Database: NFL
