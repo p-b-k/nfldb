@@ -10,7 +10,7 @@
 * Install MySQL Drivers
   `install.packages("RMySQL")`
 * Load MySQL Module
-  `library(RMySQL)
+  `library(RMySQL)`
 * Create Connection
   `dbConnect(dbDriver("MySQL", dbname="{DATABASE NAME}", user="{USER NAME}")`
 * Issue Query
