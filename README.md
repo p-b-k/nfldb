@@ -21,3 +21,8 @@ Just keeping a record of the 2024 NFL season, mostly to have some data to play a
   `dbConnect(dbDriver("MySQL", dbname="{DATABASE NAME}", user="{USER NAME}")`
 * Issue Query
   `dbGetQuery({CONECTION}, paste("{SQL QUERY}"))`
+
+## More R Tips and Tricks
+
+* `DataFrame$field` is the same as `DataFrame[, c("field")]`.
+  It is different from `DataFrame[c("field")]` in that the later returns a data frame (with column info) while the former return vectors (that is, just the data from the column).

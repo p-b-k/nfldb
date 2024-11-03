@@ -12,8 +12,8 @@ get.nfl.connection <- function () {
 }
 
 get.team.record <- function (conn, name, through) {
-  fields <- paste( "oponent, at_home, "
-                 , "in_conference, in_division, "
+  fields <- paste( "week, oponent, at_home, "
+                 , "in_conference, in_division, won_game, "
                  , "game_for, game_against, q1_for, q1_against, "
                  , "q2_for, q2_against, q3_for, q3_against, q4_for, q4_against, ot_for, ot_against"
                  )
