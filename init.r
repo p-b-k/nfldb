@@ -45,6 +45,19 @@ get.div.record <- function (conn, cname, dname, through) {
   dbGetQuery(conn, query)
 }
 
+get.nfl.stats <- function (conn) {
+  fields <- paste( "conference, division, team, played, pts_for, pts_against, "
+                 , "win, lose, pct, pct_conf, pct_div"
+                 )
+  query <- paste( "SELECT "
+                , fields
+                , " FROM Stats"
+                , sep=""
+                )
+  dbGetQuery(conn, query)
+}
+
+
 nfl.teams <- c( "Bills", "Dolphins", "Patriots", "Jets"
               , "Ravens", "Bengals", "Browns", "Steelers"
               , "Texans", "Colts", "Jaguars", "Titans"
@@ -100,4 +113,7 @@ D.nfc.w          = get.div.record(conn, 'nfc', 'west', 8)
 D.nfc.n          = get.div.record(conn, 'nfc', 'north', 8)
 D.nfc.s          = get.div.record(conn, 'nfc', 'south', 8)
 
+NFL.stats        = get.nfl.stats(conn)
+
 dbDisconnect(conn)
+rm("conn")

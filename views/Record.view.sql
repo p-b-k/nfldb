@@ -1,4 +1,5 @@
-CREATE VIEW Record as
+CREATE VIEW Record
+AS
 SELECT g.week        'week'
      , upper(tc.tag) 'team_conference'
      , td.name       'team_division'

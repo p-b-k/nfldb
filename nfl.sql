@@ -17,20 +17,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Temporary table structure for view `Eagles`
+-- Temporary table structure for view `Byes`
 --
 
-DROP TABLE IF EXISTS `Eagles`;
-/*!50001 DROP VIEW IF EXISTS `Eagles`*/;
+DROP TABLE IF EXISTS `Byes`;
+/*!50001 DROP VIEW IF EXISTS `Byes`*/;
 SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
-/*!50001 CREATE VIEW `Eagles` AS SELECT
+/*!50001 CREATE VIEW `Byes` AS SELECT
  1 AS `week`,
-  1 AS `at_home`,
-  1 AS `against`,
-  1 AS `result`,
-  1 AS `pts_for`,
-  1 AS `pts_against` */;
+  1 AS `team` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -58,11 +54,15 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE VIEW `Record` AS SELECT
  1 AS `week`,
-  1 AS `conference`,
-  1 AS `division`,
+  1 AS `team_conference`,
+  1 AS `team_division`,
   1 AS `team`,
-  1 AS `at_home`,
+  1 AS `oponent_conference`,
+  1 AS `oponent_division`,
   1 AS `oponent`,
+  1 AS `at_home`,
+  1 AS `in_conference`,
+  1 AS `in_division`,
   1 AS `q1_for`,
   1 AS `q2_for`,
   1 AS `q3_for`,
@@ -84,6 +84,44 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `SchedEagles`
+--
+
+DROP TABLE IF EXISTS `SchedEagles`;
+/*!50001 DROP VIEW IF EXISTS `SchedEagles`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedEagles` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `Schedule`
+--
+
+DROP TABLE IF EXISTS `Schedule`;
+/*!50001 DROP VIEW IF EXISTS `Schedule`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Schedule` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary table structure for view `Stats`
 --
 
@@ -101,7 +139,9 @@ SET character_set_client = utf8;
   1 AS `pts_net`,
   1 AS `win`,
   1 AS `lose`,
-  1 AS `pct` */;
+  1 AS `pct`,
+  1 AS `pct_conf`,
+  1 AS `pct_div` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -337,21 +377,6 @@ INSERT INTO `game` VALUES
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `participants`
---
-
-DROP TABLE IF EXISTS `participants`;
-/*!50001 DROP VIEW IF EXISTS `participants`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `participants` AS SELECT
- 1 AS `Week`,
-  1 AS `Team`,
-  1 AS `Home?`,
-  1 AS `Versus` */;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `score`
 --
 
@@ -364,7 +389,11 @@ CREATE TABLE `score` (
   `quarter` int(11) NOT NULL,
   `team` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  PRIMARY KEY (`pkey`)
+  PRIMARY KEY (`pkey`),
+  KEY `game` (`game`),
+  KEY `team` (`team`),
+  CONSTRAINT `score_ibfk_1` FOREIGN KEY (`game`) REFERENCES `game` (`pkey`),
+  CONSTRAINT `score_ibfk_2` FOREIGN KEY (`team`) REFERENCES `team` (`pkey`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1071 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1453,22 +1482,10 @@ INSERT INTO `team` VALUES
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `weeks`
+-- Final view structure for view `Byes`
 --
 
-DROP TABLE IF EXISTS `weeks`;
-/*!50001 DROP VIEW IF EXISTS `weeks`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `weeks` AS SELECT
- 1 AS `week` */;
-SET character_set_client = @saved_cs_client;
-
---
--- Final view structure for view `Eagles`
---
-
-/*!50001 DROP VIEW IF EXISTS `Eagles`*/;
+/*!50001 DROP VIEW IF EXISTS `Byes`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -1477,7 +1494,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `Eagles` AS select `w`.`week` AS `week`,`r`.`at_home` AS `at_home`,`r`.`oponent` AS `against`,if(`r`.`game_for` = `r`.`game_against`,'Tie',if(`r`.`game_for` > `r`.`game_against`,'Win','Loss')) AS `result`,`r`.`game_for` AS `pts_for`,`r`.`game_against` AS `pts_against` from ((`weeks` `w` left join `Record` `r` on(`r`.`week` = `w`.`week`)) join `Stats` `s` on(`s`.`team` = `r`.`team`)) where `r`.`team` = 'Eagles' order by `w`.`week` */;
+/*!50001 VIEW `Byes` AS select `w`.`week` AS `week`,`t`.`name` AS `team` from ((select distinct `game`.`week` AS `week` from `game`) `w` join `team` `t`) where !((`w`.`week`,`t`.`name`) in (select `Record`.`week`,`Record`.`team` from `Record`)) order by `w`.`week` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1513,7 +1530,43 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `Record` AS select `g`.`week` AS `week`,ucase(`c`.`tag`) AS `conference`,`d`.`name` AS `division`,`t`.`name` AS `team`,'Yes' AS `at_home`,`o`.`name` AS `oponent`,`q1t`.`amount` AS `q1_for`,`q2t`.`amount` AS `q2_for`,`q3t`.`amount` AS `q3_for`,`q4t`.`amount` AS `q4_for`,`ott`.`amount` AS `ot_for`,`q1o`.`amount` AS `q1_against`,`q2o`.`amount` AS `q2_against`,`q3o`.`amount` AS `q3_against`,`q4o`.`amount` AS `q4_against`,`oto`.`amount` AS `ot_against`,`q1t`.`amount` - `q1o`.`amount` AS `q1_net`,`q2t`.`amount` - `q2o`.`amount` AS `q2_net`,`q3t`.`amount` - `q3o`.`amount` AS `q3_net`,`q4t`.`amount` - `q4o`.`amount` AS `q4_net`,`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) AS `game_for`,`q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`) AS `game_against`,`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) - (`q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`)) AS `game_net`,if(`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) > `q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`),1,0) AS `won_game` from ((((((((((((((`game` `g` join `team` `t` on(`g`.`home` = `t`.`pkey`)) join `team` `o` on(`g`.`away` = `o`.`pkey`)) join `division` `d` on(`t`.`dvsn` = `d`.`pkey`)) join `conference` `c` on(`d`.`conf` = `c`.`pkey`)) left join `score` `q1t` on(`q1t`.`team` = `t`.`pkey` and `q1t`.`quarter` = 1 and `q1t`.`game` = `g`.`pkey`)) left join `score` `q2t` on(`q2t`.`team` = `t`.`pkey` and `q2t`.`quarter` = 2 and `q2t`.`game` = `g`.`pkey`)) left join `score` `q3t` on(`q3t`.`team` = `t`.`pkey` and `q3t`.`quarter` = 3 and `q3t`.`game` = `g`.`pkey`)) left join `score` `q4t` on(`q4t`.`team` = `t`.`pkey` and `q4t`.`quarter` = 4 and `q4t`.`game` = `g`.`pkey`)) left join `score` `ott` on(`ott`.`team` = `t`.`pkey` and `ott`.`quarter` = 5 and `ott`.`game` = `g`.`pkey`)) left join `score` `q1o` on(`q1o`.`team` = `o`.`pkey` and `q1o`.`quarter` = 1 and `q1o`.`game` = `g`.`pkey`)) left join `score` `q2o` on(`q2o`.`team` = `o`.`pkey` and `q2o`.`quarter` = 2 and `q2o`.`game` = `g`.`pkey`)) left join `score` `q3o` on(`q3o`.`team` = `o`.`pkey` and `q3o`.`quarter` = 3 and `q3o`.`game` = `g`.`pkey`)) left join `score` `q4o` on(`q4o`.`team` = `o`.`pkey` and `q4o`.`quarter` = 4 and `q4o`.`game` = `g`.`pkey`)) left join `score` `oto` on(`oto`.`team` = `o`.`pkey` and `oto`.`quarter` = 5 and `oto`.`game` = `g`.`pkey`)) union select `g`.`week` AS `week`,ucase(`c`.`tag`) AS `conference`,`d`.`name` AS `division`,`t`.`name` AS `team`,'No' AS `at_home`,`o`.`name` AS `oponent`,`q1t`.`amount` AS `q1_for`,`q2t`.`amount` AS `q2_for`,`q3t`.`amount` AS `q3_for`,`q4t`.`amount` AS `q4_for`,`ott`.`amount` AS `ot_for`,`q1o`.`amount` AS `q1_against`,`q2o`.`amount` AS `q2_against`,`q3o`.`amount` AS `q3_against`,`q4o`.`amount` AS `q4_against`,`oto`.`amount` AS `ot_against`,`q1t`.`amount` - `q1o`.`amount` AS `q1_net`,`q2t`.`amount` - `q2o`.`amount` AS `q2_net`,`q3t`.`amount` - `q3o`.`amount` AS `q3_net`,`q4t`.`amount` - `q4o`.`amount` AS `q4_net`,`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) AS `game_for`,`q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`) AS `game_against`,`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) - (`q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`)) AS `game_net`,if(`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) > `q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`),1,0) AS `won_game` from ((((((((((((((`game` `g` join `team` `t` on(`g`.`away` = `t`.`pkey`)) join `team` `o` on(`g`.`home` = `o`.`pkey`)) join `division` `d` on(`t`.`dvsn` = `d`.`pkey`)) join `conference` `c` on(`d`.`conf` = `c`.`pkey`)) left join `score` `q1t` on(`q1t`.`team` = `t`.`pkey` and `q1t`.`quarter` = 1 and `q1t`.`game` = `g`.`pkey`)) left join `score` `q2t` on(`q2t`.`team` = `t`.`pkey` and `q2t`.`quarter` = 2 and `q2t`.`game` = `g`.`pkey`)) left join `score` `q3t` on(`q3t`.`team` = `t`.`pkey` and `q3t`.`quarter` = 3 and `q3t`.`game` = `g`.`pkey`)) left join `score` `q4t` on(`q4t`.`team` = `t`.`pkey` and `q4t`.`quarter` = 4 and `q4t`.`game` = `g`.`pkey`)) left join `score` `ott` on(`ott`.`team` = `t`.`pkey` and `ott`.`quarter` = 5 and `ott`.`game` = `g`.`pkey`)) left join `score` `q1o` on(`q1o`.`team` = `o`.`pkey` and `q1o`.`quarter` = 1 and `q1o`.`game` = `g`.`pkey`)) left join `score` `q2o` on(`q2o`.`team` = `o`.`pkey` and `q2o`.`quarter` = 2 and `q2o`.`game` = `g`.`pkey`)) left join `score` `q3o` on(`q3o`.`team` = `o`.`pkey` and `q3o`.`quarter` = 3 and `q3o`.`game` = `g`.`pkey`)) left join `score` `q4o` on(`q4o`.`team` = `o`.`pkey` and `q4o`.`quarter` = 4 and `q4o`.`game` = `g`.`pkey`)) left join `score` `oto` on(`oto`.`team` = `o`.`pkey` and `oto`.`quarter` = 5 and `oto`.`game` = `g`.`pkey`)) */;
+/*!50001 VIEW `Record` AS select `g`.`week` AS `week`,ucase(`tc`.`tag`) AS `team_conference`,`td`.`name` AS `team_division`,`t`.`name` AS `team`,ucase(`oc`.`tag`) AS `oponent_conference`,`od`.`name` AS `oponent_division`,`o`.`name` AS `oponent`,1 AS `at_home`,if(`tc`.`tag` = `oc`.`tag`,1,0) AS `in_conference`,if(`tc`.`tag` = `oc`.`tag` and `td`.`name` = `od`.`name`,1,0) AS `in_division`,`q1t`.`amount` AS `q1_for`,`q2t`.`amount` AS `q2_for`,`q3t`.`amount` AS `q3_for`,`q4t`.`amount` AS `q4_for`,`ott`.`amount` AS `ot_for`,`q1o`.`amount` AS `q1_against`,`q2o`.`amount` AS `q2_against`,`q3o`.`amount` AS `q3_against`,`q4o`.`amount` AS `q4_against`,`oto`.`amount` AS `ot_against`,`q1t`.`amount` - `q1o`.`amount` AS `q1_net`,`q2t`.`amount` - `q2o`.`amount` AS `q2_net`,`q3t`.`amount` - `q3o`.`amount` AS `q3_net`,`q4t`.`amount` - `q4o`.`amount` AS `q4_net`,`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) AS `game_for`,`q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`) AS `game_against`,`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) - (`q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`)) AS `game_net`,if(`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) > `q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`),1,0) AS `won_game` from ((((((((((((((((`game` `g` join `team` `t` on(`g`.`home` = `t`.`pkey`)) join `team` `o` on(`g`.`away` = `o`.`pkey`)) join `division` `td` on(`t`.`dvsn` = `td`.`pkey`)) join `conference` `tc` on(`td`.`conf` = `tc`.`pkey`)) join `division` `od` on(`o`.`dvsn` = `od`.`pkey`)) join `conference` `oc` on(`od`.`conf` = `oc`.`pkey`)) left join `score` `q1t` on(`q1t`.`team` = `t`.`pkey` and `q1t`.`quarter` = 1 and `q1t`.`game` = `g`.`pkey`)) left join `score` `q2t` on(`q2t`.`team` = `t`.`pkey` and `q2t`.`quarter` = 2 and `q2t`.`game` = `g`.`pkey`)) left join `score` `q3t` on(`q3t`.`team` = `t`.`pkey` and `q3t`.`quarter` = 3 and `q3t`.`game` = `g`.`pkey`)) left join `score` `q4t` on(`q4t`.`team` = `t`.`pkey` and `q4t`.`quarter` = 4 and `q4t`.`game` = `g`.`pkey`)) left join `score` `ott` on(`ott`.`team` = `t`.`pkey` and `ott`.`quarter` = 5 and `ott`.`game` = `g`.`pkey`)) left join `score` `q1o` on(`q1o`.`team` = `o`.`pkey` and `q1o`.`quarter` = 1 and `q1o`.`game` = `g`.`pkey`)) left join `score` `q2o` on(`q2o`.`team` = `o`.`pkey` and `q2o`.`quarter` = 2 and `q2o`.`game` = `g`.`pkey`)) left join `score` `q3o` on(`q3o`.`team` = `o`.`pkey` and `q3o`.`quarter` = 3 and `q3o`.`game` = `g`.`pkey`)) left join `score` `q4o` on(`q4o`.`team` = `o`.`pkey` and `q4o`.`quarter` = 4 and `q4o`.`game` = `g`.`pkey`)) left join `score` `oto` on(`oto`.`team` = `o`.`pkey` and `oto`.`quarter` = 5 and `oto`.`game` = `g`.`pkey`)) union select `g`.`week` AS `week`,ucase(`tc`.`tag`) AS `team_conference`,`td`.`name` AS `team_division`,`t`.`name` AS `team`,ucase(`oc`.`tag`) AS `oponent_conference`,`od`.`name` AS `oponent_division`,`o`.`name` AS `oponent`,0 AS `at_home`,if(`tc`.`tag` = `oc`.`tag`,1,0) AS `in_conference`,if(`tc`.`tag` = `oc`.`tag` and `td`.`name` = `od`.`name`,1,0) AS `in_division`,`q1t`.`amount` AS `q1_for`,`q2t`.`amount` AS `q2_for`,`q3t`.`amount` AS `q3_for`,`q4t`.`amount` AS `q4_for`,`ott`.`amount` AS `ot_for`,`q1o`.`amount` AS `q1_against`,`q2o`.`amount` AS `q2_against`,`q3o`.`amount` AS `q3_against`,`q4o`.`amount` AS `q4_against`,`oto`.`amount` AS `ot_against`,`q1t`.`amount` - `q1o`.`amount` AS `q1_net`,`q2t`.`amount` - `q2o`.`amount` AS `q2_net`,`q3t`.`amount` - `q3o`.`amount` AS `q3_net`,`q4t`.`amount` - `q4o`.`amount` AS `q4_net`,`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) AS `game_for`,`q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`) AS `game_against`,`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) - (`q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`)) AS `game_net`,if(`q1t`.`amount` + `q2t`.`amount` + `q3t`.`amount` + `q4t`.`amount` + if(`ott`.`amount` is null,0,`ott`.`amount`) > `q1o`.`amount` + `q2o`.`amount` + `q3o`.`amount` + `q4o`.`amount` + if(`oto`.`amount` is null,0,`oto`.`amount`),1,0) AS `won_game` from ((((((((((((((((`game` `g` join `team` `t` on(`g`.`away` = `t`.`pkey`)) join `team` `o` on(`g`.`home` = `o`.`pkey`)) join `division` `td` on(`t`.`dvsn` = `td`.`pkey`)) join `conference` `tc` on(`td`.`conf` = `tc`.`pkey`)) join `division` `od` on(`o`.`dvsn` = `od`.`pkey`)) join `conference` `oc` on(`od`.`conf` = `oc`.`pkey`)) left join `score` `q1t` on(`q1t`.`team` = `t`.`pkey` and `q1t`.`quarter` = 1 and `q1t`.`game` = `g`.`pkey`)) left join `score` `q2t` on(`q2t`.`team` = `t`.`pkey` and `q2t`.`quarter` = 2 and `q2t`.`game` = `g`.`pkey`)) left join `score` `q3t` on(`q3t`.`team` = `t`.`pkey` and `q3t`.`quarter` = 3 and `q3t`.`game` = `g`.`pkey`)) left join `score` `q4t` on(`q4t`.`team` = `t`.`pkey` and `q4t`.`quarter` = 4 and `q4t`.`game` = `g`.`pkey`)) left join `score` `ott` on(`ott`.`team` = `t`.`pkey` and `ott`.`quarter` = 5 and `ott`.`game` = `g`.`pkey`)) left join `score` `q1o` on(`q1o`.`team` = `o`.`pkey` and `q1o`.`quarter` = 1 and `q1o`.`game` = `g`.`pkey`)) left join `score` `q2o` on(`q2o`.`team` = `o`.`pkey` and `q2o`.`quarter` = 2 and `q2o`.`game` = `g`.`pkey`)) left join `score` `q3o` on(`q3o`.`team` = `o`.`pkey` and `q3o`.`quarter` = 3 and `q3o`.`game` = `g`.`pkey`)) left join `score` `q4o` on(`q4o`.`team` = `o`.`pkey` and `q4o`.`quarter` = 4 and `q4o`.`game` = `g`.`pkey`)) left join `score` `oto` on(`oto`.`team` = `o`.`pkey` and `oto`.`quarter` = 5 and `oto`.`game` = `g`.`pkey`)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedEagles`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedEagles`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedEagles` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Eagles' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Schedule`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Schedule`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Schedule` AS select `Record`.`week` AS `week`,`Record`.`team` AS `team`,`Record`.`oponent` AS `versus`,if(`Record`.`at_home` = 1,'Yes','') AS `at_home`,if(`Record`.`in_conference` = 1,'','Yes') AS `inter_conference`,if(`Record`.`in_division` = 1,'Yes','') AS `in_division`,if(`Record`.`game_for` is null,'',cast(`Record`.`game_for` as char charset utf8mb3)) AS `pts_for`,if(`Record`.`game_against` is null,'',cast(`Record`.`game_against` as char charset utf8mb3)) AS `pts_against` from `Record` union select `Byes`.`week` AS `week`,`Byes`.`team` AS `team`,'(( BYE ))' AS `versus`,'' AS `at_home`,'' AS `inter_conference`,'' AS `in_division`,'***' AS `pts_for`,'***' AS `pts_against` from `Byes` order by `week` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1531,25 +1584,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `Stats` AS select `r`.`conference` AS `conference`,`r`.`division` AS `division`,`r`.`team` AS `team`,count(`r`.`game_for`) AS `played`,sum(`r`.`game_for`) AS `pts_for`,sum(`r`.`game_against`) AS `pts_against`,sum(`r`.`game_net`) AS `pts_net`,sum(`r`.`won_game`) AS `win`,count(`r`.`game_for`) - sum(`r`.`won_game`) AS `lose`,sum(`r`.`won_game`) / count(`r`.`game_for`) AS `pct` from `Record` `r` group by `r`.`conference`,`r`.`division`,`r`.`team` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `participants`
---
-
-/*!50001 DROP VIEW IF EXISTS `participants`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `participants` AS select `g`.`week` AS `Week`,`t`.`name` AS `Team`,'Yes' AS `Home?`,`o`.`name` AS `Versus` from ((`game` `g` join `team` `t` on(`g`.`home` = `t`.`pkey`)) join `team` `o` on(`o`.`pkey` = `g`.`away`)) union select `g`.`week` AS `Week`,`t`.`name` AS `Team`,'No' AS `Home?`,`o`.`name` AS `Versus` from ((`game` `g` join `team` `t` on(`g`.`away` = `t`.`pkey`)) join `team` `o` on(`o`.`pkey` = `g`.`home`)) */;
+/*!50001 VIEW `Stats` AS select `r`.`team_conference` AS `conference`,`r`.`team_division` AS `division`,`r`.`team` AS `team`,count(`r`.`game_for`) AS `played`,sum(`r`.`game_for`) AS `pts_for`,sum(`r`.`game_against`) AS `pts_against`,sum(`r`.`game_net`) AS `pts_net`,sum(`r`.`won_game`) AS `win`,count(`r`.`game_for`) - sum(`r`.`won_game`) AS `lose`,sum(`r`.`won_game`) / count(`r`.`game_for`) AS `pct`,sum(`r`.`in_conference` * `r`.`won_game`) / sum(`r`.`in_conference`) AS `pct_conf`,sum(`r`.`in_division` * `r`.`won_game`) / sum(`r`.`in_division`) AS `pct_div` from `Record` `r` group by `r`.`team_conference`,`r`.`team_division`,`r`.`team` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1571,24 +1606,6 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
-
---
--- Final view structure for view `weeks`
---
-
-/*!50001 DROP VIEW IF EXISTS `weeks`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb3 */;
-/*!50001 SET character_set_results     = utf8mb3 */;
-/*!50001 SET collation_connection      = utf8mb3_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `weeks` AS select distinct `game`.`week` AS `week` from `game` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -1599,4 +1616,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-02  5:55:37
+-- Dump completed on 2024-11-03  8:21:56
