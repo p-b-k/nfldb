@@ -84,6 +84,286 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `Sched49ers`
+--
+
+DROP TABLE IF EXISTS `Sched49ers`;
+/*!50001 DROP VIEW IF EXISTS `Sched49ers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Sched49ers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedBears`
+--
+
+DROP TABLE IF EXISTS `SchedBears`;
+/*!50001 DROP VIEW IF EXISTS `SchedBears`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedBears` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedBengals`
+--
+
+DROP TABLE IF EXISTS `SchedBengals`;
+/*!50001 DROP VIEW IF EXISTS `SchedBengals`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedBengals` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedBills`
+--
+
+DROP TABLE IF EXISTS `SchedBills`;
+/*!50001 DROP VIEW IF EXISTS `SchedBills`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedBills` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedBroncos`
+--
+
+DROP TABLE IF EXISTS `SchedBroncos`;
+/*!50001 DROP VIEW IF EXISTS `SchedBroncos`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedBroncos` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedBrowns`
+--
+
+DROP TABLE IF EXISTS `SchedBrowns`;
+/*!50001 DROP VIEW IF EXISTS `SchedBrowns`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedBrowns` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedBuccaneers`
+--
+
+DROP TABLE IF EXISTS `SchedBuccaneers`;
+/*!50001 DROP VIEW IF EXISTS `SchedBuccaneers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedBuccaneers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedCardinals`
+--
+
+DROP TABLE IF EXISTS `SchedCardinals`;
+/*!50001 DROP VIEW IF EXISTS `SchedCardinals`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedCardinals` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedChargers`
+--
+
+DROP TABLE IF EXISTS `SchedChargers`;
+/*!50001 DROP VIEW IF EXISTS `SchedChargers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedChargers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedChiefs`
+--
+
+DROP TABLE IF EXISTS `SchedChiefs`;
+/*!50001 DROP VIEW IF EXISTS `SchedChiefs`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedChiefs` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedColts`
+--
+
+DROP TABLE IF EXISTS `SchedColts`;
+/*!50001 DROP VIEW IF EXISTS `SchedColts`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedColts` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedCommanders`
+--
+
+DROP TABLE IF EXISTS `SchedCommanders`;
+/*!50001 DROP VIEW IF EXISTS `SchedCommanders`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedCommanders` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedCowboys`
+--
+
+DROP TABLE IF EXISTS `SchedCowboys`;
+/*!50001 DROP VIEW IF EXISTS `SchedCowboys`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedCowboys` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedDolphins`
+--
+
+DROP TABLE IF EXISTS `SchedDolphins`;
+/*!50001 DROP VIEW IF EXISTS `SchedDolphins`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedDolphins` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary table structure for view `SchedEagles`
 --
 
@@ -98,6 +378,347 @@ SET character_set_client = utf8;
   1 AS `at_home`,
   1 AS `inter_conference`,
   1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedFalcons`
+--
+
+DROP TABLE IF EXISTS `SchedFalcons`;
+/*!50001 DROP VIEW IF EXISTS `SchedFalcons`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedFalcons` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedGiants`
+--
+
+DROP TABLE IF EXISTS `SchedGiants`;
+/*!50001 DROP VIEW IF EXISTS `SchedGiants`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedGiants` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedJaguars`
+--
+
+DROP TABLE IF EXISTS `SchedJaguars`;
+/*!50001 DROP VIEW IF EXISTS `SchedJaguars`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedJaguars` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedJets`
+--
+
+DROP TABLE IF EXISTS `SchedJets`;
+/*!50001 DROP VIEW IF EXISTS `SchedJets`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedJets` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedLions`
+--
+
+DROP TABLE IF EXISTS `SchedLions`;
+/*!50001 DROP VIEW IF EXISTS `SchedLions`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedLions` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedPackers`
+--
+
+DROP TABLE IF EXISTS `SchedPackers`;
+/*!50001 DROP VIEW IF EXISTS `SchedPackers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedPackers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedPanthers`
+--
+
+DROP TABLE IF EXISTS `SchedPanthers`;
+/*!50001 DROP VIEW IF EXISTS `SchedPanthers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedPanthers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedPatriots`
+--
+
+DROP TABLE IF EXISTS `SchedPatriots`;
+/*!50001 DROP VIEW IF EXISTS `SchedPatriots`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedPatriots` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedRaiders`
+--
+
+DROP TABLE IF EXISTS `SchedRaiders`;
+/*!50001 DROP VIEW IF EXISTS `SchedRaiders`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedRaiders` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedRams`
+--
+
+DROP TABLE IF EXISTS `SchedRams`;
+/*!50001 DROP VIEW IF EXISTS `SchedRams`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedRams` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedRavens`
+--
+
+DROP TABLE IF EXISTS `SchedRavens`;
+/*!50001 DROP VIEW IF EXISTS `SchedRavens`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedRavens` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedSaints`
+--
+
+DROP TABLE IF EXISTS `SchedSaints`;
+/*!50001 DROP VIEW IF EXISTS `SchedSaints`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedSaints` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedSeahawks`
+--
+
+DROP TABLE IF EXISTS `SchedSeahawks`;
+/*!50001 DROP VIEW IF EXISTS `SchedSeahawks`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedSeahawks` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedSteelers`
+--
+
+DROP TABLE IF EXISTS `SchedSteelers`;
+/*!50001 DROP VIEW IF EXISTS `SchedSteelers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedSteelers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedTexans`
+--
+
+DROP TABLE IF EXISTS `SchedTexans`;
+/*!50001 DROP VIEW IF EXISTS `SchedTexans`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedTexans` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedTitans`
+--
+
+DROP TABLE IF EXISTS `SchedTitans`;
+/*!50001 DROP VIEW IF EXISTS `SchedTitans`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedTitans` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SchedVikings`
+--
+
+DROP TABLE IF EXISTS `SchedVikings`;
+/*!50001 DROP VIEW IF EXISTS `SchedVikings`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SchedVikings` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
   1 AS `pts_for`,
   1 AS `pts_against` */;
 SET character_set_client = @saved_cs_client;
@@ -117,6 +738,7 @@ SET character_set_client = utf8;
   1 AS `at_home`,
   1 AS `inter_conference`,
   1 AS `in_division`,
+  1 AS `won_game`,
   1 AS `pts_for`,
   1 AS `pts_against` */;
 SET character_set_client = @saved_cs_client;
@@ -218,6 +840,7 @@ CREATE TABLE `game` (
   `home` int(11) NOT NULL,
   `away` int(11) NOT NULL,
   `week` int(11) NOT NULL,
+  `time` datetime DEFAULT NULL,
   PRIMARY KEY (`pkey`),
   UNIQUE KEY `u_game_wh` (`week`,`home`),
   UNIQUE KEY `u_game_wa` (`week`,`away`),
@@ -225,7 +848,7 @@ CREATE TABLE `game` (
   KEY `away` (`away`),
   CONSTRAINT `game_ibfk_1` FOREIGN KEY (`home`) REFERENCES `team` (`pkey`),
   CONSTRAINT `game_ibfk_2` FOREIGN KEY (`away`) REFERENCES `team` (`pkey`)
-) ENGINE=InnoDB AUTO_INCREMENT=139 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=275 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,144 +858,278 @@ CREATE TABLE `game` (
 LOCK TABLES `game` WRITE;
 /*!40000 ALTER TABLE `game` DISABLE KEYS */;
 INSERT INTO `game` VALUES
-(1,6,9,1),
-(2,17,27,1),
-(3,29,12,1),
-(4,1,21,1),
-(5,25,16,1),
-(6,10,3,1),
-(7,14,13,1),
-(8,2,15,1),
-(9,30,31,1),
-(10,18,28,1),
-(11,8,7,1),
-(12,24,5,1),
-(13,11,19,1),
-(14,32,20,1),
-(15,26,22,1),
-(16,23,4,1),
-(17,2,1,2),
-(18,9,7,2),
-(19,31,8,2),
-(20,19,30,2),
-(21,26,32,2),
-(22,27,14,2),
-(23,15,11,2),
-(24,28,23,2),
-(25,3,24,2),
-(26,16,4,2),
-(27,20,18,2),
-(28,21,22,2),
-(29,5,12,2),
-(30,6,10,2),
-(31,13,25,2),
-(32,17,29,2),
-(33,4,3,3),
-(34,11,18,3),
-(35,14,25,3),
-(36,28,13,3),
-(37,30,17,3),
-(38,12,8,3),
-(39,32,5,3),
-(40,16,27,3),
-(41,7,31,3),
-(42,24,2,3),
-(43,21,26,3),
-(44,19,9,3),
-(45,22,23,3),
-(46,29,6,3),
-(47,1,15,3),
-(48,10,20,3),
-(49,18,19,4),
-(50,29,30,4),
-(51,31,10,4),
-(52,25,22,4),
-(53,27,28,4),
-(54,13,15,4),
-(55,14,12,4),
-(56,4,5,4),
-(57,32,17,4),
-(58,21,20,4),
-(59,23,3,4),
-(60,8,6,4),
-(61,7,11,4),
-(62,9,1,4),
-(63,2,16,4),
-(64,26,24,4),
-(65,29,32,5),
-(66,28,4,5),
-(67,25,31,5),
-(68,10,9,5),
-(69,13,1,5),
-(70,15,14,5),
-(71,3,2,5),
-(72,20,11,5),
-(73,5,7,5),
-(74,23,21,5),
-(75,22,27,5),
-(76,24,18,5),
-(77,12,19,5),
-(78,6,30,5),
-(79,24,23,6),
-(80,25,15,6),
-(81,9,20,6),
-(82,27,21,6),
-(83,3,13,6),
-(84,30,32,6),
-(85,17,11,6),
-(86,16,14,6),
-(87,5,8,6),
-(88,7,12,6),
-(89,31,29,6),
-(90,19,26,6),
-(91,18,10,6),
-(92,4,1,6),
-(93,30,5,7),
-(94,15,3,7),
-(95,29,24,7),
-(96,1,16,7),
-(97,11,10,7),
-(98,27,13,7),
-(99,14,2,7),
-(100,28,26,7),
-(101,18,17,7),
-(102,20,31,7),
-(103,23,6,7),
-(104,12,4,7),
-(105,32,9,7),
-(106,21,8,7),
-(107,22,28,8),
-(108,11,9,8),
-(109,26,16,8),
-(110,13,14,8),
-(111,15,27,8),
-(112,2,21,8),
-(113,3,4,8),
-(114,32,29,8),
-(115,10,17,8),
-(116,8,30,8),
-(117,24,1,8),
-(118,20,25,8),
-(119,5,31,8),
-(120,7,6,8),
-(121,23,19,8),
-(122,12,18,8),
-(123,22,7,7),
-(124,4,13,9),
-(125,31,30,9),
-(126,18,20,9),
-(127,1,2,9),
-(128,11,8,9),
-(129,16,3,9),
-(130,29,19,9),
-(131,10,7,9),
-(132,9,5,9),
-(133,21,25,9),
-(134,17,15,9),
-(135,24,22,9),
-(136,27,26,9),
-(137,28,14,9),
-(138,6,32,9);
+(1,6,9,1,'2024-09-08 13:00:00'),
+(2,17,27,1,'2024-09-08 13:00:00'),
+(3,29,12,1,'2024-09-08 13:00:00'),
+(4,1,21,1,'2024-09-08 13:00:00'),
+(5,25,16,1,'2024-09-08 13:00:00'),
+(6,10,3,1,'2024-09-08 13:00:00'),
+(7,14,13,1,'2024-09-08 13:00:00'),
+(8,2,15,1,'2024-09-08 13:00:00'),
+(9,30,31,1,'2024-09-08 13:00:00'),
+(10,18,28,1,'2024-09-08 13:00:00'),
+(11,8,7,1,'2024-09-08 13:00:00'),
+(12,24,5,1,'2024-09-08 13:00:00'),
+(13,11,19,1,'2024-09-08 13:00:00'),
+(14,32,20,1,'2024-09-08 13:00:00'),
+(15,26,22,1,'2024-09-08 13:00:00'),
+(16,23,4,1,'2024-09-08 13:00:00'),
+(17,2,1,2,'2024-09-15 13:00:00'),
+(18,9,7,2,'2024-09-15 13:00:00'),
+(19,31,8,2,'2024-09-15 13:00:00'),
+(20,19,30,2,'2024-09-15 13:00:00'),
+(21,26,32,2,'2024-09-15 13:00:00'),
+(22,27,14,2,'2024-09-15 13:00:00'),
+(23,15,11,2,'2024-09-15 13:00:00'),
+(24,28,23,2,'2024-09-15 13:00:00'),
+(25,3,24,2,'2024-09-15 13:00:00'),
+(26,16,4,2,'2024-09-15 13:00:00'),
+(27,20,18,2,'2024-09-15 13:00:00'),
+(28,21,22,2,'2024-09-15 13:00:00'),
+(29,5,12,2,'2024-09-15 13:00:00'),
+(30,6,10,2,'2024-09-15 13:00:00'),
+(31,13,25,2,'2024-09-15 13:00:00'),
+(32,17,29,2,'2024-09-15 13:00:00'),
+(33,4,3,3,'2024-09-22 13:00:00'),
+(34,11,18,3,'2024-09-22 13:00:00'),
+(35,14,25,3,'2024-09-22 13:00:00'),
+(36,28,13,3,'2024-09-22 13:00:00'),
+(37,30,17,3,'2024-09-22 13:00:00'),
+(38,12,8,3,'2024-09-22 13:00:00'),
+(39,32,5,3,'2024-09-22 13:00:00'),
+(40,16,27,3,'2024-09-22 13:00:00'),
+(41,7,31,3,'2024-09-22 13:00:00'),
+(42,24,2,3,'2024-09-22 13:00:00'),
+(43,21,26,3,'2024-09-22 13:00:00'),
+(44,19,9,3,'2024-09-22 13:00:00'),
+(45,22,23,3,'2024-09-22 13:00:00'),
+(46,29,6,3,'2024-09-22 13:00:00'),
+(47,1,15,3,'2024-09-22 13:00:00'),
+(48,10,20,3,'2024-09-22 13:00:00'),
+(49,18,19,4,'2024-09-29 13:00:00'),
+(50,29,30,4,'2024-09-29 13:00:00'),
+(51,31,10,4,'2024-09-29 13:00:00'),
+(52,25,22,4,'2024-09-29 13:00:00'),
+(53,27,28,4,'2024-09-29 13:00:00'),
+(54,13,15,4,'2024-09-29 13:00:00'),
+(55,14,12,4,'2024-09-29 13:00:00'),
+(56,4,5,4,'2024-09-29 13:00:00'),
+(57,32,17,4,'2024-09-29 13:00:00'),
+(58,21,20,4,'2024-09-29 13:00:00'),
+(59,23,3,4,'2024-09-29 13:00:00'),
+(60,8,6,4,'2024-09-29 13:00:00'),
+(61,7,11,4,'2024-09-29 13:00:00'),
+(62,9,1,4,'2024-09-29 13:00:00'),
+(63,2,16,4,'2024-09-29 13:00:00'),
+(64,26,24,4,'2024-09-29 13:00:00'),
+(65,29,32,5,'2024-10-06 13:00:00'),
+(66,28,4,5,'2024-10-06 13:00:00'),
+(67,25,31,5,'2024-10-06 13:00:00'),
+(68,10,9,5,'2024-10-06 13:00:00'),
+(69,13,1,5,'2024-10-06 13:00:00'),
+(70,15,14,5,'2024-10-06 13:00:00'),
+(71,3,2,5,'2024-10-06 13:00:00'),
+(72,20,11,5,'2024-10-06 13:00:00'),
+(73,5,7,5,'2024-10-06 13:00:00'),
+(74,23,21,5,'2024-10-06 13:00:00'),
+(75,22,27,5,'2024-10-06 13:00:00'),
+(76,24,18,5,'2024-10-06 13:00:00'),
+(77,12,19,5,'2024-10-06 13:00:00'),
+(78,6,30,5,'2024-10-06 13:00:00'),
+(79,24,23,6,'2024-10-13 13:00:00'),
+(80,25,15,6,'2024-10-13 13:00:00'),
+(81,9,20,6,'2024-10-13 13:00:00'),
+(82,27,21,6,'2024-10-13 13:00:00'),
+(83,3,13,6,'2024-10-13 13:00:00'),
+(84,30,32,6,'2024-10-13 13:00:00'),
+(85,17,11,6,'2024-10-13 13:00:00'),
+(86,16,14,6,'2024-10-13 13:00:00'),
+(87,5,8,6,'2024-10-13 13:00:00'),
+(88,7,12,6,'2024-10-13 13:00:00'),
+(89,31,29,6,'2024-10-13 13:00:00'),
+(90,19,26,6,'2024-10-13 13:00:00'),
+(91,18,10,6,'2024-10-13 13:00:00'),
+(92,4,1,6,'2024-10-13 13:00:00'),
+(93,30,5,7,'2024-10-20 13:00:00'),
+(94,15,3,7,'2024-10-20 13:00:00'),
+(95,29,24,7,'2024-10-20 13:00:00'),
+(96,1,16,7,'2024-10-20 13:00:00'),
+(97,11,10,7,'2024-10-20 13:00:00'),
+(98,27,13,7,'2024-10-20 13:00:00'),
+(99,14,2,7,'2024-10-20 13:00:00'),
+(100,28,26,7,'2024-10-20 13:00:00'),
+(101,18,17,7,'2024-10-20 13:00:00'),
+(102,20,31,7,'2024-10-20 13:00:00'),
+(103,23,6,7,'2024-10-20 13:00:00'),
+(104,12,4,7,'2024-10-20 13:00:00'),
+(105,32,9,7,'2024-10-20 13:00:00'),
+(106,21,8,7,'2024-10-20 13:00:00'),
+(107,22,28,8,'2024-10-27 13:00:00'),
+(108,11,9,8,'2024-10-27 13:00:00'),
+(109,26,16,8,'2024-10-27 13:00:00'),
+(110,13,14,8,'2024-10-27 13:00:00'),
+(111,15,27,8,'2024-10-27 13:00:00'),
+(112,2,21,8,'2024-10-27 13:00:00'),
+(113,3,4,8,'2024-10-27 13:00:00'),
+(114,32,29,8,'2024-10-27 13:00:00'),
+(115,10,17,8,'2024-10-27 13:00:00'),
+(116,8,30,8,'2024-10-27 13:00:00'),
+(117,24,1,8,'2024-10-27 13:00:00'),
+(118,20,25,8,'2024-10-27 13:00:00'),
+(119,5,31,8,'2024-10-27 13:00:00'),
+(120,7,6,8,'2024-10-27 13:00:00'),
+(121,23,19,8,'2024-10-27 13:00:00'),
+(122,12,18,8,'2024-10-27 13:00:00'),
+(123,22,7,7,'2024-10-20 13:00:00'),
+(124,4,13,9,'2024-11-03 13:00:00'),
+(125,31,30,9,'2024-11-03 13:00:00'),
+(126,18,20,9,'2024-11-03 13:00:00'),
+(127,1,2,9,'2024-11-03 13:00:00'),
+(128,11,8,9,'2024-11-03 13:00:00'),
+(129,16,3,9,'2024-11-03 13:00:00'),
+(130,29,19,9,'2024-11-03 13:00:00'),
+(131,10,7,9,'2024-11-03 13:00:00'),
+(132,9,5,9,'2024-11-03 13:00:00'),
+(133,21,25,9,'2024-11-03 13:00:00'),
+(134,17,15,9,'2024-11-03 13:00:00'),
+(135,24,22,9,'2024-11-03 13:00:00'),
+(136,27,26,9,'2024-11-03 13:00:00'),
+(137,28,14,9,'2024-11-03 13:00:00'),
+(138,6,32,9,'2024-11-03 13:00:00'),
+(139,9,10,10,'2024-11-10 13:00:00'),
+(140,31,18,10,'2024-11-10 13:00:00'),
+(141,25,3,10,'2024-11-10 13:00:00'),
+(142,32,23,10,'2024-11-10 13:00:00'),
+(143,6,5,10,'2024-11-10 13:00:00'),
+(144,14,1,10,'2024-11-10 13:00:00'),
+(145,20,12,10,'2024-11-10 13:00:00'),
+(146,15,28,10,'2024-11-10 13:00:00'),
+(147,30,29,10,'2024-11-10 13:00:00'),
+(148,8,16,10,'2024-11-10 13:00:00'),
+(149,21,4,10,'2024-11-10 13:00:00'),
+(150,19,17,10,'2024-11-10 13:00:00'),
+(151,13,26,10,'2024-11-10 13:00:00'),
+(152,22,2,10,'2024-11-10 13:00:00'),
+(153,17,20,11,'2024-11-17 13:00:00'),
+(154,2,7,11,'2024-11-17 13:00:00'),
+(155,30,11,11,'2024-11-17 13:00:00'),
+(156,16,28,11,'2024-11-17 13:00:00'),
+(157,25,27,11,'2024-11-17 13:00:00'),
+(158,26,15,11,'2024-11-17 13:00:00'),
+(159,3,22,11,'2024-11-17 13:00:00'),
+(160,12,9,11,'2024-11-17 13:00:00'),
+(161,23,24,11,'2024-11-17 13:00:00'),
+(162,5,29,11,'2024-11-17 13:00:00'),
+(163,1,6,11,'2024-11-17 13:00:00'),
+(164,8,10,11,'2024-11-17 13:00:00'),
+(165,4,14,11,'2024-11-17 13:00:00'),
+(166,19,13,11,'2024-11-17 13:00:00'),
+(167,11,12,12,'2024-11-24 13:00:00'),
+(168,13,16,12,'2024-11-24 13:00:00'),
+(169,25,28,12,'2024-11-24 13:00:00'),
+(170,20,19,12,'2024-11-24 13:00:00'),
+(171,2,3,12,'2024-11-24 13:00:00'),
+(172,31,6,12,'2024-11-24 13:00:00'),
+(173,18,32,12,'2024-11-24 13:00:00'),
+(174,14,26,12,'2024-11-24 13:00:00'),
+(175,7,5,12,'2024-11-24 13:00:00'),
+(176,24,21,12,'2024-11-24 13:00:00'),
+(177,27,23,12,'2024-11-24 13:00:00'),
+(178,22,17,12,'2024-11-24 13:00:00'),
+(179,8,9,12,'2024-11-24 13:00:00'),
+(180,26,25,13,'2024-12-01 13:00:00'),
+(181,19,18,13,'2024-12-01 13:00:00'),
+(182,27,2,13,'2024-12-01 13:00:00'),
+(183,6,7,13,'2024-12-01 13:00:00'),
+(184,15,13,13,'2024-12-01 13:00:00'),
+(185,3,14,13,'2024-12-01 13:00:00'),
+(186,29,8,13,'2024-12-01 13:00:00'),
+(187,4,24,13,'2024-12-01 13:00:00'),
+(188,20,16,13,'2024-12-01 13:00:00'),
+(189,10,12,13,'2024-12-01 13:00:00'),
+(190,28,21,13,'2024-12-01 13:00:00'),
+(191,30,22,13,'2024-12-01 13:00:00'),
+(192,31,32,13,'2024-12-01 13:00:00'),
+(193,9,17,13,'2024-12-01 13:00:00'),
+(194,1,23,13,'2024-12-01 13:00:00'),
+(195,5,11,13,'2024-12-01 13:00:00'),
+(196,26,27,14,'2024-12-08 13:00:00'),
+(197,12,11,14,'2024-12-08 13:00:00'),
+(198,18,30,14,'2024-12-08 13:00:00'),
+(199,2,4,14,'2024-12-08 13:00:00'),
+(200,16,15,14,'2024-12-08 13:00:00'),
+(202,28,29,14,'2024-12-08 13:00:00'),
+(203,17,31,14,'2024-12-08 13:00:00'),
+(204,32,7,14,'2024-12-08 13:00:00'),
+(205,21,24,14,'2024-12-08 13:00:00'),
+(206,23,25,14,'2024-12-08 13:00:00'),
+(207,22,1,14,'2024-12-08 13:00:00'),
+(208,6,8,14,'2024-12-08 13:00:00'),
+(209,19,10,14,'2024-12-08 13:00:00'),
+(210,23,22,15,'2024-12-15 13:00:00'),
+(211,30,20,15,'2024-12-15 13:00:00'),
+(212,11,6,15,'2024-12-15 13:00:00'),
+(213,16,10,15,'2024-12-15 13:00:00'),
+(214,13,2,15,'2024-12-15 13:00:00'),
+(215,18,9,15,'2024-12-15 13:00:00'),
+(216,15,4,15,'2024-12-15 13:00:00'),
+(217,31,19,15,'2024-12-15 13:00:00'),
+(218,8,32,15,'2024-12-15 13:00:00'),
+(219,5,14,15,'2024-12-15 13:00:00'),
+(220,21,3,15,'2024-12-15 13:00:00'),
+(221,26,1,15,'2024-12-15 13:00:00'),
+(222,17,12,15,'2024-12-15 13:00:00'),
+(223,24,27,15,'2024-12-15 13:00:00'),
+(224,28,25,15,'2024-12-15 13:00:00'),
+(225,7,29,15,'2024-12-15 13:00:00'),
+(226,10,11,16,'2024-12-22 13:00:00'),
+(227,6,13,16,'2024-12-22 13:00:00'),
+(228,9,12,16,'2024-12-22 13:00:00'),
+(229,1,3,16,'2024-12-22 13:00:00'),
+(230,29,18,16,'2024-12-22 13:00:00'),
+(231,25,26,16,'2024-12-22 13:00:00'),
+(232,31,21,16,'2024-12-22 13:00:00'),
+(233,4,22,16,'2024-12-22 13:00:00'),
+(234,20,17,16,'2024-12-22 13:00:00'),
+(235,14,16,16,'2024-12-22 13:00:00'),
+(236,8,5,16,'2024-12-22 13:00:00'),
+(237,24,28,16,'2024-12-22 13:00:00'),
+(238,7,15,16,'2024-12-22 13:00:00'),
+(239,2,23,16,'2024-12-22 13:00:00'),
+(241,19,32,16,'2024-12-22 13:00:00'),
+(242,27,30,16,'2024-12-22 13:00:00'),
+(243,12,6,17,'2024-12-29 13:00:00'),
+(244,13,9,17,'2024-12-29 13:00:00'),
+(245,25,24,17,'2024-12-29 13:00:00'),
+(246,20,29,17,'2024-12-29 13:00:00'),
+(247,3,8,17,'2024-12-29 13:00:00'),
+(248,10,5,17,'2024-12-29 13:00:00'),
+(249,18,14,17,'2024-12-29 13:00:00'),
+(250,22,21,17,'2024-12-29 13:00:00'),
+(251,32,31,17,'2024-12-29 13:00:00'),
+(252,1,4,17,'2024-12-29 13:00:00'),
+(253,28,27,17,'2024-12-29 13:00:00'),
+(254,30,7,17,'2024-12-29 13:00:00'),
+(255,15,16,17,'2024-12-29 13:00:00'),
+(256,17,19,17,'2024-12-29 13:00:00'),
+(257,11,2,17,'2024-12-29 13:00:00'),
+(258,23,26,17,'2024-12-29 13:00:00'),
+(259,9,11,18,'2025-01-05 13:00:00'),
+(260,7,8,18,'2025-01-05 13:00:00'),
+(261,12,10,18,'2025-01-05 13:00:00'),
+(262,21,23,18,'2025-01-05 13:00:00'),
+(263,29,31,18,'2025-01-05 13:00:00'),
+(264,5,6,18,'2025-01-05 13:00:00'),
+(265,22,24,18,'2025-01-05 13:00:00'),
+(266,16,13,18,'2025-01-05 13:00:00'),
+(267,17,18,18,'2025-01-05 13:00:00'),
+(268,14,15,18,'2025-01-05 13:00:00'),
+(269,26,28,18,'2025-01-05 13:00:00'),
+(270,19,20,18,'2025-01-05 13:00:00'),
+(271,27,25,18,'2025-01-05 13:00:00'),
+(272,4,2,18,'2025-01-05 13:00:00'),
+(273,32,30,18,'2025-01-05 13:00:00'),
+(274,3,1,18,'2025-01-05 13:00:00');
 /*!40000 ALTER TABLE `game` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1536,6 +2293,258 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `Sched49ers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Sched49ers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Sched49ers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = '49ers' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedBears`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedBears`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedBears` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Bears' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedBengals`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedBengals`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedBengals` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Bengals' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedBills`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedBills`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedBills` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Bills' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedBroncos`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedBroncos`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedBroncos` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Broncos' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedBrowns`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedBrowns`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedBrowns` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Browns' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedBuccaneers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedBuccaneers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedBuccaneers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Buccaneers' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedCardinals`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedCardinals`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedCardinals` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Cardinals' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedChargers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedChargers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedChargers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Chargers' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedChiefs`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedChiefs`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedChiefs` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Chiefs' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedColts`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedColts`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedColts` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Colts' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedCommanders`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedCommanders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedCommanders` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Commanders' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedCowboys`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedCowboys`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedCowboys` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Cowboys' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedDolphins`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedDolphins`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedDolphins` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Dolphins' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `SchedEagles`
 --
 
@@ -1548,7 +2557,313 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `SchedEagles` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Eagles' */;
+/*!50001 VIEW `SchedEagles` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Eagles' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedFalcons`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedFalcons`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedFalcons` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Falcons' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedGiants`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedGiants`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedGiants` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Giants' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedJaguars`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedJaguars`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedJaguars` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Jaguars' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedJets`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedJets`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedJets` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Jets' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedLions`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedLions`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedLions` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Lions' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedPackers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedPackers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedPackers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Packers' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedPanthers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedPanthers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedPanthers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Panthers' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedPatriots`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedPatriots`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedPatriots` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Patriots' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedRaiders`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedRaiders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedRaiders` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Raiders' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedRams`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedRams`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedRams` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Rams' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedRavens`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedRavens`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedRavens` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Ravens' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedSaints`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedSaints`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedSaints` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Saints' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedSeahawks`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedSeahawks`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedSeahawks` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Seahawks' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedSteelers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedSteelers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedSteelers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Steelers' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedTexans`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedTexans`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedTexans` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Texans' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedTitans`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedTitans`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedTitans` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Titans' */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SchedVikings`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SchedVikings`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SchedVikings` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Vikings' */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1566,7 +2881,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `Schedule` AS select `Record`.`week` AS `week`,`Record`.`team` AS `team`,`Record`.`oponent` AS `versus`,if(`Record`.`at_home` = 1,'Yes','') AS `at_home`,if(`Record`.`in_conference` = 1,'','Yes') AS `inter_conference`,if(`Record`.`in_division` = 1,'Yes','') AS `in_division`,if(`Record`.`game_for` is null,'',cast(`Record`.`game_for` as char charset utf8mb3)) AS `pts_for`,if(`Record`.`game_against` is null,'',cast(`Record`.`game_against` as char charset utf8mb3)) AS `pts_against` from `Record` union select `Byes`.`week` AS `week`,`Byes`.`team` AS `team`,'(( BYE ))' AS `versus`,'' AS `at_home`,'' AS `inter_conference`,'' AS `in_division`,'***' AS `pts_for`,'***' AS `pts_against` from `Byes` order by `week` */;
+/*!50001 VIEW `Schedule` AS select `Record`.`week` AS `week`,`Record`.`team` AS `team`,`Record`.`oponent` AS `versus`,if(`Record`.`at_home` = 1,'Yes','') AS `at_home`,if(`Record`.`in_conference` = 1,'','Yes') AS `inter_conference`,if(`Record`.`in_division` = 1,'Yes','') AS `in_division`,if(`Record`.`won_game` is null,'TBD',if(`Record`.`won_game` = 1,'Yes','')) AS `won_game`,if(`Record`.`game_for` is null,'',cast(`Record`.`game_for` as char charset utf8mb3)) AS `pts_for`,if(`Record`.`game_against` is null,'',cast(`Record`.`game_against` as char charset utf8mb3)) AS `pts_against` from `Record` union select `Byes`.`week` AS `week`,`Byes`.`team` AS `team`,'(( BYE ))' AS `versus`,'' AS `at_home`,'' AS `inter_conference`,'' AS `in_division`,'***' AS `won_game`,'***' AS `pts_for`,'***' AS `pts_against` from `Byes` order by `week` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -1616,4 +2931,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-03  8:21:56
+-- Dump completed on 2024-11-03 11:11:26
