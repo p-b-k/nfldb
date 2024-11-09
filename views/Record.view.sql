@@ -1,4 +1,4 @@
-CREATE VIEW Record
+CREATE OR REPLACE VIEW Record
 AS
 SELECT g.week        'week'
      , upper(tc.tag) 'team_conference'
@@ -38,6 +38,12 @@ SELECT g.week        'week'
           , 1
           , 0
           ) 'won_game'
+     , if ( (q1t.amount + q2t.amount + q3t.amount + q4t.amount + if (ott.amount is null, 0, ott.amount))
+            <
+            (q1o.amount + q2o.amount + q3o.amount + q4o.amount + if (oto.amount is null, 0, oto.amount))
+          , 1
+          , 0
+          ) 'lost_game'
 FROM game g
      inner join team t on g.home = t.pkey
      inner join team o on g.away = o.pkey
@@ -94,6 +100,12 @@ SELECT g.week        'week'
           , 1
           , 0
           ) 'won_game'
+     , if ( (q1t.amount + q2t.amount + q3t.amount + q4t.amount + if (ott.amount is null, 0, ott.amount))
+            <
+            (q1o.amount + q2o.amount + q3o.amount + q4o.amount + if (oto.amount is null, 0, oto.amount))
+          , 1
+          , 0
+          ) 'lost_game'
 FROM game g
      inner join team t on g.away = t.pkey
      inner join team o on g.home = o.pkey

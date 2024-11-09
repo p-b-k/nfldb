@@ -767,6 +767,279 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `Week01`
+--
+
+DROP TABLE IF EXISTS `Week01`;
+/*!50001 DROP VIEW IF EXISTS `Week01`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Week01` AS SELECT
+ 1 AS `week`,
+  1 AS `team_conference`,
+  1 AS `team_division`,
+  1 AS `team`,
+  1 AS `oponent_conference`,
+  1 AS `oponent_division`,
+  1 AS `oponent`,
+  1 AS `at_home`,
+  1 AS `in_conference`,
+  1 AS `in_division`,
+  1 AS `q1_for`,
+  1 AS `q2_for`,
+  1 AS `q3_for`,
+  1 AS `q4_for`,
+  1 AS `ot_for`,
+  1 AS `q1_against`,
+  1 AS `q2_against`,
+  1 AS `q3_against`,
+  1 AS `q4_against`,
+  1 AS `ot_against`,
+  1 AS `q1_net`,
+  1 AS `q2_net`,
+  1 AS `q3_net`,
+  1 AS `q4_net`,
+  1 AS `game_for`,
+  1 AS `game_against`,
+  1 AS `game_net`,
+  1 AS `won_game` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `Week02`
+--
+
+DROP TABLE IF EXISTS `Week02`;
+/*!50001 DROP VIEW IF EXISTS `Week02`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Week02` AS SELECT
+ 1 AS `week`,
+  1 AS `team_conference`,
+  1 AS `team_division`,
+  1 AS `team`,
+  1 AS `oponent_conference`,
+  1 AS `oponent_division`,
+  1 AS `oponent`,
+  1 AS `at_home`,
+  1 AS `in_conference`,
+  1 AS `in_division`,
+  1 AS `q1_for`,
+  1 AS `q2_for`,
+  1 AS `q3_for`,
+  1 AS `q4_for`,
+  1 AS `ot_for`,
+  1 AS `q1_against`,
+  1 AS `q2_against`,
+  1 AS `q3_against`,
+  1 AS `q4_against`,
+  1 AS `ot_against`,
+  1 AS `q1_net`,
+  1 AS `q2_net`,
+  1 AS `q3_net`,
+  1 AS `q4_net`,
+  1 AS `game_for`,
+  1 AS `game_against`,
+  1 AS `game_net`,
+  1 AS `won_game` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `Week03`
+--
+
+DROP TABLE IF EXISTS `Week03`;
+/*!50001 DROP VIEW IF EXISTS `Week03`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Week03` AS SELECT
+ 1 AS `week`,
+  1 AS `team_conference`,
+  1 AS `team_division`,
+  1 AS `team`,
+  1 AS `oponent_conference`,
+  1 AS `oponent_division`,
+  1 AS `oponent`,
+  1 AS `at_home`,
+  1 AS `in_conference`,
+  1 AS `in_division`,
+  1 AS `q1_for`,
+  1 AS `q2_for`,
+  1 AS `q3_for`,
+  1 AS `q4_for`,
+  1 AS `ot_for`,
+  1 AS `q1_against`,
+  1 AS `q2_against`,
+  1 AS `q3_against`,
+  1 AS `q4_against`,
+  1 AS `ot_against`,
+  1 AS `q1_net`,
+  1 AS `q2_net`,
+  1 AS `q3_net`,
+  1 AS `q4_net`,
+  1 AS `game_for`,
+  1 AS `game_against`,
+  1 AS `game_net`,
+  1 AS `won_game` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `Week04`
+--
+
+DROP TABLE IF EXISTS `Week04`;
+/*!50001 DROP VIEW IF EXISTS `Week04`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Week04` AS SELECT
+ 1 AS `week`,
+  1 AS `team_conference`,
+  1 AS `team_division`,
+  1 AS `team`,
+  1 AS `oponent_conference`,
+  1 AS `oponent_division`,
+  1 AS `oponent`,
+  1 AS `at_home`,
+  1 AS `in_conference`,
+  1 AS `in_division`,
+  1 AS `q1_for`,
+  1 AS `q2_for`,
+  1 AS `q3_for`,
+  1 AS `q4_for`,
+  1 AS `ot_for`,
+  1 AS `q1_against`,
+  1 AS `q2_against`,
+  1 AS `q3_against`,
+  1 AS `q4_against`,
+  1 AS `ot_against`,
+  1 AS `q1_net`,
+  1 AS `q2_net`,
+  1 AS `q3_net`,
+  1 AS `q4_net`,
+  1 AS `game_for`,
+  1 AS `game_against`,
+  1 AS `game_net`,
+  1 AS `won_game` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `Week05`
+--
+
+DROP TABLE IF EXISTS `Week05`;
+/*!50001 DROP VIEW IF EXISTS `Week05`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Week05` AS SELECT
+ 1 AS `week`,
+  1 AS `team_conference`,
+  1 AS `team_division`,
+  1 AS `team`,
+  1 AS `oponent_conference`,
+  1 AS `oponent_division`,
+  1 AS `oponent`,
+  1 AS `at_home`,
+  1 AS `in_conference`,
+  1 AS `in_division`,
+  1 AS `q1_for`,
+  1 AS `q2_for`,
+  1 AS `q3_for`,
+  1 AS `q4_for`,
+  1 AS `ot_for`,
+  1 AS `q1_against`,
+  1 AS `q2_against`,
+  1 AS `q3_against`,
+  1 AS `q4_against`,
+  1 AS `ot_against`,
+  1 AS `q1_net`,
+  1 AS `q2_net`,
+  1 AS `q3_net`,
+  1 AS `q4_net`,
+  1 AS `game_for`,
+  1 AS `game_against`,
+  1 AS `game_net`,
+  1 AS `won_game` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `Week06`
+--
+
+DROP TABLE IF EXISTS `Week06`;
+/*!50001 DROP VIEW IF EXISTS `Week06`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Week06` AS SELECT
+ 1 AS `week`,
+  1 AS `team_conference`,
+  1 AS `team_division`,
+  1 AS `team`,
+  1 AS `oponent_conference`,
+  1 AS `oponent_division`,
+  1 AS `oponent`,
+  1 AS `at_home`,
+  1 AS `in_conference`,
+  1 AS `in_division`,
+  1 AS `q1_for`,
+  1 AS `q2_for`,
+  1 AS `q3_for`,
+  1 AS `q4_for`,
+  1 AS `ot_for`,
+  1 AS `q1_against`,
+  1 AS `q2_against`,
+  1 AS `q3_against`,
+  1 AS `q4_against`,
+  1 AS `ot_against`,
+  1 AS `q1_net`,
+  1 AS `q2_net`,
+  1 AS `q3_net`,
+  1 AS `q4_net`,
+  1 AS `game_for`,
+  1 AS `game_against`,
+  1 AS `game_net`,
+  1 AS `won_game` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `Week07`
+--
+
+DROP TABLE IF EXISTS `Week07`;
+/*!50001 DROP VIEW IF EXISTS `Week07`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Week07` AS SELECT
+ 1 AS `week`,
+  1 AS `team_conference`,
+  1 AS `team_division`,
+  1 AS `team`,
+  1 AS `oponent_conference`,
+  1 AS `oponent_division`,
+  1 AS `oponent`,
+  1 AS `at_home`,
+  1 AS `in_conference`,
+  1 AS `in_division`,
+  1 AS `q1_for`,
+  1 AS `q2_for`,
+  1 AS `q3_for`,
+  1 AS `q4_for`,
+  1 AS `ot_for`,
+  1 AS `q1_against`,
+  1 AS `q2_against`,
+  1 AS `q3_against`,
+  1 AS `q4_against`,
+  1 AS `ot_against`,
+  1 AS `q1_net`,
+  1 AS `q2_net`,
+  1 AS `q3_net`,
+  1 AS `q4_net`,
+  1 AS `game_for`,
+  1 AS `game_against`,
+  1 AS `game_net`,
+  1 AS `won_game` */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `conference`
 --
 
@@ -1147,11 +1420,11 @@ CREATE TABLE `score` (
   `team` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   PRIMARY KEY (`pkey`),
-  KEY `game` (`game`),
+  UNIQUE KEY `u_score_on_game_team_quarter` (`game`,`team`,`quarter`),
   KEY `team` (`team`),
   CONSTRAINT `score_ibfk_1` FOREIGN KEY (`game`) REFERENCES `game` (`pkey`),
   CONSTRAINT `score_ibfk_2` FOREIGN KEY (`team`) REFERENCES `team` (`pkey`)
-) ENGINE=InnoDB AUTO_INCREMENT=1071 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1209 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2153,14 +2426,132 @@ INSERT INTO `score` VALUES
 (1060,75,2,22,13),
 (1061,75,3,22,0),
 (1062,75,4,22,6),
-(1063,124,1,13,0),
-(1064,124,2,13,7),
-(1065,124,3,13,3),
-(1066,124,4,13,3),
-(1067,124,1,4,0),
-(1068,124,2,4,0),
-(1069,124,3,4,7),
-(1070,124,4,4,14);
+(1079,124,1,13,0),
+(1080,124,2,13,7),
+(1081,124,3,13,3),
+(1082,124,4,13,3),
+(1084,124,1,4,0),
+(1085,124,2,4,0),
+(1086,124,3,4,7),
+(1087,124,4,4,14),
+(1088,137,1,14,0),
+(1089,137,2,14,7),
+(1090,137,3,14,0),
+(1091,137,4,14,6),
+(1093,137,1,28,0),
+(1094,137,2,28,0),
+(1095,137,3,28,14),
+(1096,137,4,28,7),
+(1098,126,1,20,7),
+(1099,126,2,20,14),
+(1100,126,3,20,3),
+(1101,126,4,20,3),
+(1102,126,1,18,0),
+(1103,126,2,18,7),
+(1104,126,3,18,3),
+(1105,126,4,18,12),
+(1106,127,1,2,3),
+(1107,127,2,2,7),
+(1108,127,3,2,3),
+(1109,127,4,2,14),
+(1110,127,1,1,3),
+(1111,127,2,1,3),
+(1112,127,3,1,14),
+(1113,127,4,1,10),
+(1114,128,1,8,7),
+(1115,128,2,8,13),
+(1116,128,3,8,0),
+(1117,128,4,8,7),
+(1118,128,1,11,0),
+(1119,128,2,11,3),
+(1120,128,3,11,0),
+(1121,128,4,11,7),
+(1122,129,1,3,0),
+(1123,129,2,3,3),
+(1124,129,3,3,7),
+(1125,129,4,3,7),
+(1126,129,1,16,7),
+(1127,129,2,16,0),
+(1128,129,3,16,3),
+(1129,129,4,16,7),
+(1130,129,5,3,0),
+(1131,129,5,16,3),
+(1132,130,1,19,3),
+(1133,130,2,19,7),
+(1134,130,3,19,3),
+(1135,130,4,19,8),
+(1136,130,1,29,7),
+(1137,130,2,29,7),
+(1138,130,3,29,7),
+(1139,130,4,29,6),
+(1140,131,1,7,7),
+(1141,131,2,7,3),
+(1142,131,3,7,0),
+(1143,131,4,7,14),
+(1144,131,1,10,7),
+(1145,131,2,10,10),
+(1146,131,3,10,14),
+(1147,131,4,10,10),
+(1148,132,1,5,0),
+(1149,132,2,5,10),
+(1150,132,3,5,0),
+(1151,132,4,5,0),
+(1152,132,1,9,7),
+(1153,132,2,9,17),
+(1154,132,3,9,14),
+(1155,132,4,9,3),
+(1156,133,1,25,0),
+(1157,133,2,25,9),
+(1158,133,3,25,0),
+(1159,133,4,25,0),
+(1160,133,1,21,7),
+(1161,133,2,21,14),
+(1162,133,3,21,3),
+(1163,133,4,21,5),
+(1164,134,1,15,0),
+(1165,134,2,15,0),
+(1166,134,3,15,16),
+(1167,134,4,15,7),
+(1168,134,1,17,7),
+(1169,134,2,17,9),
+(1170,134,3,17,6),
+(1171,134,4,17,6),
+(1172,135,1,22,0),
+(1173,135,2,22,3),
+(1174,135,3,22,10),
+(1175,135,4,22,7),
+(1176,135,1,24,0),
+(1177,135,2,24,13),
+(1178,135,3,24,0),
+(1179,135,4,24,7),
+(1180,135,5,24,0),
+(1181,135,5,22,6),
+(1182,136,1,26,0),
+(1183,136,2,26,17),
+(1184,136,3,26,7),
+(1185,136,4,26,0),
+(1186,136,1,27,3),
+(1187,136,2,27,0),
+(1188,136,3,27,3),
+(1189,136,4,27,8),
+(1191,138,1,32,0),
+(1192,138,2,32,7),
+(1193,138,3,32,10),
+(1194,138,4,32,7),
+(1195,138,1,6,3),
+(1196,138,2,6,7),
+(1197,138,3,6,0),
+(1198,138,4,6,14),
+(1199,138,5,6,6),
+(1200,138,5,32,0),
+(1201,125,1,30,6),
+(1202,125,2,30,7),
+(1203,125,3,30,3),
+(1204,125,4,30,6),
+(1205,125,1,31,0),
+(1206,125,2,31,10),
+(1207,125,3,31,7),
+(1208,125,4,31,6);
 /*!40000 ALTER TABLE `score` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2905,6 +3296,132 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `Week01`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Week01`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Week01` AS select `Record`.`week` AS `week`,`Record`.`team_conference` AS `team_conference`,`Record`.`team_division` AS `team_division`,`Record`.`team` AS `team`,`Record`.`oponent_conference` AS `oponent_conference`,`Record`.`oponent_division` AS `oponent_division`,`Record`.`oponent` AS `oponent`,`Record`.`at_home` AS `at_home`,`Record`.`in_conference` AS `in_conference`,`Record`.`in_division` AS `in_division`,`Record`.`q1_for` AS `q1_for`,`Record`.`q2_for` AS `q2_for`,`Record`.`q3_for` AS `q3_for`,`Record`.`q4_for` AS `q4_for`,`Record`.`ot_for` AS `ot_for`,`Record`.`q1_against` AS `q1_against`,`Record`.`q2_against` AS `q2_against`,`Record`.`q3_against` AS `q3_against`,`Record`.`q4_against` AS `q4_against`,`Record`.`ot_against` AS `ot_against`,`Record`.`q1_net` AS `q1_net`,`Record`.`q2_net` AS `q2_net`,`Record`.`q3_net` AS `q3_net`,`Record`.`q4_net` AS `q4_net`,`Record`.`game_for` AS `game_for`,`Record`.`game_against` AS `game_against`,`Record`.`game_net` AS `game_net`,`Record`.`won_game` AS `won_game` from `Record` where `Record`.`week` <= 1 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Week02`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Week02`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Week02` AS select `Record`.`week` AS `week`,`Record`.`team_conference` AS `team_conference`,`Record`.`team_division` AS `team_division`,`Record`.`team` AS `team`,`Record`.`oponent_conference` AS `oponent_conference`,`Record`.`oponent_division` AS `oponent_division`,`Record`.`oponent` AS `oponent`,`Record`.`at_home` AS `at_home`,`Record`.`in_conference` AS `in_conference`,`Record`.`in_division` AS `in_division`,`Record`.`q1_for` AS `q1_for`,`Record`.`q2_for` AS `q2_for`,`Record`.`q3_for` AS `q3_for`,`Record`.`q4_for` AS `q4_for`,`Record`.`ot_for` AS `ot_for`,`Record`.`q1_against` AS `q1_against`,`Record`.`q2_against` AS `q2_against`,`Record`.`q3_against` AS `q3_against`,`Record`.`q4_against` AS `q4_against`,`Record`.`ot_against` AS `ot_against`,`Record`.`q1_net` AS `q1_net`,`Record`.`q2_net` AS `q2_net`,`Record`.`q3_net` AS `q3_net`,`Record`.`q4_net` AS `q4_net`,`Record`.`game_for` AS `game_for`,`Record`.`game_against` AS `game_against`,`Record`.`game_net` AS `game_net`,`Record`.`won_game` AS `won_game` from `Record` where `Record`.`week` <= 2 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Week03`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Week03`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Week03` AS select `Record`.`week` AS `week`,`Record`.`team_conference` AS `team_conference`,`Record`.`team_division` AS `team_division`,`Record`.`team` AS `team`,`Record`.`oponent_conference` AS `oponent_conference`,`Record`.`oponent_division` AS `oponent_division`,`Record`.`oponent` AS `oponent`,`Record`.`at_home` AS `at_home`,`Record`.`in_conference` AS `in_conference`,`Record`.`in_division` AS `in_division`,`Record`.`q1_for` AS `q1_for`,`Record`.`q2_for` AS `q2_for`,`Record`.`q3_for` AS `q3_for`,`Record`.`q4_for` AS `q4_for`,`Record`.`ot_for` AS `ot_for`,`Record`.`q1_against` AS `q1_against`,`Record`.`q2_against` AS `q2_against`,`Record`.`q3_against` AS `q3_against`,`Record`.`q4_against` AS `q4_against`,`Record`.`ot_against` AS `ot_against`,`Record`.`q1_net` AS `q1_net`,`Record`.`q2_net` AS `q2_net`,`Record`.`q3_net` AS `q3_net`,`Record`.`q4_net` AS `q4_net`,`Record`.`game_for` AS `game_for`,`Record`.`game_against` AS `game_against`,`Record`.`game_net` AS `game_net`,`Record`.`won_game` AS `won_game` from `Record` where `Record`.`week` <= 3 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Week04`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Week04`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Week04` AS select `Record`.`week` AS `week`,`Record`.`team_conference` AS `team_conference`,`Record`.`team_division` AS `team_division`,`Record`.`team` AS `team`,`Record`.`oponent_conference` AS `oponent_conference`,`Record`.`oponent_division` AS `oponent_division`,`Record`.`oponent` AS `oponent`,`Record`.`at_home` AS `at_home`,`Record`.`in_conference` AS `in_conference`,`Record`.`in_division` AS `in_division`,`Record`.`q1_for` AS `q1_for`,`Record`.`q2_for` AS `q2_for`,`Record`.`q3_for` AS `q3_for`,`Record`.`q4_for` AS `q4_for`,`Record`.`ot_for` AS `ot_for`,`Record`.`q1_against` AS `q1_against`,`Record`.`q2_against` AS `q2_against`,`Record`.`q3_against` AS `q3_against`,`Record`.`q4_against` AS `q4_against`,`Record`.`ot_against` AS `ot_against`,`Record`.`q1_net` AS `q1_net`,`Record`.`q2_net` AS `q2_net`,`Record`.`q3_net` AS `q3_net`,`Record`.`q4_net` AS `q4_net`,`Record`.`game_for` AS `game_for`,`Record`.`game_against` AS `game_against`,`Record`.`game_net` AS `game_net`,`Record`.`won_game` AS `won_game` from `Record` where `Record`.`week` <= 4 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Week05`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Week05`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Week05` AS select `Record`.`week` AS `week`,`Record`.`team_conference` AS `team_conference`,`Record`.`team_division` AS `team_division`,`Record`.`team` AS `team`,`Record`.`oponent_conference` AS `oponent_conference`,`Record`.`oponent_division` AS `oponent_division`,`Record`.`oponent` AS `oponent`,`Record`.`at_home` AS `at_home`,`Record`.`in_conference` AS `in_conference`,`Record`.`in_division` AS `in_division`,`Record`.`q1_for` AS `q1_for`,`Record`.`q2_for` AS `q2_for`,`Record`.`q3_for` AS `q3_for`,`Record`.`q4_for` AS `q4_for`,`Record`.`ot_for` AS `ot_for`,`Record`.`q1_against` AS `q1_against`,`Record`.`q2_against` AS `q2_against`,`Record`.`q3_against` AS `q3_against`,`Record`.`q4_against` AS `q4_against`,`Record`.`ot_against` AS `ot_against`,`Record`.`q1_net` AS `q1_net`,`Record`.`q2_net` AS `q2_net`,`Record`.`q3_net` AS `q3_net`,`Record`.`q4_net` AS `q4_net`,`Record`.`game_for` AS `game_for`,`Record`.`game_against` AS `game_against`,`Record`.`game_net` AS `game_net`,`Record`.`won_game` AS `won_game` from `Record` where `Record`.`week` <= 5 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Week06`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Week06`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Week06` AS select `Record`.`week` AS `week`,`Record`.`team_conference` AS `team_conference`,`Record`.`team_division` AS `team_division`,`Record`.`team` AS `team`,`Record`.`oponent_conference` AS `oponent_conference`,`Record`.`oponent_division` AS `oponent_division`,`Record`.`oponent` AS `oponent`,`Record`.`at_home` AS `at_home`,`Record`.`in_conference` AS `in_conference`,`Record`.`in_division` AS `in_division`,`Record`.`q1_for` AS `q1_for`,`Record`.`q2_for` AS `q2_for`,`Record`.`q3_for` AS `q3_for`,`Record`.`q4_for` AS `q4_for`,`Record`.`ot_for` AS `ot_for`,`Record`.`q1_against` AS `q1_against`,`Record`.`q2_against` AS `q2_against`,`Record`.`q3_against` AS `q3_against`,`Record`.`q4_against` AS `q4_against`,`Record`.`ot_against` AS `ot_against`,`Record`.`q1_net` AS `q1_net`,`Record`.`q2_net` AS `q2_net`,`Record`.`q3_net` AS `q3_net`,`Record`.`q4_net` AS `q4_net`,`Record`.`game_for` AS `game_for`,`Record`.`game_against` AS `game_against`,`Record`.`game_net` AS `game_net`,`Record`.`won_game` AS `won_game` from `Record` where `Record`.`week` <= 6 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `Week07`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Week07`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Week07` AS select `Record`.`week` AS `week`,`Record`.`team_conference` AS `team_conference`,`Record`.`team_division` AS `team_division`,`Record`.`team` AS `team`,`Record`.`oponent_conference` AS `oponent_conference`,`Record`.`oponent_division` AS `oponent_division`,`Record`.`oponent` AS `oponent`,`Record`.`at_home` AS `at_home`,`Record`.`in_conference` AS `in_conference`,`Record`.`in_division` AS `in_division`,`Record`.`q1_for` AS `q1_for`,`Record`.`q2_for` AS `q2_for`,`Record`.`q3_for` AS `q3_for`,`Record`.`q4_for` AS `q4_for`,`Record`.`ot_for` AS `ot_for`,`Record`.`q1_against` AS `q1_against`,`Record`.`q2_against` AS `q2_against`,`Record`.`q3_against` AS `q3_against`,`Record`.`q4_against` AS `q4_against`,`Record`.`ot_against` AS `ot_against`,`Record`.`q1_net` AS `q1_net`,`Record`.`q2_net` AS `q2_net`,`Record`.`q3_net` AS `q3_net`,`Record`.`q4_net` AS `q4_net`,`Record`.`game_for` AS `game_for`,`Record`.`game_against` AS `game_against`,`Record`.`game_net` AS `game_net`,`Record`.`won_game` AS `won_game` from `Record` where `Record`.`week` <= 7 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `season`
 --
 
@@ -2931,4 +3448,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-03 11:11:26
+-- Dump completed on 2024-11-05 16:21:18
