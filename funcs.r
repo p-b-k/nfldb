@@ -2,5 +2,11 @@
 # Open a connection to the NFL database 
 ########################################################################################################################
 
-plot.div <- function(dvsn, colors) boxplot(split(dvsn$game_for - dvsn$game_against, dvsn$team), col=colors)
+defc <- c( rgb( 0.80, 0.30, 0.20, 0.80)
+         , rgb( 0.30, 0.80, 0.20, 0.80)
+         , rgb( 0.80, 0.20, 0.30, 0.80)
+         , rgb( 0.80, 0.30, 0.80, 0.20)
+         )
+
+plot.div <- function(d, colors = defc) boxplot(split(d$game_for - d$game_against, d$team), col=colors)
 

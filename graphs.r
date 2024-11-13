@@ -9,7 +9,7 @@ library (hrbrthemes)
 ## Plot a graph of differences in two values, showing an adjustment
 ## *********************************************************************************************************************
 
-display_span_graph <- function (Data) {
+display_span_graph <- function (data) {
   names(data) <- c("x", "value1", "value2")
 
   value1.color <- rgb(0.5, 0.8, 0, 1)
@@ -20,10 +20,10 @@ display_span_graph <- function (Data) {
   geom_point( aes(x=x, y=value1), color=value1.color, size=3 ) +
   geom_point( aes(x=x, y=value2), color=value2.color, size=3 ) +
   coord_flip()+
-  theme_ipsum() +
-  theme(
-    legend.position = "bottom",
-  ) +
+# theme_ipsum() +
+# theme(
+#   legend.position = "bottom",
+# ) +
   xlab("Teams") +
   ylab("Pct VS Weighted Pct")
 }
@@ -32,8 +32,8 @@ display_span_graph <- function (Data) {
 ## Plot the difference between win pct and weighted win pct
 ## *********************************************************************************************************************
 
-show_sos <- function () {
-  data <- data.frame(team=D.nfc.e$team, 3, 4)
+show.sos <- function () {
+  data <- data.frame(team=NFL.sos$team, v1=NFL.sos$pct, v1=NFL.sos$oratio)
 
   display_span_graph (data)
 }

@@ -63,7 +63,7 @@ get.nfl.stats <- function (conn) {
 # Get Stringth of Schedule view
 get.nfl.sos <- function (conn) {
   fields <- paste( "conference, division, team, "
-                 , "strength, op_diff, op_rat, pct, wpct, wpct2"
+                 , "strength, pct, owins, oloses, oratio, weighted"
                  )
   query <- paste( "SELECT"
                 , fields

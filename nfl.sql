@@ -26,6 +26,8 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = utf8;
 /*!50001 CREATE VIEW `Byes` AS SELECT
  1 AS `week`,
+  1 AS `conference`,
+  1 AS `division`,
   1 AS `team` */;
 SET character_set_client = @saved_cs_client;
 
@@ -778,6 +780,678 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `SoFar49ers`
+--
+
+DROP TABLE IF EXISTS `SoFar49ers`;
+/*!50001 DROP VIEW IF EXISTS `SoFar49ers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFar49ers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarBears`
+--
+
+DROP TABLE IF EXISTS `SoFarBears`;
+/*!50001 DROP VIEW IF EXISTS `SoFarBears`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarBears` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarBengals`
+--
+
+DROP TABLE IF EXISTS `SoFarBengals`;
+/*!50001 DROP VIEW IF EXISTS `SoFarBengals`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarBengals` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarBills`
+--
+
+DROP TABLE IF EXISTS `SoFarBills`;
+/*!50001 DROP VIEW IF EXISTS `SoFarBills`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarBills` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarBroncos`
+--
+
+DROP TABLE IF EXISTS `SoFarBroncos`;
+/*!50001 DROP VIEW IF EXISTS `SoFarBroncos`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarBroncos` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarBrowns`
+--
+
+DROP TABLE IF EXISTS `SoFarBrowns`;
+/*!50001 DROP VIEW IF EXISTS `SoFarBrowns`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarBrowns` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarBuccaneers`
+--
+
+DROP TABLE IF EXISTS `SoFarBuccaneers`;
+/*!50001 DROP VIEW IF EXISTS `SoFarBuccaneers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarBuccaneers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarCardinals`
+--
+
+DROP TABLE IF EXISTS `SoFarCardinals`;
+/*!50001 DROP VIEW IF EXISTS `SoFarCardinals`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarCardinals` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarChargers`
+--
+
+DROP TABLE IF EXISTS `SoFarChargers`;
+/*!50001 DROP VIEW IF EXISTS `SoFarChargers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarChargers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarChiefs`
+--
+
+DROP TABLE IF EXISTS `SoFarChiefs`;
+/*!50001 DROP VIEW IF EXISTS `SoFarChiefs`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarChiefs` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarColts`
+--
+
+DROP TABLE IF EXISTS `SoFarColts`;
+/*!50001 DROP VIEW IF EXISTS `SoFarColts`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarColts` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarCommanders`
+--
+
+DROP TABLE IF EXISTS `SoFarCommanders`;
+/*!50001 DROP VIEW IF EXISTS `SoFarCommanders`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarCommanders` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarCowboys`
+--
+
+DROP TABLE IF EXISTS `SoFarCowboys`;
+/*!50001 DROP VIEW IF EXISTS `SoFarCowboys`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarCowboys` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarDolphins`
+--
+
+DROP TABLE IF EXISTS `SoFarDolphins`;
+/*!50001 DROP VIEW IF EXISTS `SoFarDolphins`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarDolphins` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarEagles`
+--
+
+DROP TABLE IF EXISTS `SoFarEagles`;
+/*!50001 DROP VIEW IF EXISTS `SoFarEagles`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarEagles` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarFalcons`
+--
+
+DROP TABLE IF EXISTS `SoFarFalcons`;
+/*!50001 DROP VIEW IF EXISTS `SoFarFalcons`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarFalcons` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarGiants`
+--
+
+DROP TABLE IF EXISTS `SoFarGiants`;
+/*!50001 DROP VIEW IF EXISTS `SoFarGiants`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarGiants` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarJaguars`
+--
+
+DROP TABLE IF EXISTS `SoFarJaguars`;
+/*!50001 DROP VIEW IF EXISTS `SoFarJaguars`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarJaguars` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarJets`
+--
+
+DROP TABLE IF EXISTS `SoFarJets`;
+/*!50001 DROP VIEW IF EXISTS `SoFarJets`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarJets` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarLions`
+--
+
+DROP TABLE IF EXISTS `SoFarLions`;
+/*!50001 DROP VIEW IF EXISTS `SoFarLions`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarLions` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarPackers`
+--
+
+DROP TABLE IF EXISTS `SoFarPackers`;
+/*!50001 DROP VIEW IF EXISTS `SoFarPackers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarPackers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarPanthers`
+--
+
+DROP TABLE IF EXISTS `SoFarPanthers`;
+/*!50001 DROP VIEW IF EXISTS `SoFarPanthers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarPanthers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarPatriots`
+--
+
+DROP TABLE IF EXISTS `SoFarPatriots`;
+/*!50001 DROP VIEW IF EXISTS `SoFarPatriots`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarPatriots` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarRaiders`
+--
+
+DROP TABLE IF EXISTS `SoFarRaiders`;
+/*!50001 DROP VIEW IF EXISTS `SoFarRaiders`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarRaiders` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarRams`
+--
+
+DROP TABLE IF EXISTS `SoFarRams`;
+/*!50001 DROP VIEW IF EXISTS `SoFarRams`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarRams` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarRavens`
+--
+
+DROP TABLE IF EXISTS `SoFarRavens`;
+/*!50001 DROP VIEW IF EXISTS `SoFarRavens`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarRavens` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarSaints`
+--
+
+DROP TABLE IF EXISTS `SoFarSaints`;
+/*!50001 DROP VIEW IF EXISTS `SoFarSaints`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarSaints` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarSeahawks`
+--
+
+DROP TABLE IF EXISTS `SoFarSeahawks`;
+/*!50001 DROP VIEW IF EXISTS `SoFarSeahawks`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarSeahawks` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarSteelers`
+--
+
+DROP TABLE IF EXISTS `SoFarSteelers`;
+/*!50001 DROP VIEW IF EXISTS `SoFarSteelers`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarSteelers` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarTexans`
+--
+
+DROP TABLE IF EXISTS `SoFarTexans`;
+/*!50001 DROP VIEW IF EXISTS `SoFarTexans`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarTexans` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarTitans`
+--
+
+DROP TABLE IF EXISTS `SoFarTitans`;
+/*!50001 DROP VIEW IF EXISTS `SoFarTitans`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarTitans` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary table structure for view `SoFarVikings`
+--
+
+DROP TABLE IF EXISTS `SoFarVikings`;
+/*!50001 DROP VIEW IF EXISTS `SoFarVikings`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `SoFarVikings` AS SELECT
+ 1 AS `week`,
+  1 AS `team`,
+  1 AS `versus`,
+  1 AS `at_home`,
+  1 AS `inter_conference`,
+  1 AS `in_division`,
+  1 AS `won_game`,
+  1 AS `lost_game`,
+  1 AS `pts_for`,
+  1 AS `pts_against` */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary table structure for view `Stats`
 --
 
@@ -801,6 +1475,24 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `Strength`
+--
+
+DROP TABLE IF EXISTS `Strength`;
+/*!50001 DROP VIEW IF EXISTS `Strength`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `Strength` AS SELECT
+ 1 AS `conference`,
+  1 AS `division`,
+  1 AS `team`,
+  1 AS `pct`,
+  1 AS `wins`,
+  1 AS `loses`,
+  1 AS `ratio` */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary table structure for view `StrengthOfSched`
 --
 
@@ -813,11 +1505,11 @@ SET character_set_client = utf8;
   1 AS `division`,
   1 AS `team`,
   1 AS `strength`,
-  1 AS `op_diff`,
-  1 AS `op_rat`,
   1 AS `pct`,
-  1 AS `wpct`,
-  1 AS `wpct2` */;
+  1 AS `owins`,
+  1 AS `oloses`,
+  1 AS `oratio`,
+  1 AS `weighted` */;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -1479,7 +2171,7 @@ CREATE TABLE `score` (
   KEY `team` (`team`),
   CONSTRAINT `score_ibfk_1` FOREIGN KEY (`game`) REFERENCES `game` (`pkey`),
   CONSTRAINT `score_ibfk_2` FOREIGN KEY (`team`) REFERENCES `team` (`pkey`)
-) ENGINE=InnoDB AUTO_INCREMENT=1209 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1323 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2606,7 +3298,121 @@ INSERT INTO `score` VALUES
 (1205,125,1,31,0),
 (1206,125,2,31,10),
 (1207,125,3,31,7),
-(1208,125,4,31,6);
+(1208,125,4,31,6),
+(1209,139,1,10,7),
+(1210,139,2,10,7),
+(1211,139,3,10,7),
+(1212,139,4,10,13),
+(1213,139,1,9,0),
+(1214,139,2,9,7),
+(1215,139,3,9,7),
+(1216,139,4,9,21),
+(1217,140,1,18,0),
+(1218,140,2,18,0),
+(1219,140,3,18,7),
+(1220,140,4,18,10),
+(1221,140,1,31,7),
+(1222,140,2,31,3),
+(1223,140,3,31,7),
+(1224,140,4,31,0),
+(1225,140,5,18,0),
+(1226,140,5,31,3),
+(1227,141,1,3,3),
+(1228,141,2,3,10),
+(1229,141,3,3,0),
+(1230,141,4,3,6),
+(1231,141,1,25,0),
+(1232,141,2,25,3),
+(1233,141,3,25,0),
+(1234,141,4,25,0),
+(1235,142,1,23,7),
+(1236,142,2,23,3),
+(1237,142,3,23,3),
+(1238,142,4,23,10),
+(1239,142,1,32,0),
+(1240,142,2,32,3),
+(1241,142,3,32,7),
+(1242,142,4,32,10),
+(1243,143,1,5,0),
+(1244,143,2,5,14),
+(1245,143,3,5,0),
+(1246,143,4,5,0),
+(1247,143,1,6,0),
+(1248,143,2,6,10),
+(1249,143,3,6,3),
+(1250,143,4,6,3),
+(1251,144,1,1,10),
+(1252,144,2,1,10),
+(1253,144,3,1,0),
+(1254,144,4,1,10),
+(1255,144,1,14,3),
+(1256,144,2,14,10),
+(1257,144,3,14,0),
+(1258,144,4,14,7),
+(1259,145,1,12,7),
+(1260,145,2,12,7),
+(1261,145,3,12,7),
+(1262,145,4,12,7),
+(1263,145,1,20,7),
+(1264,145,2,20,10),
+(1265,145,3,20,10),
+(1266,145,4,20,0),
+(1267,146,1,28,3),
+(1268,146,2,28,0),
+(1269,146,3,28,3),
+(1270,146,4,28,6),
+(1271,146,1,15,7),
+(1272,146,2,15,0),
+(1273,146,3,15,0),
+(1274,146,4,15,0),
+(1275,147,1,29,0),
+(1276,147,2,29,7),
+(1277,147,3,29,10),
+(1278,147,4,29,0),
+(1279,147,1,30,0),
+(1280,147,2,30,17),
+(1281,147,3,30,3),
+(1282,147,4,30,0),
+(1283,148,1,16,7),
+(1284,148,2,16,0),
+(1285,148,3,16,3),
+(1286,148,4,16,7),
+(1287,148,1,8,3),
+(1288,148,2,8,10),
+(1289,148,3,8,7),
+(1290,148,4,8,7),
+(1291,149,1,4,3),
+(1292,149,2,4,3),
+(1293,149,3,4,0),
+(1294,149,4,4,0),
+(1295,149,1,21,14),
+(1296,149,2,21,10),
+(1297,149,3,21,7),
+(1298,149,4,21,0),
+(1299,150,1,17,7),
+(1300,150,2,17,7),
+(1301,150,3,17,14),
+(1302,150,4,17,6),
+(1303,150,1,19,3),
+(1304,150,2,19,3),
+(1305,150,3,19,0),
+(1306,150,4,19,6),
+(1307,151,1,26,0),
+(1308,151,2,26,7),
+(1309,151,3,26,6),
+(1310,151,4,26,13),
+(1311,151,1,13,10),
+(1312,151,2,13,13),
+(1313,151,3,13,0),
+(1314,151,4,13,0),
+(1315,152,1,2,7),
+(1316,152,2,2,3),
+(1317,152,3,2,7),
+(1318,152,4,2,6),
+(1319,152,1,22,0),
+(1320,152,2,22,6),
+(1321,152,3,22,0),
+(1322,152,4,22,9);
 /*!40000 ALTER TABLE `score` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2647,7 +3453,7 @@ CREATE TABLE `settings` (
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` VALUES
-('current_week',9,NULL,NULL);
+('current_week',10,NULL,NULL);
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2724,7 +3530,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `Byes` AS select `w`.`week` AS `week`,`t`.`name` AS `team` from ((select distinct `game`.`week` AS `week` from `game`) `w` join `team` `t`) where !((`w`.`week`,`t`.`name`) in (select `Record`.`week`,`Record`.`team` from `Record`)) order by `w`.`week` */;
+/*!50001 VIEW `Byes` AS select `w`.`week` AS `week`,ucase(`c`.`tag`) AS `conference`,`d`.`name` AS `division`,`t`.`name` AS `team` from ((select distinct `game`.`week` AS `week` from `game`) `w` join ((`team` `t` join `division` `d` on(`t`.`dvsn` = `d`.`pkey`)) join `conference` `c` on(`d`.`conf` = `c`.`pkey`))) where !((`w`.`week`,`t`.`name`) in (select `Record`.`week`,`Record`.`team` from `Record`)) order by `w`.`week` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -3360,6 +4166,582 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `SoFar49ers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFar49ers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFar49ers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = '49ers' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarBears`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarBears`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarBears` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Bears' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarBengals`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarBengals`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarBengals` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Bengals' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarBills`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarBills`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarBills` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Bills' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarBroncos`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarBroncos`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarBroncos` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Broncos' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarBrowns`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarBrowns`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarBrowns` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Browns' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarBuccaneers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarBuccaneers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarBuccaneers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Buccaneers' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarCardinals`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarCardinals`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarCardinals` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Cardinals' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarChargers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarChargers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarChargers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Chargers' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarChiefs`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarChiefs`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarChiefs` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Chiefs' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarColts`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarColts`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarColts` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Colts' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarCommanders`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarCommanders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarCommanders` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Commanders' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarCowboys`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarCowboys`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarCowboys` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Cowboys' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarDolphins`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarDolphins`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarDolphins` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Dolphins' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarEagles`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarEagles`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarEagles` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Eagles' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarFalcons`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarFalcons`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarFalcons` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Falcons' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarGiants`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarGiants`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarGiants` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Giants' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarJaguars`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarJaguars`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarJaguars` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Jaguars' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarJets`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarJets`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarJets` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Jets' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarLions`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarLions`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarLions` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Lions' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarPackers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarPackers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarPackers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Packers' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarPanthers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarPanthers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarPanthers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Panthers' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarPatriots`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarPatriots`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarPatriots` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Patriots' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarRaiders`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarRaiders`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarRaiders` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Raiders' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarRams`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarRams`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarRams` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Rams' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarRavens`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarRavens`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarRavens` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Ravens' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarSaints`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarSaints`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarSaints` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Saints' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarSeahawks`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarSeahawks`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarSeahawks` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Seahawks' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarSteelers`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarSteelers`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarSteelers` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Steelers' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarTexans`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarTexans`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarTexans` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Texans' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarTitans`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarTitans`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarTitans` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Titans' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `SoFarVikings`
+--
+
+/*!50001 DROP VIEW IF EXISTS `SoFarVikings`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `SoFarVikings` AS select `Schedule`.`week` AS `week`,`Schedule`.`team` AS `team`,`Schedule`.`versus` AS `versus`,`Schedule`.`at_home` AS `at_home`,`Schedule`.`inter_conference` AS `inter_conference`,`Schedule`.`in_division` AS `in_division`,`Schedule`.`won_game` AS `won_game`,`Schedule`.`lost_game` AS `lost_game`,`Schedule`.`pts_for` AS `pts_for`,`Schedule`.`pts_against` AS `pts_against` from `Schedule` where `Schedule`.`team` = 'Vikings' and `Schedule`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `Stats`
 --
 
@@ -3378,6 +4760,24 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `Strength`
+--
+
+/*!50001 DROP VIEW IF EXISTS `Strength`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `Strength` AS select `r`.`team_conference` AS `conference`,`r`.`team_division` AS `division`,`r`.`team` AS `team`,`p`.`pct` AS `pct`,sum(`o`.`won_game`) AS `wins`,sum(`o`.`lost_game`) AS `loses`,sum(`o`.`won_game`) / (sum(`o`.`won_game`) + sum(`o`.`lost_game`)) AS `ratio` from ((`Record` `r` join `Record` `o` on(`r`.`oponent` = `o`.`team`)) join `Stats` `p` on(`r`.`team` = `p`.`team`)) group by `r`.`team` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `StrengthOfSched`
 --
 
@@ -3390,7 +4790,7 @@ UNLOCK TABLES;
 /*!50001 SET collation_connection      = utf8mb3_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `StrengthOfSched` AS select `r`.`team_conference` AS `conference`,`r`.`team_division` AS `division`,`r`.`team` AS `team`,sum(`s`.`pct`) / count(`s`.`pct`) AS `strength`,`o`.`for` - `o`.`against` AS `op_diff`,`o`.`for` / `o`.`against` AS `op_rat`,`p`.`pct` AS `pct`,`p`.`pct` * (sum(`s`.`pct`) / count(`s`.`pct`)) AS `wpct`,`p`.`pct` * (`o`.`for` / `o`.`against`) AS `wpct2` from (((`Record` `r` join (select `Record`.`team` AS `team`,sum(`Record`.`game_for`) AS `for`,sum(`Record`.`game_against`) AS `against` from `Record` group by `Record`.`team`) `o` on(`o`.`team` = `r`.`team`)) join `Stats` `s` on(`r`.`oponent` = `s`.`team`)) join `Stats` `p` on(`r`.`team` = `p`.`team`)) where `r`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') group by `r`.`team` */;
+/*!50001 VIEW `StrengthOfSched` AS select `r`.`team_conference` AS `conference`,`r`.`team_division` AS `division`,`r`.`team` AS `team`,sum(`s`.`pct`) / count(`s`.`pct`) AS `strength`,`p`.`pct` AS `pct`,sum(`o`.`won_game`) AS `owins`,sum(`o`.`lost_game`) AS `oloses`,sum(`o`.`won_game`) / (sum(`o`.`won_game`) + sum(`o`.`lost_game`)) AS `oratio`,(`p`.`pct` + sum(`o`.`won_game`) / (sum(`o`.`won_game`) + sum(`o`.`lost_game`))) / 2 AS `weighted` from (((`Record` `r` join `Stats` `s` on(`r`.`oponent` = `s`.`team`)) join `Stats` `p` on(`r`.`team` = `p`.`team`)) join `Record` `o` on(`r`.`oponent` = `o`.`team`)) where `r`.`week` <= (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') group by `r`.`team` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -3548,4 +4948,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-09  9:43:59
+-- Dump completed on 2024-11-13 15:58:36
