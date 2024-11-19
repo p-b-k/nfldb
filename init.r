@@ -2,7 +2,7 @@
 # Open a connection to the NFL database 
 ########################################################################################################################
 
-through.week <- 9
+through.week <- 10
 
 get.nfl.connection <- function () {
   library(MASS)
@@ -11,6 +11,21 @@ get.nfl.connection <- function () {
            , dbname = "nfl"
            , user   = "access"
            )
+}
+
+########################################################################################################################
+# Define Data Retrieval Functions
+########################################################################################################################
+
+get.view <- function (conn, view, sort) {
+  query <- paste( "SELECT * FROM "
+                , view
+                , " WHERE week <= "
+                , through.week
+                , " ORDER BY "
+                , sort
+                )
+  dbGetQuery(conn, query)
 }
 
 get.team.record <- function (conn, name) {
@@ -130,6 +145,7 @@ D.nfc.s          <- get.div.record(conn, 'nfc', 'south')
 suppressWarnings({
 NFL.stats        <- get.nfl.stats(conn)
 NFL.sos          <- get.nfl.sos(conn)
+NFL.record       <- get.view(conn, "Record", "week")
 })
 
 dbDisconnect(conn)
