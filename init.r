@@ -2,8 +2,6 @@
 # Open a connection to the NFL database 
 ########################################################################################################################
 
-through.week <- 10
-
 get.nfl.connection <- function () {
   library(MASS)
   library(RMySQL)
@@ -20,8 +18,7 @@ get.nfl.connection <- function () {
 get.view <- function (conn, view, sort) {
   query <- paste( "SELECT * FROM "
                 , view
-                , " WHERE week <= "
-                , through.week
+                , " WHERE week <= (SELECT int_val FROM settings WHERE name = 'current_week')"
                 , " ORDER BY "
                 , sort
                 )
@@ -38,8 +35,7 @@ get.team.record <- function (conn, name) {
                 , fields
                 , " FROM Record WHERE team = '"
                 , name
-                , "' AND week <= "
-                , through.week
+                , "' AND week <= (SELECT int_val FROM settings WHERE name = 'current_week')"
                 , " ORDER BY week"
                 , sep=""
                 )
@@ -56,7 +52,7 @@ get.div.record <- function (conn, cname, dname) {
                 , " FROM Record"
                 , " WHERE UPPER(team_division) = UPPER('" , dname , "')"
                 , " AND team_conference = UPPER('" , cname , "')"
-                , " AND week <= " , through.week
+                , " AND week <= (SELECT int_val FROM settings WHERE name = 'current_week')"
                 , " ORDER BY week"
                 , sep=""
                 )
@@ -87,6 +83,7 @@ get.nfl.sos <- function (conn) {
   dbGetQuery(conn, query)
 }
 
+# List of all NFL teams
 nfl.teams <- c( "Bills", "Dolphins", "Patriots", "Jets"
               , "Ravens", "Bengals", "Browns", "Steelers"
               , "Texans", "Colts", "Jaguars", "Titans"
@@ -147,6 +144,7 @@ NFL.stats        <- get.nfl.stats(conn)
 NFL.sos          <- get.nfl.sos(conn)
 NFL.record       <- get.view(conn, "Record", "week")
 })
+
 
 dbDisconnect(conn)
 rm("conn")
