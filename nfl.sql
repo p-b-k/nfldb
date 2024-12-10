@@ -32,6 +32,23 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary table structure for view `CurrentWeek`
+--
+
+DROP TABLE IF EXISTS `CurrentWeek`;
+/*!50001 DROP VIEW IF EXISTS `CurrentWeek`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `CurrentWeek` AS SELECT
+ 1 AS `guest`,
+  1 AS `away_score`,
+  1 AS `away_won`,
+  1 AS `home_won`,
+  1 AS `home_score`,
+  1 AS `host` */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Temporary table structure for view `Participants`
 --
 
@@ -2171,7 +2188,7 @@ CREATE TABLE `score` (
   KEY `team` (`team`),
   CONSTRAINT `score_ibfk_1` FOREIGN KEY (`game`) REFERENCES `game` (`pkey`),
   CONSTRAINT `score_ibfk_2` FOREIGN KEY (`team`) REFERENCES `team` (`pkey`)
-) ENGINE=InnoDB AUTO_INCREMENT=1672 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1778 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3760,7 +3777,113 @@ INSERT INTO `score` VALUES
 (1668,195,1,5,7),
 (1669,195,2,5,14),
 (1670,195,3,5,10),
-(1671,195,4,5,10);
+(1671,195,4,5,10),
+(1672,196,1,27,0),
+(1673,196,2,27,7),
+(1674,196,3,27,14),
+(1675,196,4,27,10),
+(1676,196,1,26,7),
+(1677,196,2,26,10),
+(1678,196,3,26,7),
+(1679,196,4,26,10),
+(1680,199,1,4,3),
+(1681,199,2,4,10),
+(1682,199,3,4,10),
+(1683,199,4,4,3),
+(1684,199,1,2,6),
+(1685,199,2,2,9),
+(1686,199,3,2,0),
+(1687,199,4,2,11),
+(1688,199,5,2,6),
+(1689,199,5,4,0),
+(1690,202,1,29,7),
+(1691,202,2,29,3),
+(1692,202,3,29,11),
+(1693,202,4,29,0),
+(1694,202,1,28,7),
+(1695,202,2,28,7),
+(1696,202,3,28,7),
+(1697,202,4,28,21),
+(1698,198,1,30,7),
+(1699,198,2,30,0),
+(1700,198,3,30,7),
+(1701,198,4,30,0),
+(1702,198,1,18,0),
+(1703,198,2,18,3),
+(1704,198,3,18,0),
+(1705,198,4,18,8),
+(1706,203,1,31,3),
+(1707,203,2,31,7),
+(1708,203,3,31,6),
+(1709,203,4,31,0),
+(1710,203,1,17,0),
+(1711,203,2,17,14),
+(1712,203,3,17,0),
+(1713,203,4,17,8),
+(1714,197,1,11,7),
+(1715,197,2,11,0),
+(1716,197,3,11,0),
+(1717,197,4,11,7),
+(1718,197,1,12,3),
+(1719,197,2,12,10),
+(1720,197,3,12,14),
+(1721,197,4,12,0),
+(1722,204,1,7,0),
+(1723,204,2,7,10),
+(1724,204,3,7,0),
+(1725,204,4,7,3),
+(1726,204,1,32,14),
+(1727,204,2,32,0),
+(1728,204,3,32,0),
+(1729,204,4,32,14),
+(1730,200,1,15,0),
+(1731,200,2,15,0),
+(1732,200,3,15,0),
+(1733,200,4,15,10),
+(1734,200,1,16,3),
+(1735,200,2,16,0),
+(1736,200,3,16,3),
+(1737,200,4,16,0),
+(1738,205,1,24,17),
+(1739,205,2,24,7),
+(1740,205,3,24,3),
+(1741,205,4,24,3),
+(1742,205,1,21,7),
+(1743,205,2,21,3),
+(1744,205,3,21,8),
+(1745,205,4,21,0),
+(1746,207,1,1,7),
+(1747,207,2,1,7),
+(1748,207,3,1,7),
+(1749,207,4,1,21),
+(1750,207,1,22,7),
+(1751,207,2,22,17),
+(1752,207,3,22,14),
+(1753,207,4,22,6),
+(1754,206,1,25,0),
+(1755,206,2,25,0),
+(1756,206,3,25,6),
+(1757,206,4,25,7),
+(1758,206,1,23,14),
+(1759,206,2,23,10),
+(1760,206,3,23,0),
+(1761,206,4,23,14),
+(1762,208,1,8,0),
+(1763,208,2,8,0),
+(1764,208,3,8,14),
+(1765,208,4,8,3),
+(1766,208,1,6,3),
+(1767,208,2,6,10),
+(1768,208,3,6,0),
+(1769,208,4,6,6),
+(1770,209,1,10,7),
+(1771,209,2,10,10),
+(1772,209,3,10,0),
+(1773,209,4,10,10),
+(1774,209,1,19,7),
+(1775,209,2,19,3),
+(1776,209,3,19,7),
+(1777,209,4,19,3);
 /*!40000 ALTER TABLE `score` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3801,7 +3924,7 @@ CREATE TABLE `settings` (
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` VALUES
-('current_week',13,NULL,NULL);
+('current_week',14,NULL,NULL);
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3879,6 +4002,24 @@ UNLOCK TABLES;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
 /*!50001 VIEW `Byes` AS select `w`.`week` AS `week`,ucase(`c`.`tag`) AS `conference`,`d`.`name` AS `division`,`t`.`name` AS `team` from ((select distinct `game`.`week` AS `week` from `game`) `w` join ((`team` `t` join `division` `d` on(`t`.`dvsn` = `d`.`pkey`)) join `conference` `c` on(`d`.`conf` = `c`.`pkey`))) where !((`w`.`week`,`t`.`name`) in (select `Record`.`week`,`Record`.`team` from `Record`)) order by `w`.`week` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `CurrentWeek`
+--
+
+/*!50001 DROP VIEW IF EXISTS `CurrentWeek`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb3 */;
+/*!50001 SET character_set_results     = utf8mb3 */;
+/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`pbk`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `CurrentWeek` AS select `Record`.`team` AS `guest`,`Record`.`game_for` AS `away_score`,if(`Record`.`won_game`,'*',' ') AS `away_won`,if(`Record`.`won_game`,' ','*') AS `home_won`,`Record`.`game_against` AS `home_score`,`Record`.`oponent` AS `host` from `Record` where `Record`.`week` = (select `settings`.`int_val` from `settings` where `settings`.`name` = 'current_week') and `Record`.`at_home` = 'N' order by `Record`.`team` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -5296,4 +5437,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-04 15:44:26
+-- Dump completed on 2024-12-10 16:16:09
