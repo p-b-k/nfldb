@@ -19,10 +19,14 @@ through.week <- function (week) {
 game.data <- function (team, week) {
   G <- team[team$week == week, ]
   attach(G)
-  Frame <- data.frame( q.for     = c( q1_for, q2_for )
-                     , q.against = c( q1_against, q2_against )
+  Frame <- data.frame( q.for     = c( q1_for, q2_for, q3_for, q4_for )
+                     , q.against = c( q1_against, q2_against, q3_against, q4_against )
                      , c.diff    = c( q1_for - q1_against
                                     , (q1_for + q2_for) - (q1_against + q2_against)
+                                    , (q1_for + q2_for + q3_for) - (q1_against + q2_against + q3_against)
+                                    , (q1_for + q2_for + q3_for + q4_for)
+                                      -
+                                      (q1_against + q2_against + q3_against + q4_against)
                                     )
                      )
   detach()
