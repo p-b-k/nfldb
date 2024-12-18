@@ -5,7 +5,7 @@ SELECT team                    as guest
      , if (won_game, '*', ' ') as away_won
      , if (won_game, ' ', '*') as home_won
      , game_against            as home_score
-     , oponent                 as host
+     , opponent                 as host
 FROM Record
 WHERE week = (SELECT int_val FROM settings WHERE name = 'current_week')
 AND   at_home = 'N'

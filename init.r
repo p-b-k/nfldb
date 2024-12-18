@@ -26,7 +26,7 @@ get.view <- function (conn, view, sort) {
 }
 
 get.team.record <- function (conn, name) {
-  fields <- paste( "week, oponent, at_home, "
+  fields <- paste( "week, opponent, at_home, "
                  , "in_conference, in_division, won_game, "
                  , "game_for, game_against, q1_for, q1_against, "
                  , "q2_for, q2_against, q3_for, q3_against, q4_for, q4_against, ot_for, ot_against"
@@ -43,7 +43,7 @@ get.team.record <- function (conn, name) {
 }
 
 get.div.record <- function (conn, cname, dname) {
-  fields <- paste( "week, team, oponent, at_home, game_for, game_against, won_game, lost_game, "
+  fields <- paste( "week, team, opponent, at_home, game_for, game_against, won_game, lost_game, "
                  , "q1_for, q1_against, q2_for, q2_against, q3_for, q3_against, q4_for, q4_against, "
                  , "ot_for, ot_against"
                  )

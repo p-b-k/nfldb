@@ -2,7 +2,7 @@ CREATE OR REPLACE VIEW Schedule
 AS
 SELECT week
      , team
-     , oponent versus
+     , opponent versus
      , if(at_home = 1, 'Yes', '') 'at_home'
      , if(in_conference = 1, '', 'Yes') 'inter_conference'
      , if(in_division = 1, 'Yes', '') 'in_division'
