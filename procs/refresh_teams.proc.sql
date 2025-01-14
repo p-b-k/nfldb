@@ -8,7 +8,8 @@ BEGIN
   EXECUTE IMMEDIATE
     CONCAT( 'CREATE OR REPLACE VIEW SoFar', team_name, ' AS '
           , 'SELECT * FROM Schedule WHERE team = ''', team_name, ''' '
-          , 'AND week <= (SELECT int_val FROM settings WHERE name = ''current_week'')');
+          , 'AND week <= (SELECT int_val FROM settings WHERE name = ''current_week'') '
+          , 'AND season = (SELECT int_val FROM settings WHERE name = ''current_season'')');
 END;
 //
 

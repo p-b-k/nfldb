@@ -1,4 +1,4 @@
-CREATE VIEW Stats
+CREATE OR REPLACE VIEW Stats
 AS
 SELECT r.team_conference conference
      , r.team_division   division

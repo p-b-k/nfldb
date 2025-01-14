@@ -1,6 +1,7 @@
 delimiter // -- Set the delimniter so we can use; withing it being interpreted as a statement
 
 CREATE PROCEDURE add_score
+( IN season_yr    INT
 ( IN week_no      INT
 , IN team_name    CHAR (128)
 , IN q1           INT
@@ -17,7 +18,7 @@ BEGIN
   SELECT g.pkey INTO game_id FROM game g
                 INNER JOIN team h ON h.pkey = g.home
                 INNER JOIN team a ON a.pkey = g.away
-                WHERE g.week = week_no AND team_name IN (h.name, a.name);
+                WHERE g.season = season_yr AND g.week = week_no AND team_name IN (h.name, a.name);
 
   INSERT INTO score (game, team, quarter, amount) values ( game_id, team_id, 1, q1);
   INSERT INTO score (game, team, quarter, amount) values ( game_id, team_id, 2, q2);
