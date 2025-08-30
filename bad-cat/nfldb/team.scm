@@ -15,6 +15,8 @@
 )
 
 (define-class <nfl-team> ()
+  (espn-id        #:init-keyword  #:id
+                  #:getter        team.id)
   (nickname       #:init-keyword  #:nick
                   #:getter        team.nick)
   (conference     #:init-keyword  #:conf
@@ -42,6 +44,7 @@
 (define (register-team t)
   (if (hash-ref teams (team.nick t)) (throw 'team-already-registered (team.nick t) t (hash-ref teams t)))
   (hash-set! teams (team.nick t) t)
+  (hash-set! teams (team.id t) t)
   (hash-set! (hash-ref conferences (team.conf t))
              (team.div t)
              (cons t (hash-ref (hash-ref conferences (team.conf t)) (team.div t)))))
