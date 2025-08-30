@@ -28,7 +28,7 @@
 (define (espn-get-url url proc)
   (format #t "#### URL  : ~a~%" url)
   (let ( (res (http-get url #:streaming? #t)) )
-    (format #t "#### RES  : ~a~%" res)
+;   (format #t "#### RES  : ~a~%" res)
     (if (eq? 200 (response-code res))
       (let ( (data (proc (response-body-port res))) )
         data)
@@ -94,7 +94,7 @@
       json)))
 
 (define (espn-get-teams)
-  (let ( (json (espn-get-page espn-host-core "v2/sports/football/leagues/nfl/teams" port->json-obj)) )
+  (let ( (json (espn-get-page espn-host-core "v2/sports/football/leagues/nfl/teams?limit=320" port->json-obj)) )
     (let ( (team-urls (map (lambda (x) (json-ref $ref x)) (json-ref items json))) )
       (map slurp-team team-urls))))
 
