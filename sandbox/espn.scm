@@ -1,0 +1,110 @@
+;; *********************************************************************************************************************
+;; Test accessing data, parsing json, etc, from espn nfl api
+;; *********************************************************************************************************************
+
+(use-modules (oop goops))
+
+(use-modules (web client))
+(use-modules (web response))
+
+(use-modules (bad-cat nfldb json))
+(use-modules (bad-cat nfldb game))
+(use-modules (bad-cat nfldb team))
+
+;; https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events
+(define espn-host-core "sports.core.api.espn.com")
+(define espn-host-cdn "cdn.espn.com")
+
+(define events-path "v2/sports/football/leagues/nfl/events")
+
+(define div-map (make-hash-table))
+(define conf-map (make-hash-table))
+(define url-map (make-hash-table))
+
+;;
+;; Basic fetching
+;;
+
+(define (espn-get-url url proc)
+  (format #t "#### URL  : ~a~%" url)
+  (let ( (res (http-get url #:streaming? #t)) )
+    (format #t "#### RES  : ~a~%" res)
+    (if (eq? 200 (response-code res))
+      (let ( (data (proc (response-body-port res))) )
+        data)
+      (throw 'connection-failed (response-code res) (response-reason-phrase res)))))
+
+(define (espn-get-page host path proc) (espn-get-url (format #f "https://~a/~a" host path) proc))
+
+;;
+;; Manage mappings to conferences and divisions
+;;
+
+(define (lookup-conf-id id)
+  (let ( (conf-sym (hash-ref conf-map id)) )
+    (if conf-sym
+      conf-sym
+      (let ( (page (format #f "v2/sports/football/leagues/nfl/seasons/2025/types/1/groups/~a?lang=en&region=us" id)) )
+        (let ( (json (espn-get-page espn-host-core page port->json-obj)) )
+          (if (not json) (throw 'unable-to-find-conference))
+          (if (not (json-ref isConference json)) (throw 'id-does-not-identify-a-confernce))
+          (let ( (abbrev (string->symbol (json-ref abbreviation json))) )
+            (hash-set! conf-map id abbrev)
+            abbrev))))))
+
+(define (lookup-div-id id)
+  (let ( (div-sym (hash-ref div-map id)) )
+    (if div-sym
+      div-sym
+      (let ( (page (format #f "v2/sports/football/leagues/nfl/seasons/2025/types/1/groups/~a?lang=en&region=us" id)) )
+        (let ( (json (espn-get-page espn-host-core page port->json-obj)) )
+          (if (not json) (throw 'unable-to-find-division))
+          (if (json-ref isConference json) (throw 'id-does-not-identify-a-division))
+          (let ( (abbrev (string->symbol (json-ref abbreviation json))) )
+            (hash-set! div-map id abbrev)
+            abbrev))))))
+
+(define (lookup-division url)
+  (let ( (cached (hash-ref url-map url)) )
+    (if cached
+      cached
+      (let ( (div-json (espn-get-url url port->json-obj)) )
+        (let ( (conf-url (json-ref parent.$ref div-json)) )
+          (let ( (conf-json (espn-get-url conf-url port->json-obj)) )
+            (let ( (pair (cons (string->symbol (json-ref abbreviation conf-json))
+                               (string->symbol (json-ref abbreviation div-json)))) )
+              (hash-set! url-map url pair)
+              pair)))))))
+
+;;
+;; Front facing methods
+;;
+
+(define (espn-get-games year weekno)
+  (define (read-buffer-from-port p)
+    (define (proc sofar)
+      (let ( (next (read-char p)) )
+        (if (eof-object? next)
+          (list->string (reverse sofar))
+          (proc (cons next sofar)))))
+    (proc '()))
+  ;; The xhr=1 parameter gives json instead of html
+  (let ( (path (format #f "core/nfl/schedule?xhr=1&week=~a&year=~a" weekno year)) )
+    (let ( (json (espn-get-page espn-host-cdn path port->json-obj)) )
+      json)))
+
+(define (espn-get-teams)
+  (let ( (json (espn-get-page espn-host-core "v2/sports/football/leagues/nfl/teams" port->json-obj)) )
+    (let ( (team-urls (map (lambda (x) (json-ref $ref x)) (json-ref items json))) )
+      (map slurp-team team-urls))))
+
+(define (slurp-team team-url)
+  (let ( (json (espn-get-url team-url port->json-obj)) )
+    (let ( (division (lookup-division (json-ref groups.$ref json))) )
+      (make-instance <nfl-team>
+                     #:nick (string->symbol (json-ref abbreviation json))
+                     #:conf (car division)
+                     #:div (cdr division)))))
+
+
+
