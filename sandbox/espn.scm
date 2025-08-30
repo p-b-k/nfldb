@@ -95,27 +95,27 @@
         (format #t "gamedays = ~a~%" gamedays)
         (let ( (dates (sort (json-keys gamedays) (lambda (a b) (apply string<? (map symbol->string (list a b)))))) )
           (format #t "dates = ~a~%" dates)
-          (map make-game (apply append (apply append (map (lambda (x) (hash-map->list (lambda (n v) v) x))
-                                                          (map (lambda (date)
-                                                                 (format #t "getting ~a from ~a~%" date gamedays)
-                                                                 (hash-ref gamedays date))
-                                                               dates))))))))))
+          (map (lambda (x) (make-game x year))
+               (apply append (apply append (map (lambda (x) (hash-map->list (lambda (n v) v) x))
+                                                (map (lambda (date)
+                                                       (format #t "getting ~a from ~a~%" date gamedays)
+                                                       (hash-ref gamedays date))
+                                                     dates))))))))))
 
-(define c0-home-away 'competitions.0.competitors.0.homeAway)
-(define c1-home-away 'competitions.0.competitors.1.homeAway)
-(define c0-id 'competitions.0.competitors.0.id)
-(define c1-id 'competitions.0.competitors.1.id)
-
-(define (make-game json)
+(define (make-game json year)
   (let ( (thash (make-hash-table)) )
-    (hash-set! thash (string->symbol (json-ref c0-home-away json)) (get-game (string->number (json-ref c0-id json))))
-    (hash-set! thash (string->symbol (json-ref c1-home-away json)) (get-game (string->number (json-ref c1-id json))))
-    (make-game <nfl-game>
-               #:week (1- (string->number (json-ref week.number json)))
-               #:game-year year
-               #:game-time #f
-               #:home-team (hash-ref thash 'home)
-               #:away-team (hash-ref thash 'away))))
+    (hash-set! thash
+               (string->symbol (json-ref competitions.0.competitors.0.homeAway json))
+               (get-team (string->number (json-ref competitions.0.competitors.0.id json))))
+    (hash-set! thash
+               (string->symbol (json-ref competitions.0.competitors.1.homeAway json))
+               (get-team (string->number (json-ref competitions.0.competitors.1.id json))))
+    (make-instance <nfl-game>
+                   #:week (1- (json-ref week.number json))
+                   #:year year
+                   #:time #f
+                   #:home (hash-ref thash 'home)
+                   #:away (hash-ref thash 'away))))
 
 (define (espn-get-teams)
   (let ( (json (espn-get-page espn-host-core "v2/sports/football/leagues/nfl/teams?limit=320" port->json-obj)) )
@@ -131,5 +131,5 @@
                      #:conf (car division)
                      #:div (cdr division)))))
 
-
+(espn-get-teams)
 
