@@ -5,6 +5,7 @@
   ;; *******************************************************************************************************************
 
   #:use-module (oop goops)
+  #:use-module (bad-cat utils)
 
   #:export (string->json-obj)
   #:export (port->json-obj)
@@ -16,10 +17,6 @@
 ;; *********************************************************************************************************************
 ;; Create methods to parse and access json values
 ;; *********************************************************************************************************************
-
-(define (_1st a b) a)
-
-(define (_2nd a b) b)
 
 (define (parse-err reason fmt-string . values)
   (throw 'json-parse-error (make-stack #t) reason fmt-string values))

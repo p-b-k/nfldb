@@ -6,6 +6,8 @@
 
   #:use-module (oop goops)
 
+  #:use-module (bad-cat utils)
+
   #:export (get-team)
   #:export (get-conf)
   #:export (get-div)
@@ -31,7 +33,7 @@
 (define conferences (make-hash-table))
 
 (define (get-team nick) (hash-ref teams nick))
-(define (get-conf c) (apply append (hash-map->list (lambda (a b) b) (hash-ref conferences c))))
+(define (get-conf c) (apply append (hash-map->list _2nd (hash-ref conferences c))))
 (define (get-div c d) (hash-ref (hash-ref conferences c)  d))
 
 (let ( (afc (make-hash-table))
@@ -64,6 +66,7 @@
             (symbol->string (team.nick b))))
 
 (define (all-nfl-teams)
-  (hash-map->list (lambda (a b) b) conferences))
+  (sort (apply append (apply append (map (lambda (x) (hash-map->list _2nd x)) (hash-map->list _2nd conferences))))
+        team-name<?))
 
 
