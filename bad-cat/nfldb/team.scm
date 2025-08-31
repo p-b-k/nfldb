@@ -11,6 +11,8 @@
   #:export (get-div)
 
   #:export (<nfl-team>)
+  #:export (team-name<?)
+  #:export (all-nfl-teams)
   #:export (team.nick)
 )
 
@@ -55,5 +57,13 @@
   (register-team t))
 
 (define-method (write (t <nfl-team>) (o <output-port>))
-  (display (team.nick t) o))
+  (format o "~a~a~a" #\x169c (team.nick t) #\x169b))
+
+(define-method (team-name<? (a <nfl-team>) (b <nfl-team>))
+  (string<? (symbol->string (team.nick a))
+            (symbol->string (team.nick b))))
+
+(define (all-nfl-teams)
+  (hash-map->list (lambda (a b) b) conferences))
+
 
