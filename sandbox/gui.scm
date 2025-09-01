@@ -25,8 +25,6 @@
 (use-modules (bad-cat nfldb espn))
 (use-modules (bad-cat nfldb cache))
 
-(g-resources-register (g-resource-load (format #f "~a/~a" (getenv "NFLDB_DIR") "nfldb.gresource")))
-
 (define (populate-main-grid main-grid)
   (define (get-logo team)
     (let ( (image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" team))) )

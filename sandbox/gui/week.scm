@@ -13,8 +13,9 @@
 (use-modules (bad-cat nfldb ui init))
 
 ; (use-modules (bad-cat nfldb json))
-; (use-modules (bad-cat nfldb game))
-; (use-modules (bad-cat nfldb team))
+(use-modules (bad-cat nfldb game))
+(use-modules (bad-cat nfldb team))
+(use-modules (bad-cat nfldb schedule))
 ; (use-modules (bad-cat nfldb serialize))
 
 
@@ -24,15 +25,30 @@
 
 (define-class <week-controls> () (games #:init-keyword #:games) games-list)
 
+(define (create-game-tile game)
+  (let ( (tile-grid (make-instance <gtk-grid>))
+         (home-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (game.home game))))
+         (away-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (game.away game))))
+         (name-label (make-instance <gtk-label> #:requested-width 200 #:label (game.short-name game))) )
+    (slot-set! home-image 'height-request 64)
+    (slot-set! home-image 'width-request 64)
+    (slot-set! away-image 'height-request 64)
+    (slot-set! away-image 'width-request 64)
+    (gtk-grid-attach tile-grid home-image 0 0 1 1)
+    (gtk-grid-attach tile-grid away-image 1 0 1 1)
+    (gtk-grid-attach tile-grid name-label 2 0 1 1)
+
+    tile-grid))
+
 (define-method (initialize (wc <week-controls>) args)
   (next-method)
 
   (let ( (scrolled (make-instance <gtk-scrolled-window>))
          (list-view (make-instance <gtk-list-box>)) )
     (define (add-game game)
-      (let ( (label (make-instance <gtk-label> #:label (format #f "~a" game))) )
-        (gtk-list-box-append list-view label)
-        label))
+      (let ( (tile (create-game-tile game)) )
+        (gtk-list-box-append list-view tile)
+        tile))
     (map add-game (slot-ref wc 'games))
     (gtk-scrolled-window-set-child scrolled list-view)
     (slot-set! wc 'games-list scrolled)))

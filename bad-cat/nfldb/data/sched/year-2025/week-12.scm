@@ -13,6 +13,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772946
+               #:name           "Buffalo Bills at Houston Texans"
+               #:short-name     "BUF @ HOU"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763691300)
@@ -24,6 +26,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772780
+               #:name           "Pittsburgh Steelers at Chicago Bears"
+               #:short-name     "PIT @ CHI"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763924400)
@@ -35,6 +39,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772781
+               #:name           "New England Patriots at Cincinnati Bengals"
+               #:short-name     "NE @ CIN"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763924400)
@@ -46,6 +52,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772888
+               #:name           "New York Giants at Detroit Lions"
+               #:short-name     "NYG @ DET"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763924400)
@@ -57,6 +65,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772887
+               #:name           "Minnesota Vikings at Green Bay Packers"
+               #:short-name     "MIN @ GB"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763924400)
@@ -68,6 +78,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772886
+               #:name           "Seattle Seahawks at Tennessee Titans"
+               #:short-name     "SEA @ TEN"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763924400)
@@ -79,6 +91,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772779
+               #:name           "Indianapolis Colts at Kansas City Chiefs"
+               #:short-name     "IND @ KC"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763924400)
@@ -90,6 +104,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772782
+               #:name           "New York Jets at Baltimore Ravens"
+               #:short-name     "NYJ @ BAL"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763924400)
@@ -101,6 +117,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772784
+               #:name           "Cleveland Browns at Las Vegas Raiders"
+               #:short-name     "CLE @ LV"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763935500)
@@ -112,6 +130,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772783
+               #:name           "Jacksonville Jaguars at Arizona Cardinals"
+               #:short-name     "JAX @ ARI"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763935500)
@@ -123,6 +143,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772890
+               #:name           "Philadelphia Eagles at Dallas Cowboys"
+               #:short-name     "PHI @ DAL"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763936700)
@@ -134,6 +156,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772889
+               #:name           "Atlanta Falcons at New Orleans Saints"
+               #:short-name     "ATL @ NO"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763936700)
@@ -145,6 +169,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772929
+               #:name           "Tampa Bay Buccaneers at Los Angeles Rams"
+               #:short-name     "TB @ LAR"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1763950800)
@@ -156,6 +182,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772820
+               #:name           "Carolina Panthers at San Francisco 49ers"
+               #:short-name     "CAR @ SF"
                #:year           2025
                #:week           11
                #:time           (secs->gametime 1764036900)

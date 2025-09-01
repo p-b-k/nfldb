@@ -10,9 +10,15 @@
 
   #:export (<nfl-game>)
 
+  #:export (game.id)
+  #:export (game.name)
+  #:export (game.short-name)
+  #:export (game.year)
+  #:export (game.week)
   #:export (game.time)
   #:export (game.home)
   #:export (game.away)
+  #:export (game.teams)
 
   #:export (game-date<?)
 
@@ -22,6 +28,10 @@
 (define-class <nfl-game> ()
   (espn-id            #:init-keyword      #:id
                       #:getter            game.id)
+  (espn-name          #:init-keyword      #:name
+                      #:getter            game.name)
+  (espn-short-name    #:init-keyword      #:short-name
+                      #:getter            game.short-name)
   (game-year          #:init-keyword      #:year
                       #:getter            game.year)
   (game-week          #:init-keyword      #:week
@@ -39,3 +49,4 @@
 
 (define-method (game-date<? (g1 <nfl-game>) (g2 <nfl-game>)) (gametime<? (game.time g1) (game.time g2)))
 
+(define-method (game.teams (g <nfl-game>)) (list (game.home g) (game.away g)))

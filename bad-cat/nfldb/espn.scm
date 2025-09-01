@@ -80,6 +80,8 @@
                      #:id   (string->number (json-ref id json))
                      #:week (1- (json-ref week.number json))
                      #:year year
+                     #:name (json-ref name json)
+                     #:short-name (json-ref shortName json)
                      #:time time
                      #:home (team.nick (hash-ref thash 'home))
                      #:away (team.nick (hash-ref thash 'away))))))

@@ -43,3 +43,5 @@
               "ToggleButton"
             )))
 
+(g-resources-register (g-resource-load (format #f "~a/~a" (getenv "NFLDB_DIR") "nfldb.gresource")))
+

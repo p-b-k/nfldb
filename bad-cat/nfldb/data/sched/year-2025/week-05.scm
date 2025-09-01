@@ -13,6 +13,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772939
+               #:name           "San Francisco 49ers at Los Angeles Rams"
+               #:short-name     "SF @ LAR"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759450500)
@@ -24,6 +26,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772633
+               #:name           "Minnesota Vikings at Cleveland Browns"
+               #:short-name     "MIN VS CLE"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759671000)
@@ -35,6 +39,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772851
+               #:name           "Las Vegas Raiders at Indianapolis Colts"
+               #:short-name     "LV @ IND"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759683600)
@@ -46,6 +52,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772744
+               #:name           "New York Giants at New Orleans Saints"
+               #:short-name     "NYG @ NO"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759683600)
@@ -57,6 +65,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772850
+               #:name           "Dallas Cowboys at New York Jets"
+               #:short-name     "DAL @ NYJ"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759683600)
@@ -68,6 +78,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772745
+               #:name           "Denver Broncos at Philadelphia Eagles"
+               #:short-name     "DEN @ PHI"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759683600)
@@ -79,6 +91,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772852
+               #:name           "Miami Dolphins at Carolina Panthers"
+               #:short-name     "MIA @ CAR"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759683600)
@@ -90,6 +104,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772743
+               #:name           "Houston Texans at Baltimore Ravens"
+               #:short-name     "HOU @ BAL"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759683600)
@@ -101,6 +117,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772747
+               #:name           "Tennessee Titans at Arizona Cardinals"
+               #:short-name     "TEN @ ARI"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759694700)
@@ -112,6 +130,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772746
+               #:name           "Tampa Bay Buccaneers at Seattle Seahawks"
+               #:short-name     "TB @ SEA"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759694700)
@@ -123,6 +143,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772854
+               #:name           "Detroit Lions at Cincinnati Bengals"
+               #:short-name     "DET @ CIN"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759695900)
@@ -134,6 +156,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772853
+               #:name           "Washington Commanders at Los Angeles Chargers"
+               #:short-name     "WSH @ LAC"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759695900)
@@ -145,6 +169,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772922
+               #:name           "New England Patriots at Buffalo Bills"
+               #:short-name     "NE @ BUF"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759710000)
@@ -156,6 +182,8 @@
 
 (cache-add-game-for-week (make-instance <nfl-game>
                #:id             401772814
+               #:name           "Kansas City Chiefs at Jacksonville Jaguars"
+               #:short-name     "KC @ JAX"
                #:year           2025
                #:week           4
                #:time           (secs->gametime 1759796100)
