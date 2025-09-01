@@ -20,6 +20,11 @@
   #:export (gametime-hour)
   #:export (gametime-min)
   #:export (gametime<?)
+
+  #:export (<rgb-color>)
+  #:export (rgb.r)
+  #:export (rgb.g)
+  #:export (rgb.b)
 )
 
 (define (_1st a b) a)
@@ -55,3 +60,15 @@
 (define-method (gametime-min   (gt <gametime>)) (date-minute (gametime.date gt)))
 
 (define-method (gametime<? (gt1 <gametime>) (gt2 <gametime>)) (< (gametime.secs gt1) (gametime.secs gt2)))
+
+(define-class <rgb-color> ()
+  (red      #:init-keyword    #:r
+            #:getter          rgb.r
+            #:setter          rgb.r!)
+  (green    #:init-keyword    #:g
+            #:getter          rgb.g
+            #:setter          rgb.g!)
+  (blue     #:init-keyword    #:b
+            #:getter          rgb.b
+            #:setter          rgb.b!)
+)

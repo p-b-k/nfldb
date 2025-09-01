@@ -22,6 +22,8 @@
   #:export (espn-host-core)
   #:export (espn-host-cdn)
   #:export (espn-datasource-new)
+
+  #:export (read-espn-color)
 )
 
 (define espn-host-core "sports.core.api.espn.com")
@@ -92,4 +94,10 @@
   (espn-get-games year weekno))
 
 (define (espn-datasource-new) (make-instance <espn-datasource>))
+
+(define (read-espn-color color-string)
+  (let ( (r (string->number (format #f "#x~a" (substring color-string 0 2))))
+         (g (string->number (format #f "#x~a" (substring color-string 2 4))))
+         (b (string->number (format #f "#x~a" (substring color-string 2 6)))) )
+    (make-instance <rgb-color> #:r r #:g g #:b b)))
 

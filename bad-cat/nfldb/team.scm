@@ -23,10 +23,16 @@
                   #:getter        team.id)
   (nickname       #:init-keyword  #:nick
                   #:getter        team.nick)
+  (name           #:init-keyword  #:name
+                  #:getter        team.name)
   (conference     #:init-keyword  #:conf
                   #:getter        team.conf)
   (division       #:init-keyword  #:div
                   #:getter        team.div)
+  (color          #:init-keyword  #:color
+                  #:getter        team.color)
+  (alt-color      #:init-keyword  #:alt-color
+                  #:getter        team.alt-color)
 )
 
 (define teams (make-hash-table))
