@@ -3,6 +3,7 @@
  ;; Just a hack for now to keep from having to download static data every time the script is loaded
 
  #:use-module (oop goops)
+ #:use-module (bad-cat utils)
  #:use-module (bad-cat nfldb team)
 )
 

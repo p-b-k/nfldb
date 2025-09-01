@@ -114,6 +114,7 @@
   (format #t " ;; Just a hack for now to keep from having to download static data every time the script is loaded~%")
   (format #t "~%")
   (format #t " #:use-module (oop goops)~%")
+  (format #t " #:use-module (bad-cat utils)~%")
   (format #t " #:use-module (bad-cat nfldb team)~%")
   (format #t ")~%")
   (format #t "~%")
