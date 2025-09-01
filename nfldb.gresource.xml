@@ -2,9 +2,8 @@
 <gresources>
   <gresource prefix="/bad-cat/nfldb">
     <!-- Style sheet -->
+    <file alias="css/root" compressed="false">res/nfldb.css</file>
     <!--
-    <file alias="css/sde"
-          compressed="false">res/sde.css</file>
     <file alias="css/test"
           compressed="false">res/test.css</file>
     -->

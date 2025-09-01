@@ -3,6 +3,8 @@
   #:use-module (g-golf)
   
   #:duplicates (merge-generics replace warn-override-core warn last)
+
+  #:export (nfldb-css-provider)
 )
 
 
@@ -44,4 +46,7 @@
             )))
 
 (g-resources-register (g-resource-load (format #f "~a/~a" (getenv "NFLDB_DIR") "nfldb.gresource")))
+
+(define nfldb-css-provider (make-instance <gtk-css-provider>))
+(gtk-css-provider-load-from-resource nfldb-css-provider "/bad-cat/nfldb/css/root")
 

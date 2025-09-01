@@ -45,8 +45,8 @@
     (slot-set! away-image 'height-request 64)
     (slot-set! away-image 'width-request 64)
 
-    (gtk-grid-attach tile-grid home-image 0 0 1 1)
-    (gtk-grid-attach tile-grid away-image 1 0 1 1)
+    (gtk-grid-attach tile-grid away-image 0 0 1 1)
+    (gtk-grid-attach tile-grid home-image 1 0 1 1)
 
 
     (gtk-box-append text-vbox name-label)
@@ -83,6 +83,8 @@
                                     #:title (format #f "NFLDB ~a week ~a" year week)
                                     #:icon "/bad-cat/nfldb/NFL"
                                     #:application app)) )
+
+        (gtk-style-context-add-provider-for-display (gdk-display-get-default) nfldb-css-provider 0)
         (slot-set! window 'default-height 400)
         (slot-set! window 'default-width 250)
         (set-child window main-vbox)
