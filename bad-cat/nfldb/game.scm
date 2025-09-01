@@ -11,19 +11,23 @@
   #:export (game.time)
   #:export (game.home)
   #:export (game.away)
+
+  #:export (games-for-week)
 )
 
 (define-class <nfl-game> ()
-  (game-week      #:init-keyword      #:week
-                  #:getter            game.week)
-  (game-year      #:init-keyword      #:year
-                  #:getter            game.year)
-  (game-time      #:init-keyword      #:time
-                  #:getter            game.time)
-  (home-team      #:init-keyword      #:home
-                  #:getter            game.home)
-  (away-team      #:init-keyword      #:away
-                  #:getter            game.away)
+  (espn-id            #:init-keyword      #:id
+                      #:getter            game.id)
+  (game-year          #:init-keyword      #:year
+                      #:getter            game.year)
+  (game-week          #:init-keyword      #:week
+                      #:getter            game.week)
+  (game-time          #:init-keyword      #:time
+                      #:getter            game.time)
+  (home-team          #:init-keyword      #:home
+                      #:getter            game.home)
+  (away-team          #:init-keyword      #:away
+                      #:getter            game.away)
 )
 
 (define-method (write (g <nfl-game>) (o <output-port>))

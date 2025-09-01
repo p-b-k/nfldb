@@ -4,26 +4,27 @@
 
 (use-modules (oop goops))
 
+(use-modules (srfi srfi-19))
+
 (use-modules (web client))
 (use-modules (web response))
 
 (use-modules (bad-cat nfldb json))
 (use-modules (bad-cat nfldb game))
 (use-modules (bad-cat nfldb team))
+(use-modules (bad-cat nfldb serialize))
 
 (use-modules (bad-cat nfldb data league))
+
 
 (use-modules (g-golf))
 (use-modules (bad-cat nfldb ui init))
 
+(use-modules (bad-cat nfldb data))
+(use-modules (bad-cat nfldb espn))
+(use-modules (bad-cat nfldb cache))
 
 (g-resources-register (g-resource-load (format #f "~a/~a" (getenv "NFLDB_DIR") "nfldb.gresource")))
-
-(define app (make-parameter #f))
-
-(define (open-app app-id)
-  (if (app) (throw 'app-already-open (slot-ref (app) 'application-id)))
-  (app (make <gtk-application> #:application-id app-id)))
 
 (define (populate-main-grid main-grid)
   (define (get-logo team)
@@ -109,9 +110,9 @@
       (present window))))
 
 (define (main . args)
-  (connect (app) 'activate start-nfldb)
-  (g-application-run (app) '()))
+  (let ( (app (make <gtk-application> #:application-id "bad-cat.nfldb.gui")) )
+    (connect app 'activate start-nfldb)
+    (g-application-run app '())))
 
-(open-app "bad-cat.nfldb.gui")
-
+(set-datasource (cache-datasource-new))
 

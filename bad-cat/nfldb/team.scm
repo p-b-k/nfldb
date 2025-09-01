@@ -55,7 +55,6 @@
 
 (define-method (initialize (t <nfl-team>) args)
   (next-method)
-
   (register-team t))
 
 (define-method (write (t <nfl-team>) (o <output-port>))
