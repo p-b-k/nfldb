@@ -8,8 +8,8 @@
 
 (use-modules (g-golf))
 
-(use-modules (bad-cat nfldb data league))
-(use-modules (bad-cat nfldb data sched year-2025))
+(use-modules (data league))
+(use-modules (data sched year-2025))
 (use-modules (bad-cat nfldb ui init))
 
 (use-modules (bad-cat utils))

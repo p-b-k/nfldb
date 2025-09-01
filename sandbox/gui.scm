@@ -14,9 +14,8 @@
 (use-modules (bad-cat nfldb team))
 (use-modules (bad-cat nfldb serialize))
 
-(use-modules (bad-cat nfldb data league))
-
-(use-modules (bad-cat nfldb data sched year-2025))
+(use-modules (data league))
+(use-modules (data sched year-2025))
 
 (use-modules (g-golf))
 (use-modules (bad-cat nfldb ui init))

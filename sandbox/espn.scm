@@ -97,8 +97,10 @@
 
 ;; REFRESH TEAMS *******************************************************************************************************
 
-(define league-mod '(bad-cat nfldb data league))
-(define league-mod-file (format #f "~a.scm" (string-join (map symbol->string league-mod) "/")))
+(define league-mod '(data league))
+(define league-mod-file (format #f "~a/.nfldb/cache/~a.scm"
+                                (getenv "HOME")
+                                (string-join (map symbol->string league-mod) "/")))
 
 (define (write-teams-module-file teams out)
   (define (write-team t)
@@ -130,12 +132,11 @@
 ;; REFRESH SCHEDULE ****************************************************************************************************
 
 (define (week-mod year week)
-  `(bad-cat nfldb data sched
+  `(data sched
             ,(string->symbol (format #f "year-~a" year))
             ,(string->symbol (format #f "week-~2,'0d" week))))
 (define (week-mod-file year week)
-  (format #f "~a.scm" (string-join (map symbol->string (week-mod year week)) "/")))
-
+  (format #f "~a/.nfldb/cache/~a.scm" (getenv "HOME") (string-join (map symbol->string (week-mod year week)) "/")))
 (define (write-week-schedule games year week out)
   (define (write-game g)
     (format out "~%")

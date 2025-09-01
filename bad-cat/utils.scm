@@ -45,11 +45,15 @@
 
 (define-method (initialize (gt <gametime>) args)
   (next-method)
-  (let ( (utc-time (make-time time-utc (gametime.secs gt) 0)) )
+  (let* ( (utc-time (make-time time-utc 0 (gametime.secs gt)))
+          (utc-date (time-utc->date utc-time)) )
+;   (format #t "date = ~a~%" utc-date)
     (slot-set! gt 'time utc-time)
-    (slot-set! gt 'date (time-utc->date utc-time))))
+    (slot-set! gt 'date utc-date)))
 
-(define (secs->gametime secs) (make-instance <gametime> #:secs secs))
+(define (secs->gametime secs)
+; (format #t "secs = ~a~%" secs)
+  (make-instance <gametime> #:secs secs))
 (define (gametime->secs gt)
   (if (not (is-a? gt <gametime>)) (throw 'invalid-type 'expecting '<gametime> 'got (class-of (class-name gt))))
   (gametime.secs gt))

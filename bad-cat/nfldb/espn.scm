@@ -64,8 +64,8 @@
 
 (define (read-espn-gametime date-string)
   (let ( (utc-date (string->date date-string espn-date-fmt)) )
-    (let ( (est-date (hour+ (date->time-utc utc-date) (tz-offset))) )
-      (secs->gametime (time-second (date->time-utc est-date))))))
+;   (format #t "~s => ~a~%" date-string utc-date)
+    (secs->gametime (time-second (date->time-utc (hour+ (date->time-utc utc-date) (tz-offset)))))))
 
 (define (make-game json year)
   (let ( (thash (make-hash-table)) )
