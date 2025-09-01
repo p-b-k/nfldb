@@ -20,6 +20,7 @@
   #:export (gametime-hour)
   #:export (gametime-min)
   #:export (gametime-day-of-week)
+  #:export (gametime-day-of-year)
   #:export (gametime<?)
   #:export (gametime-format)
 
@@ -58,13 +59,14 @@
   (if (not (is-a? gt <gametime>)) (throw 'invalid-type 'expecting '<gametime> 'got (class-of (class-name gt))))
   (gametime.secs gt))
 
-(define-method (gametime-year         (gt <gametime>)) (date-year   (gametime.date gt)))
-(define-method (gametime-month        (gt <gametime>)) (date-month  (gametime.date gt)))
-(define-method (gametime-day          (gt <gametime>)) (date-day    (gametime.date gt)))
+(define-method (gametime-year         (gt <gametime>)) (date-year     (gametime.date gt)))
+(define-method (gametime-month        (gt <gametime>)) (date-month    (gametime.date gt)))
+(define-method (gametime-day          (gt <gametime>)) (date-day      (gametime.date gt)))
 
-(define-method (gametime-hour         (gt <gametime>)) (date-hour   (gametime.date gt)))
-(define-method (gametime-min          (gt <gametime>)) (date-minute (gametime.date gt)))
-(define-method (gametime-day-of-week  (gt <gametime>)) (date->string (gametime.date gt) "~A"))
+(define-method (gametime-hour         (gt <gametime>)) (date-hour     (gametime.date gt)))
+(define-method (gametime-min          (gt <gametime>)) (date-minute   (gametime.date gt)))
+(define-method (gametime-day-of-week  (gt <gametime>)) (date->string  (gametime.date gt) "~A"))
+(define-method (gametime-day-of-year  (gt <gametime>)) (date-year-day (gametime.date gt)))
 
 (define-method (gametime<? (gt1 <gametime>) (gt2 <gametime>)) (< (gametime.secs gt1) (gametime.secs gt2)))
 
