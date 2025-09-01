@@ -6,11 +6,15 @@
 
   #:use-module (oop goops)
 
+  #:use-module (bad-cat utils)
+
   #:export (<nfl-game>)
 
   #:export (game.time)
   #:export (game.home)
   #:export (game.away)
+
+  #:export (game-date<?)
 
   #:export (games-for-week)
 )
@@ -32,4 +36,6 @@
 
 (define-method (write (g <nfl-game>) (o <output-port>))
   (format o "[~2,'0d: ~a @ ~a]" (1+ (game.week g)) (game.away g) (game.home g)))
+
+(define-method (game-date<? (g1 <nfl-game>) (g2 <nfl-game>)) (gametime<? (game.time g1) (game.time g2)))
 

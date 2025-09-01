@@ -11,6 +11,8 @@
 
   #:export (cache-datasource-new)
   #:export (cache-datasource-wrap)
+
+  #:export (cache-add-game-for-week)
 )
 
 (define seasons (make-hash-table))
@@ -34,6 +36,16 @@
         (let ( (new-week-games (datasource-get-games ds year weekno)) )
           (array-set! weeks new-week-games weekno)
           new-week-games)))))
+
+;; Add a game to the week hash (used to instantiate data)
+(define (cache-add-game-for-week game year weekno)
+  (let ( (weeks (get-year-weeks year)) )
+    (let ( (week-games (array-ref weeks weekno)) )
+      (array-set! weeks (cons game (if week-games week-games '())) weekno))))
+
+;; *********************************************************************************************************************
+;; Create the <cache-datasource> object
+;; *********************************************************************************************************************
 
 (define-class <cache-datasource> (<datasource>)
   (source       #:init-keyword      #:source

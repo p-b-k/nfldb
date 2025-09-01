@@ -16,6 +16,9 @@
   #:use-module (bad-cat nfldb team)
   #:use-module (bad-cat nfldb game)
 
+  #:export (espn-get-url)
+  #:export (espn-get-page)
+
   #:export (espn-host-core)
   #:export (espn-host-cdn)
   #:export (espn-datasource-new)
@@ -58,12 +61,8 @@
 (define espn-date-fmt "~Y-~m-~dT~H:~MZ")
 
 (define (read-espn-gametime date-string)
-  (format #t "date-string = ~s~%" date-string)
-  (format #t "format string = ~s~%" espn-date-fmt)
   (let ( (utc-date (string->date date-string espn-date-fmt)) )
-    (format #t "utc-date = ~s (~a)~%" utc-date (class-name (class-of utc-date)))
     (let ( (est-date (hour+ (date->time-utc utc-date) (tz-offset))) )
-      (format #t "est-date = ~s (~a)~%" est-date (class-name (class-of est-date)))
       (secs->gametime (time-second (date->time-utc est-date))))))
 
 (define (make-game json year)
@@ -76,7 +75,7 @@
                (get-team (string->number (json-ref competitions.0.competitors.1.id json))))
     (let ( (time (read-espn-gametime (json-ref date json))) )
       (make-instance <nfl-game>
-                     #:id   (json-ref id json)
+                     #:id   (string->number (json-ref id json))
                      #:week (1- (json-ref week.number json))
                      #:year year
                      #:time time

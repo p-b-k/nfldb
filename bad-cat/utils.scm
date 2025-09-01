@@ -19,6 +19,7 @@
   #:export (gametime-day)
   #:export (gametime-hour)
   #:export (gametime-min)
+  #:export (gametime<?)
 )
 
 (define (_1st a b) a)
@@ -53,3 +54,4 @@
 (define-method (gametime-hour  (gt <gametime>)) (date-hour   (gametime.date gt)))
 (define-method (gametime-min   (gt <gametime>)) (date-minute (gametime.date gt)))
 
+(define-method (gametime<? (gt1 <gametime>) (gt2 <gametime>)) (< (gametime.secs gt1) (gametime.secs gt2)))
