@@ -12,6 +12,8 @@
 (use-modules (bad-cat nfldb data sched year-2025))
 (use-modules (bad-cat nfldb ui init))
 
+(use-modules (bad-cat utils))
+
 ; (use-modules (bad-cat nfldb json))
 (use-modules (bad-cat nfldb game))
 (use-modules (bad-cat nfldb team))
@@ -29,14 +31,28 @@
   (let ( (tile-grid (make-instance <gtk-grid>))
          (home-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (game.home game))))
          (away-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (game.away game))))
-         (name-label (make-instance <gtk-label> #:requested-width 200 #:label (game.short-name game))) )
+         (text-vbox  (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f))
+         (name-label (make-instance <gtk-label> #:requested-width 200 #:label (game.short-name game)))
+         (date-label (make-instance <gtk-label>
+                                    #:requested-width 200
+                                    #:label (gametime-format (game.time game) "~A ~b ~e, ~Y")))
+         (time-label (make-instance <gtk-label>
+                                    #:requested-width 200
+                                    #:label (gametime-format (game.time game) "~l:~M ~p"))) )
+
     (slot-set! home-image 'height-request 64)
     (slot-set! home-image 'width-request 64)
     (slot-set! away-image 'height-request 64)
     (slot-set! away-image 'width-request 64)
+
     (gtk-grid-attach tile-grid home-image 0 0 1 1)
     (gtk-grid-attach tile-grid away-image 1 0 1 1)
-    (gtk-grid-attach tile-grid name-label 2 0 1 1)
+
+
+    (gtk-box-append text-vbox name-label)
+    (gtk-box-append text-vbox date-label)
+    (gtk-box-append text-vbox time-label)
+    (gtk-grid-attach tile-grid text-vbox 2 0 1 1)
 
     tile-grid))
 
