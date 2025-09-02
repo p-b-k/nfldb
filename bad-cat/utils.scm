@@ -28,6 +28,7 @@
   #:export (rgb.r)
   #:export (rgb.g)
   #:export (rgb.b)
+  #:export (html-color)
 )
 
 (define (_1st a b) a)
@@ -83,4 +84,6 @@
             #:getter          rgb.b
             #:setter          rgb.b!)
 )
+
+(define-method (html-color (c <rgb-color>)) (format #f "#~2,'0x~2,'0x~2,'0x" (rgb.r c) (rgb.g c) (rgb.b c)))
 

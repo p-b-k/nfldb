@@ -59,6 +59,21 @@
                                                 (map (lambda (date) (hash-ref gamedays date))
                                                      dates))))))))))
 
+(define-method (espn-get-div-standings (c-idx <integer>) (d-idx <integer>))
+  (let ( (json (espn-get-url "https://cdn.espn.com/core/nfl/standings?xhr=1" port->json-obj)) )
+    (let ( (standings (json-match `(content standings groups ,c-idx groups ,d-idx standings entries) json)) )
+      (map (lambda (x)
+             (let ( (rec (make-instance <nfl-team-record>)) )
+               (define (proc-entry stat-json)
+                 (let ( (stat-name (string->symbol (string-downcase (json-ref shortDisplayName stat-json))))
+                        (stat-val (json-ref value stat-json)) )
+                   (if (string? stat-val)
+                     (slot-set! rec stat-name (cons (string->number stat-val) stat-val))
+                     (slot-set! rec stat-name (cons stat-val stat-val)))))
+               (map proc-entry (json-ref stats x))
+               (cons (string->symbol (json-ref team.abbreviation x)) rec)))
+           standings))))
+
 (define (tz-offset) -4)
 (define espn-date-fmt "~Y-~m-~dT~H:~MZ")
 
@@ -95,11 +110,14 @@
 (define-method (datasource-get-games (ds <espn-datasource>) (year <integer>) (weekno <integer>))
   (espn-get-games year weekno))
 
+(define-method (datasource-get-standings (ds <espn-datasource>) (conf <symbol>) (div <symbol>))
+  (espn-get-div-standings (conf->index conf) (div->index div)))
+
 (define (espn-datasource-new) (make-instance <espn-datasource>))
 
 (define (read-espn-color color-string)
   (let ( (r (string->number (format #f "#x~a" (substring color-string 0 2))))
          (g (string->number (format #f "#x~a" (substring color-string 2 4))))
-         (b (string->number (format #f "#x~a" (substring color-string 2 6)))) )
+         (b (string->number (format #f "#x~a" (substring color-string 4 6)))) )
     (make-instance <rgb-color> #:r r #:g g #:b b)))
 

@@ -11,6 +11,7 @@
   #:export (port->json-obj)
 
   #:export (json-ref)
+  #:export (json-match)
   #:export (json-keys)
 )
 
@@ -76,6 +77,7 @@
       (let ( (next-char (read-char)) )
         (case next-char
           ( (#\" #\\) (read-body (cons next-char sofar)) )
+          ( (#\n) (read-body (cons #\newline sofar)) )
           ( (#\u) (read-body (cons (read-unicode (list #\x #\#)) sofar)) )
           ( else
             (parse-err 'invalid-escape-char "Expected either quote or backslash, got ~s" next-char) ))))
@@ -237,5 +239,10 @@
   (syntax-rules ()
     ( (json-ref ref-spec json-obj)
       (json-path-ref (parse-ref-path (quote ref-spec)) json-obj) )))
+
+(define-syntax json-match
+  (syntax-rules ()
+    ( (json-match ref-spec json-obj)
+      (json-path-ref (map (lambda (x) (format #f "~a" x))  ref-spec) json-obj) )))
 
 

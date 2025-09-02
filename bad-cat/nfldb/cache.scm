@@ -16,6 +16,9 @@
 )
 
 (define seasons (make-hash-table))
+(define standings (make-hash-table))
+(hash-set! standings 'AFC (make-hash-table))
+(hash-set! standings 'NFC (make-hash-table))
 
 (define reg-season-game-count 18)
 (define playoff-round-count 4)
@@ -36,6 +39,17 @@
         (let ( (new-week-games (datasource-get-games ds year weekno)) )
           (array-set! weeks new-week-games weekno)
           new-week-games)))))
+
+(define (cached-standings-for-div ds conf div)
+  (let ( (c-standings (hash-ref standings conf)) )
+    (if c-standings
+      (let ( (d-standings (hash-ref c-standings div)) )
+        (if d-standings
+          d-standings
+          (let ( (standings (datasource-get-standings ds conf div)) )
+            (hash-set! c-standings div standings)
+            standings)))
+      (throw 'unknown-conference conf))))
 
 ;; Add a game to the week hash (used to instantiate data)
 (define (cache-add-game-for-week game year weekno)
@@ -61,4 +75,6 @@
 (define-method (datasource-get-games (ds <cache-datasource>) (year <integer>) (weekno <integer>))
   (cached-games-for-week (cache.source ds) year weekno))
 
+(define-method (datasource-get-standings (ds <cache-datasource>) (conf <symbol>) (div <symbol>))
+  (cached-standings-for-div (cache.source ds) conf div))
 

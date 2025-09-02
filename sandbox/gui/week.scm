@@ -32,7 +32,7 @@
          (home-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (game.home game))))
          (away-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (game.away game))))
          (text-vbox  (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f))
-         (name-label (make-instance <gtk-label> #:requested-width 200 #:label (game.short-name game)))
+         (name-label (make-instance <gtk-label> #:requested-width 200 #:label (game.name game)))
          (date-label (make-instance <gtk-label>
                                     #:requested-width 200
                                     #:label (gametime-format (game.time game) "~A ~b ~e, ~Y")))
@@ -46,6 +46,15 @@
 
     (gtk-grid-attach tile-grid away-image 0 0 1 1)
     (gtk-grid-attach tile-grid home-image 1 0 1 1)
+
+    (slot-set! name-label 'css-classes  '("name-label"))
+    (slot-set! time-label 'css-classes  '("time-label"))
+    (slot-set! time-label 'halign       4)
+
+    (slot-set! text-vbox  'css-classes  '("game-tile"))
+    (slot-set! text-vbox  'halign       4)
+    (slot-set! text-vbox 'hexpand       #t)
+
 
     (gtk-box-append text-vbox name-label)
 ;   (gtk-box-append text-vbox date-label)
@@ -70,7 +79,7 @@
 ;                 (slot-set! day-label 'css-classes '("day-label"))
                   (slot-set! day-label 'label (gametime-format (game.time game) "~A"))
                   (slot-set! day-label 'halign 4)
-;                 (slot-set! date-label 'css-classes '("day-label"))
+                  (slot-set! date-label 'css-classes '("day-label"))
                   (slot-set! date-label 'label (gametime-format (game.time game) "~b ~e, ~Y"))
                   (slot-set! date-label 'justify 1)
                   (slot-set! date-label 'hexpand #t)
@@ -83,11 +92,6 @@
               (slot-set! tile 'css-classes '("game-label"))
               (gtk-list-box-append list-view tile)
               (add-games curr-day (cdr games))))))
-;   (define (add-game game)
-;     (let ( (tile (create-game-tile game)) )
-;       (gtk-list-box-append list-view tile)
-;       tile))
-;   (map add-game (slot-ref wc 'games))
     (add-games #f (slot-ref wc 'games))
     (gtk-scrolled-window-set-child scrolled list-view)
     (slot-set! wc 'games-list scrolled)))

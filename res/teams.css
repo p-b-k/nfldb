@@ -1,0 +1,320 @@
+team_ARI {
+  color          : #a40227;
+  background     : #ffffff;
+}
+
+team_ARI_reverse {
+  color          : #ffffff;
+  background     : #a40227;
+}
+
+team_ATL {
+  color          : #a71930;
+  background     : #000000;
+}
+
+team_ATL_reverse {
+  color          : #000000;
+  background     : #a71930;
+}
+
+team_BAL {
+  color          : #29126f;
+  background     : #000000;
+}
+
+team_BAL_reverse {
+  color          : #000000;
+  background     : #29126f;
+}
+
+team_BUF {
+  color          : #00338d;
+  background     : #d50a0a;
+}
+
+team_BUF_reverse {
+  color          : #d50a0a;
+  background     : #00338d;
+}
+
+team_CAR {
+  color          : #0085ca;
+  background     : #000000;
+}
+
+team_CAR_reverse {
+  color          : #000000;
+  background     : #0085ca;
+}
+
+team_CHI {
+  color          : #0b1c3a;
+  background     : #e64100;
+}
+
+team_CHI_reverse {
+  color          : #e64100;
+  background     : #0b1c3a;
+}
+
+team_CIN {
+  color          : #fb4f14;
+  background     : #000000;
+}
+
+team_CIN_reverse {
+  color          : #000000;
+  background     : #fb4f14;
+}
+
+team_CLE {
+  color          : #472a08;
+  background     : #ff3c00;
+}
+
+team_CLE_reverse {
+  color          : #ff3c00;
+  background     : #472a08;
+}
+
+team_DAL {
+  color          : #002a5c;
+  background     : #b0b7bc;
+}
+
+team_DAL_reverse {
+  color          : #b0b7bc;
+  background     : #002a5c;
+}
+
+team_DEN {
+  color          : #0a2343;
+  background     : #fc4c02;
+}
+
+team_DEN_reverse {
+  color          : #fc4c02;
+  background     : #0a2343;
+}
+
+team_DET {
+  color          : #0076b6;
+  background     : #bbbbbb;
+}
+
+team_DET_reverse {
+  color          : #bbbbbb;
+  background     : #0076b6;
+}
+
+team_GB {
+  color          : #204e32;
+  background     : #ffb612;
+}
+
+team_GB_reverse {
+  color          : #ffb612;
+  background     : #204e32;
+}
+
+team_HOU {
+  color          : #00143f;
+  background     : #c41230;
+}
+
+team_HOU_reverse {
+  color          : #c41230;
+  background     : #00143f;
+}
+
+team_IND {
+  color          : #003b75;
+  background     : #ffffff;
+}
+
+team_IND_reverse {
+  color          : #ffffff;
+  background     : #003b75;
+}
+
+team_JAX {
+  color          : #007487;
+  background     : #d7a22a;
+}
+
+team_JAX_reverse {
+  color          : #d7a22a;
+  background     : #007487;
+}
+
+team_KC {
+  color          : #e31837;
+  background     : #ffb612;
+}
+
+team_KC_reverse {
+  color          : #ffb612;
+  background     : #e31837;
+}
+
+team_LAC {
+  color          : #0080c6;
+  background     : #ffc20e;
+}
+
+team_LAC_reverse {
+  color          : #ffc20e;
+  background     : #0080c6;
+}
+
+team_LAR {
+  color          : #003594;
+  background     : #ffd100;
+}
+
+team_LAR_reverse {
+  color          : #ffd100;
+  background     : #003594;
+}
+
+team_LV {
+  color          : #000000;
+  background     : #a5acaf;
+}
+
+team_LV_reverse {
+  color          : #a5acaf;
+  background     : #000000;
+}
+
+team_MIA {
+  color          : #008e97;
+  background     : #fc4c02;
+}
+
+team_MIA_reverse {
+  color          : #fc4c02;
+  background     : #008e97;
+}
+
+team_MIN {
+  color          : #4f2683;
+  background     : #ffc62f;
+}
+
+team_MIN_reverse {
+  color          : #ffc62f;
+  background     : #4f2683;
+}
+
+team_NE {
+  color          : #002a5c;
+  background     : #c60c30;
+}
+
+team_NE_reverse {
+  color          : #c60c30;
+  background     : #002a5c;
+}
+
+team_NO {
+  color          : #d3bc8d;
+  background     : #000000;
+}
+
+team_NO_reverse {
+  color          : #000000;
+  background     : #d3bc8d;
+}
+
+team_NYG {
+  color          : #003c7f;
+  background     : #c9243f;
+}
+
+team_NYG_reverse {
+  color          : #c9243f;
+  background     : #003c7f;
+}
+
+team_NYJ {
+  color          : #115740;
+  background     : #ffffff;
+}
+
+team_NYJ_reverse {
+  color          : #ffffff;
+  background     : #115740;
+}
+
+team_PHI {
+  color          : #06424d;
+  background     : #000000;
+}
+
+team_PHI_reverse {
+  color          : #000000;
+  background     : #06424d;
+}
+
+team_PIT {
+  color          : #000000;
+  background     : #ffb612;
+}
+
+team_PIT_reverse {
+  color          : #ffb612;
+  background     : #000000;
+}
+
+team_SEA {
+  color          : #002a5c;
+  background     : #69be28;
+}
+
+team_SEA_reverse {
+  color          : #69be28;
+  background     : #002a5c;
+}
+
+team_SF {
+  color          : #aa0000;
+  background     : #b3995d;
+}
+
+team_SF_reverse {
+  color          : #b3995d;
+  background     : #aa0000;
+}
+
+team_TB {
+  color          : #bd1c36;
+  background     : #3e3a35;
+}
+
+team_TB_reverse {
+  color          : #3e3a35;
+  background     : #bd1c36;
+}
+
+team_TEN {
+  color          : #4b92db;
+  background     : #002a5c;
+}
+
+team_TEN_reverse {
+  color          : #002a5c;
+  background     : #4b92db;
+}
+
+team_WSH {
+  color          : #5a1414;
+  background     : #ffb612;
+}
+
+team_WSH_reverse {
+  color          : #ffb612;
+  background     : #5a1414;
+}
+

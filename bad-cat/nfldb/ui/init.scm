@@ -49,4 +49,5 @@
 
 (define nfldb-css-provider (make-instance <gtk-css-provider>))
 (gtk-css-provider-load-from-resource nfldb-css-provider "/bad-cat/nfldb/css/root")
+(gtk-css-provider-load-from-resource nfldb-css-provider "/bad-cat/nfldb/css/teams")
 

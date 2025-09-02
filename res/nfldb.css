@@ -37,6 +37,21 @@
   background        : #98f308;
 }
 
+.name-label {
+  font-weight       : bold;
+}
+
+.time-label {
+  /*
+  background        : #000032;
+  color             : #f0f032;
+  */
+}
+
+.game-tile {
+  font-family       : serif;
+}
+
 /*
 #workspace-name {
   background        : #000032;
