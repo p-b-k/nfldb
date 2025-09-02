@@ -10,7 +10,7 @@
   #:use-module (bad-cat utils)
 
   #:use-module (bad-cat nfldb team)
-
+  #:use-module (bad-cat nfldb data)
 
   #:export (get-overview-layout)
 )
@@ -42,16 +42,17 @@
   (let ( (hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
          (logo-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (team.nick team))))
          (word-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/title" (team.nick team))))
-         (class-name (format #f "team_~a" (team.nick team))) )
-      (slot-set! logo-image 'height-request 128)
+         (class-name (format #f "team_~a_reverse" (team.nick team))) )
+      (slot-set! logo-image 'height-request 64)
       (slot-set! logo-image 'width-request 128)
       (slot-set! word-image 'height-request 128)
       (slot-set! word-image 'width-request 512)
       (slot-set! word-image 'hexpand #t)
-      (slot-set! word-image 'vexpand #t)
+      (slot-set! word-image 'vexpand #f)
 
       (format #t "class-name = ~a~%" class-name)
       (slot-set! hbox 'css-classes (list class-name))
+;     (slot-set! logo-image 'css-classes (list class-name))
 ;     (slot-set! word-image 'css-classes (list class-name))
 
       (gtk-box-append hbox logo-image)
@@ -66,7 +67,41 @@
     (gtk-box-append vbox status-label)
     vbox))
 
-(define (get-div-panel conf div) (make-instance <gtk-label> #:label (format #f "Division Banner (~a/~a)" conf div)))
+(define (get-div-panel conf div)
+  (let ( (root-vbox (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f)) 
+         (div-label (make-instance <gtk-label> #:label (format #f "~a ~a" conf div)))
+;        (scrolled  (make-instance <gtk-scrolled-window>))
+         (list-view (make-instance <gtk-list-box>)) )
+    (slot-set! div-label 'css-classes '("list-header"))
+    (slot-set! root-vbox 'height-request 128)
+    (slot-set! root-vbox 'width-request 128)
+
+    ;(slot-set! scrolled 'vexpand #t)
+    (slot-set! list-view 'height-request 86)
+
+;   (gtk-scrolled-window-set-child scrolled list-view)
+    (gtk-box-append root-vbox div-label)
+    (gtk-box-append root-vbox list-view)
+
+    (map (lambda (x)
+           (let ( (hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
+                  (logo (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (car x))))
+                  (name (make-instance <gtk-label> #:label (format #f "~a" (car x))))
+                  (score (make-instance <gtk-label> #:label (format #f "~a" (cdr (slot-ref (cdr x) 'pct))))) )
+
+             (slot-set! name 'width-request 64)
+             (slot-set! score 'halign 2)
+             (slot-set! score 'hexpand #t)
+
+             (gtk-box-append hbox logo)
+             (gtk-box-append hbox name)
+             (gtk-box-append hbox score)
+             (gtk-list-box-append list-view hbox)
+             hbox))
+         (ds-get-standings conf div))
+
+    root-vbox))
+
 (define (get-sched-panel team) (make-instance <gtk-label> #:label (format #f "Schedule Banner (~a)" (team.name team))))
 (define (get-conf-panel conf) (make-instance <gtk-label> #:label (format #f "Conference Banner (~a)" conf)))
 

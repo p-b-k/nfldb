@@ -5,6 +5,7 @@
   #:duplicates (merge-generics replace warn-override-core warn last)
 
   #:export (nfldb-css-provider)
+  #:export (team-css-provider)
 )
 
 
@@ -49,5 +50,7 @@
 
 (define nfldb-css-provider (make-instance <gtk-css-provider>))
 (gtk-css-provider-load-from-resource nfldb-css-provider "/bad-cat/nfldb/css/root")
-(gtk-css-provider-load-from-resource nfldb-css-provider "/bad-cat/nfldb/css/teams")
+
+(define team-css-provider (make-instance <gtk-css-provider>))
+(gtk-css-provider-load-from-resource team-css-provider "/bad-cat/nfldb/css/teams")
 

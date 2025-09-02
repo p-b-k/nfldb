@@ -39,6 +39,7 @@
     (slot-set! window 'default-width 600)
 
     (gtk-style-context-add-provider-for-display (gdk-display-get-default) nfldb-css-provider 0)
+    (gtk-style-context-add-provider-for-display (gdk-display-get-default) team-css-provider 0)
 
     (set-child window (get-overview-layout team))
 

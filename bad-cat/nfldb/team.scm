@@ -31,6 +31,9 @@
   #:export (div->index)
 
   #:export (<nfl-team-record>)
+
+  ;; Temp
+  #:export (write-team-css-style)
 )
 
 (define-class <nfl-team> ()
@@ -114,3 +117,15 @@
 (define (my-team) (get-team (my-team-param)))
 
 (define-class <nfl-team-record> () w l t pct home away div conf pf pa diff strk)
+
+(define (write-team-css-style team)
+  (format #t ".team_~a {~%" (team.nick team))
+  (format #t "  background            : ~a;~%" (html-color (team.color team)))
+  (format #t "  color                 : ~a;~%" (html-color (team.alt-color team)))
+  (format #t "}~%")
+  (format #t "~%")
+  (format #t ".team_~a_alt {~%" (team.nick team))
+  (format #t "  background            : ~a;~%" (html-color (team.alt-color team)))
+  (format #t "  color                 : ~a;~%" (html-color (team.color team)))
+  (format #t "}~%")
+  (format #t "~%"))
