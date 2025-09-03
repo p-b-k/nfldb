@@ -1,319 +1,319 @@
-.team_ARI {
+.team_ARI * {
   background            : #a40227;
   color                 : #ffffff;
 }
 
-.team_ARI_alt {
+.team_ARI_alt * {
   background            : #ffffff;
   color                 : #a40227;
 }
 
-.team_ATL {
+.team_ATL * {
   background            : #a71930;
   color                 : #000000;
 }
 
-.team_ATL_alt {
+.team_ATL_alt * {
   background            : #000000;
   color                 : #a71930;
 }
 
-.team_BAL {
+.team_BAL * {
   background            : #29126f;
   color                 : #000000;
 }
 
-.team_BAL_alt {
+.team_BAL_alt * {
   background            : #000000;
   color                 : #29126f;
 }
 
-.team_BUF {
+.team_BUF * {
   background            : #00338d;
   color                 : #d50a0a;
 }
 
-.team_BUF_alt {
+.team_BUF_alt * {
   background            : #d50a0a;
   color                 : #00338d;
 }
 
-.team_CAR {
+.team_CAR * {
   background            : #0085ca;
   color                 : #000000;
 }
 
-.team_CAR_alt {
+.team_CAR_alt * {
   background            : #000000;
   color                 : #0085ca;
 }
 
-.team_CHI {
+.team_CHI * {
   background            : #0b1c3a;
   color                 : #e64100;
 }
 
-.team_CHI_alt {
+.team_CHI_alt * {
   background            : #e64100;
   color                 : #0b1c3a;
 }
 
-.team_CIN {
+.team_CIN * {
   background            : #fb4f14;
   color                 : #000000;
 }
 
-.team_CIN_alt {
+.team_CIN_alt * {
   background            : #000000;
   color                 : #fb4f14;
 }
 
-.team_CLE {
+.team_CLE * {
   background            : #472a08;
   color                 : #ff3c00;
 }
 
-.team_CLE_alt {
+.team_CLE_alt * {
   background            : #ff3c00;
   color                 : #472a08;
 }
 
-.team_DAL {
+.team_DAL * {
   background            : #002a5c;
   color                 : #b0b7bc;
 }
 
-.team_DAL_alt {
+.team_DAL_alt * {
   background            : #b0b7bc;
   color                 : #002a5c;
 }
 
-.team_DEN {
+.team_DEN * {
   background            : #0a2343;
   color                 : #fc4c02;
 }
 
-.team_DEN_alt {
+.team_DEN_alt * {
   background            : #fc4c02;
   color                 : #0a2343;
 }
 
-.team_DET {
+.team_DET * {
   background            : #0076b6;
   color                 : #bbbbbb;
 }
 
-.team_DET_alt {
+.team_DET_alt * {
   background            : #bbbbbb;
   color                 : #0076b6;
 }
 
-.team_GB {
+.team_GB * {
   background            : #204e32;
   color                 : #ffb612;
 }
 
-.team_GB_alt {
+.team_GB_alt * {
   background            : #ffb612;
   color                 : #204e32;
 }
 
-.team_HOU {
+.team_HOU * {
   background            : #00143f;
   color                 : #c41230;
 }
 
-.team_HOU_alt {
+.team_HOU_alt * {
   background            : #c41230;
   color                 : #00143f;
 }
 
-.team_IND {
+.team_IND * {
   background            : #003b75;
   color                 : #ffffff;
 }
 
-.team_IND_alt {
+.team_IND_alt * {
   background            : #ffffff;
   color                 : #003b75;
 }
 
-.team_JAX {
+.team_JAX * {
   background            : #007487;
   color                 : #d7a22a;
 }
 
-.team_JAX_alt {
+.team_JAX_alt * {
   background            : #d7a22a;
   color                 : #007487;
 }
 
-.team_KC {
+.team_KC * {
   background            : #e31837;
   color                 : #ffb612;
 }
 
-.team_KC_alt {
+.team_KC_alt * {
   background            : #ffb612;
   color                 : #e31837;
 }
 
-.team_LAC {
+.team_LAC * {
   background            : #0080c6;
   color                 : #ffc20e;
 }
 
-.team_LAC_alt {
+.team_LAC_alt * {
   background            : #ffc20e;
   color                 : #0080c6;
 }
 
-.team_LAR {
+.team_LAR * {
   background            : #003594;
   color                 : #ffd100;
 }
 
-.team_LAR_alt {
+.team_LAR_alt * {
   background            : #ffd100;
   color                 : #003594;
 }
 
-.team_LV {
+.team_LV * {
   background            : #000000;
   color                 : #a5acaf;
 }
 
-.team_LV_alt {
+.team_LV_alt * {
   background            : #a5acaf;
   color                 : #000000;
 }
 
-.team_MIA {
+.team_MIA * {
   background            : #008e97;
   color                 : #fc4c02;
 }
 
-.team_MIA_alt {
+.team_MIA_alt * {
   background            : #fc4c02;
   color                 : #008e97;
 }
 
-.team_MIN {
+.team_MIN * {
   background            : #4f2683;
   color                 : #ffc62f;
 }
 
-.team_MIN_alt {
+.team_MIN_alt * {
   background            : #ffc62f;
   color                 : #4f2683;
 }
 
-.team_NE {
+.team_NE * {
   background            : #002a5c;
   color                 : #c60c30;
 }
 
-.team_NE_alt {
+.team_NE_alt * {
   background            : #c60c30;
   color                 : #002a5c;
 }
 
-.team_NO {
+.team_NO * {
   background            : #d3bc8d;
   color                 : #000000;
 }
 
-.team_NO_alt {
+.team_NO_alt * {
   background            : #000000;
   color                 : #d3bc8d;
 }
 
-.team_NYG {
+.team_NYG * {
   background            : #003c7f;
   color                 : #c9243f;
 }
 
-.team_NYG_alt {
+.team_NYG_alt * {
   background            : #c9243f;
   color                 : #003c7f;
 }
 
-.team_NYJ {
+.team_NYJ * {
   background            : #115740;
   color                 : #ffffff;
 }
 
-.team_NYJ_alt {
+.team_NYJ_alt * {
   background            : #ffffff;
   color                 : #115740;
 }
 
-.team_PHI {
+.team_PHI * {
   background            : #06424d;
   color                 : #000000;
 }
 
-.team_PHI_alt {
+.team_PHI_alt * {
   background            : #000000;
   color                 : #06424d;
 }
 
-.team_PIT {
+.team_PIT * {
   background            : #000000;
   color                 : #ffb612;
 }
 
-.team_PIT_alt {
+.team_PIT_alt * {
   background            : #ffb612;
   color                 : #000000;
 }
 
-.team_SEA {
+.team_SEA * {
   background            : #002a5c;
   color                 : #69be28;
 }
 
-.team_SEA_alt {
+.team_SEA_alt * {
   background            : #69be28;
   color                 : #002a5c;
 }
 
-.team_SF {
+.team_SF * {
   background            : #aa0000;
   color                 : #b3995d;
 }
 
-.team_SF_alt {
+.team_SF_alt * {
   background            : #b3995d;
   color                 : #aa0000;
 }
 
-.team_TB {
+.team_TB * {
   background            : #bd1c36;
   color                 : #3e3a35;
 }
 
-.team_TB_alt {
+.team_TB_alt * {
   background            : #3e3a35;
   color                 : #bd1c36;
 }
 
-.team_TEN {
+.team_TEN * {
   background            : #4b92db;
   color                 : #002a5c;
 }
 
-.team_TEN_alt {
+.team_TEN_alt * {
   background            : #002a5c;
   color                 : #4b92db;
 }
 
-.team_WSH {
+.team_WSH * {
   background            : #5a1414;
   color                 : #ffb612;
 }
 
-.team_WSH_alt {
+.team_WSH_alt * {
   background            : #ffb612;
   color                 : #5a1414;
 }

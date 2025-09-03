@@ -37,6 +37,7 @@
 ;             "KeyvalTrigger"
               "ListBox"
 ;             "NamedAction"
+              "Picture"
               "ScrolledWindow"
 ;             "Shortcut"
 ;             "ShortcutController"

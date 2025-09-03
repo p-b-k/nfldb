@@ -35,8 +35,8 @@
                                       #:title (format #f "Overview: ~a" (team.name team))
                                       #:icon "/bad-cat/nfldb/NFL"
                                       #:application app)) )
-    (slot-set! window 'default-height 400)
-    (slot-set! window 'default-width 600)
+;   (slot-set! window 'default-height 400)
+;   (slot-set! window 'default-width 600)
 
     (gtk-style-context-add-provider-for-display (gdk-display-get-default) nfldb-css-provider 0)
     (gtk-style-context-add-provider-for-display (gdk-display-get-default) team-css-provider 0)

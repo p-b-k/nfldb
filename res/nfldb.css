@@ -6,6 +6,15 @@
   background        : #c8b098;
 }
 
+.game-status * {
+  /*
+  background        : #b8a088;
+  */
+  font-size         : x-large;
+  font-weight       : bold;
+  font-family       : monospace;
+}
+
 .day-label * {
   font-size         : x-large;
   font-weight       : bold;
@@ -37,6 +46,11 @@
   background        : #98f308;
 }
 
+.team-banner {
+  padding-top       : 5px;
+  padding-bottom    : 5px;
+}
+
 .name-label {
   font-weight       : bold;
 }
@@ -56,6 +70,26 @@
   font-weight       : bold;
   background        : #002000;
   color             : #ffff3f;
+}
+
+.test-a * {
+  background        : red;
+}
+
+.test-b * {
+  background        : blue;
+}
+
+.test-c * {
+  background        : yellow;
+}
+
+.test-d * {
+  background        : green;
+}
+
+.test-e * {
+  background        : orange;
 }
 
 /*
