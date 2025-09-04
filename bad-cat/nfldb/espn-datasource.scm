@@ -1,4 +1,4 @@
-(define-module (bad-cat nfldb espn)
+(define-module (bad-cat nfldb espn-datasource)
 
   ;; *******************************************************************************************************************
   ;; Tools to get data from ESPN api

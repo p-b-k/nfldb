@@ -21,8 +21,8 @@
 (use-modules (bad-cat nfldb ui init))
 
 (use-modules (bad-cat nfldb data))
-(use-modules (bad-cat nfldb espn))
-(use-modules (bad-cat nfldb cache))
+(use-modules (bad-cat nfldb espn-datasource))
+(use-modules (bad-cat nfldb cache-datasource))
 
 (define (populate-main-grid main-grid)
   (define (get-logo team)

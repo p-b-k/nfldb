@@ -13,7 +13,7 @@
 (use-modules (bad-cat nfldb game))
 (use-modules (bad-cat nfldb team))
 (use-modules (bad-cat nfldb serialize))
-(use-modules (bad-cat nfldb espn))
+(use-modules (bad-cat nfldb espn-datasource))
 (use-modules (bad-cat nfldb data))
 
 ;; https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/events
@@ -153,7 +153,7 @@
   (format out " #:use-module (bad-cat utils)~%")
   (format out " #:use-module (bad-cat nfldb team)~%")
   (format out " #:use-module (bad-cat nfldb game)~%")
-  (format out " #:use-module (bad-cat nfldb cache)~%")
+  (format out " #:use-module (bad-cat nfldb cache-datasource)~%")
   (format out ")~%")
   (format out "~%")
   (map write-game (sort games game-date<?)))

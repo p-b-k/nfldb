@@ -22,8 +22,8 @@
 
 
 (use-modules (bad-cat nfldb data))
-; (use-modules (bad-cat nfldb espn))
-(use-modules (bad-cat nfldb cache))
+; (use-modules (bad-cat nfldb espn-datasource))
+(use-modules (bad-cat nfldb cache-datasource))
 
 (define-class <week-controls> () (games #:init-keyword #:games) games-list)
 

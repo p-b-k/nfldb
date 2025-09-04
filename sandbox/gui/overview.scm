@@ -22,7 +22,7 @@
 
 
 (use-modules (bad-cat nfldb data))
-(use-modules (bad-cat nfldb cache))
+(use-modules (bad-cat nfldb cache-datasource))
 
 (use-modules (bad-cat nfldb ui panels main))
 
