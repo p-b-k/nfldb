@@ -100,7 +100,7 @@
               (read-fract-digits #t '(#\. #\0)) )
             ( (char-numeric? next)
               (read-int-digits #t (list (read-char))) )
-            ( #t (parse-number (list->string (reverse sofar))) )))))
+            ( #t (parse-err 'invalid-number "Invalid initial number character") )))))
     (define (read-int-digits positive? sofar)
       (let ( (next (peek-char)) )
         (if (eof-object? next)

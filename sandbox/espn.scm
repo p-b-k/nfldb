@@ -24,7 +24,7 @@
 
 (define div-map (make-hash-table))
 (define conf-map (make-hash-table))
-(define url-map (make-hash-table))
+(define old-url-map (make-hash-table))
 
 ;;
 ;; Manage mappings to conferences and divisions
@@ -54,8 +54,8 @@
             (hash-set! div-map id abbrev)
             abbrev))))))
 
-(define (lookup-division url)
-  (let ( (cached (hash-ref url-map url)) )
+(define (old-lookup-division url)
+  (let ( (cached (hash-ref old-url-map url)) )
     (if cached
       cached
       (let ( (div-json (espn-get-url url port->json-obj)) )
@@ -63,7 +63,7 @@
           (let ( (conf-json (espn-get-url conf-url port->json-obj)) )
             (let ( (pair (cons (string->symbol (json-ref abbreviation conf-json))
                                (string->symbol (json-ref abbreviation div-json)))) )
-              (hash-set! url-map url pair)
+              (hash-set! old-url-map url pair)
               pair)))))))
 
 ;;
@@ -77,7 +77,7 @@
 
 (define (slurp-team team-url)
   (let ( (json (espn-get-url team-url port->json-obj)) )
-    (let ( (division (lookup-division (json-ref groups.$ref json))) )
+    (let ( (division (old-lookup-division (json-ref groups.$ref json))) )
       (let ( (id (string->number (json-ref id json))) )
         (if (not (get-team id))
           (make-instance <nfl-team>

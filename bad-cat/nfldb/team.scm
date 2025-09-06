@@ -8,10 +8,6 @@
 
   #:use-module (bad-cat utils)
 
-  #:export (get-team)
-  #:export (get-conf)
-  #:export (get-div)
-
   #:export (<nfl-team>)
   #:export (team-name<?)
 
@@ -49,18 +45,6 @@
                   #:getter        team.alt-color)
 )
 
-(let ( (afc (make-hash-table))
-       (nfc (make-hash-table)) )
-  (hash-set! conferences 'AFC afc)
-  (hash-set! conferences 'NFC nfc)
-  (map (lambda (x)
-         (map (lambda (y) (hash-set! x y '()))
-              '(NORTH SOUTH EAST WEST)))
-       (list afc nfc)))
-  
-; (define-method (initialize (t <nfl-team>) args)
-;   (next-method)
-;   (register-team t))
 
 (define-method (write (t <nfl-team>) (o <output-port>))
   (format o "~a~a~a" #\x169c (team.nick t) #\x169b))
@@ -68,16 +52,6 @@
 (define-method (team-name<? (a <nfl-team>) (b <nfl-team>))
   (string<? (symbol->string (team.nick a))
             (symbol->string (team.nick b))))
-
-(define my-team-param (make-parameter 'PHI))
-
-(define (set-my-team team-name)
-  (let ( (team (get-team team-name)) )
-    (if team
-      (my-team-param (team.nick team))
-      (throw 'undefined-team team-name))))
-
-(define (my-team) (get-team (my-team-param)))
 
 (define-class <nfl-team-record> () w l t pct home away div conf pf pa diff strk)
 

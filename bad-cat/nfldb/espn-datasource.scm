@@ -22,8 +22,6 @@
   #:export (espn-host-core)
   #:export (espn-host-cdn)
   #:export (espn-datasource-new)
-
-  #:export (read-espn-color)
 )
 
 (define espn-host-core "sports.core.api.espn.com")
