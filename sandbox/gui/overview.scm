@@ -21,8 +21,8 @@
 ; (use-modules (bad-cat nfldb serialize))
 
 
-(use-modules (bad-cat nfldb data))
-(use-modules (bad-cat nfldb cache-datasource))
+; (use-modules (bad-cat nfldb data))
+; (use-modules (bad-cat nfldb cache-datasource))
 
 (use-modules (bad-cat nfldb ui panels main))
 
@@ -59,5 +59,5 @@
 ;; Set the caching data source
 ;; *********************************************************************************************************************
 
-(set-datasource (cache-datasource-new))
+; (set-datasource (cache-datasource-new))
 

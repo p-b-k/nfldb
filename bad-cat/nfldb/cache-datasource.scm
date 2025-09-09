@@ -15,6 +15,8 @@
   #:export (cache-add-game-for-week)
 )
 
+(throw 'deprecated '(bad-cat nfldb cache-datasource))
+
 (define seasons (make-hash-table))
 (define standings (make-hash-table))
 

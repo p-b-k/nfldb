@@ -19,9 +19,6 @@
   #:export (team.color)
   #:export (team.alt-color)
 
-  #:export (set-my-team)
-  #:export (my-team)
-
   #:export (<nfl-team-record>)
 
   ;; Temp

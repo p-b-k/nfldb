@@ -24,6 +24,9 @@
   #:export (get-team)
   #:export (get-conf)
   #:export (get-div)
+
+  #:export (set-my-team)
+  #:export (my-team)
 )
 
 (define-class <league-cache> (<nfldb-cache>)

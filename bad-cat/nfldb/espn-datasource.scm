@@ -24,6 +24,8 @@
   #:export (espn-datasource-new)
 )
 
+; (throw 'deprecated '(bad-cat nfldb espn-datasource))
+
 (define espn-host-core "sports.core.api.espn.com")
 (define espn-host-cdn "cdn.espn.com")
 

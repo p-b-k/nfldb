@@ -44,18 +44,14 @@
   (define (get-weeks todo weekno)
     (if (not (null? todo))
       (begin
-        (format #t "Synching Week ~a~%" weekno)
         (let ( (games (espn-get-games (season.year c) weekno)) )
-          (format #t "games for ~a:~2,'0d: ~a~%" (season.year c) weekno games)
           (array-set! (season.weeks c) games (1- weekno)))
         (get-weeks (cdr todo) (1+ weekno)))))
-  (format #t "Synching Sesson cache ~a~%" c)
   (get-weeks (array->list (season.weeks c)) 1))
 
 (define-method (cache-persist-store (c <season-cache>))
   (define (write-cache) (write-constructor c (current-output-port)))
 
-  (format #t "Persisting season cache ~a~%" c)
   (with-output-to-file (season-cache-file (season.year c)) write-cache))
 
 (define-method (cache-read-from-store (c <season-cache>))
@@ -69,8 +65,6 @@
   (let ( (cache-file (season-cache-file year)) )
     (if (file-exists? cache-file)
       (let ( (cache-def (with-input-from-file cache-file read)) )
-        (format #t "cache-def = ~a~%" cache-def)
-        ; (eval (with-input-from-file cache-file read) (current-module))
         (nfldb-eval cache-file))
       #f)))
 

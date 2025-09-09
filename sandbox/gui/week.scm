@@ -33,9 +33,6 @@
          (away-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (game.away game))))
          (text-vbox  (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f))
          (name-label (make-instance <gtk-label> #:requested-width 200 #:label (game.name game)))
-         (date-label (make-instance <gtk-label>
-                                    #:requested-width 200
-                                    #:label (gametime-format (game.time game) "~A ~b ~e, ~Y")))
          (time-label (make-instance <gtk-label>
                                     #:requested-width 200
                                     #:label (gametime-format (game.time game) "~l:~M ~p"))) )
@@ -57,7 +54,6 @@
 
 
     (gtk-box-append text-vbox name-label)
-;   (gtk-box-append text-vbox date-label)
     (gtk-box-append text-vbox time-label)
     (gtk-grid-attach tile-grid text-vbox 2 0 1 1)
 
@@ -76,7 +72,6 @@
               (if (not (eq? prev-day curr-day))
                 (let ( (day-label (make-instance <gtk-label>))
                        (date-label (make-instance <gtk-label>)) )
-;                 (slot-set! day-label 'css-classes '("day-label"))
                   (slot-set! day-label 'label (gametime-format (game.time game) "~A"))
                   (slot-set! day-label 'halign 4)
                   (slot-set! date-label 'css-classes '("day-label"))
