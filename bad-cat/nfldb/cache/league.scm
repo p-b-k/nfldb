@@ -2,12 +2,13 @@
 
   ;; *******************************************************************************************************************
   ;; Cache for League data
-  ;; Very static. Might change yearly.
+  ;; Extremely static. Might change yearly.
   ;; *******************************************************************************************************************
 
   #:use-module (oop goops)
 
   #:use-module (bad-cat utils)
+  #:use-module (bad-cat nfldb)
 
   #:use-module (bad-cat nfldb cache)
   #:use-module (bad-cat nfldb espn)
@@ -109,7 +110,7 @@
     (proc '()))
   (if (file-exists? league-cache-file)
     (map (lambda (x) (register-team c x))
-         (map (lambda (t) (eval t (current-module))) (with-input-from-file league-cache-file read-objects)))
+         (map nfldb-eval (with-input-from-file league-cache-file read-objects)))
     #f))
 
 (define (write-teams-data-file teams)

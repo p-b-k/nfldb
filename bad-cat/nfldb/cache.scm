@@ -39,11 +39,8 @@
 )
 
 (define-method (cache-out-of-date? (c <nfldb-cache>)) #f)
-(define-method (cache-sync! (c <nfldb-cache>))
-  (format #t "cache-sync! <nfldb-cache> : synching cache ~a~%" (class-name (class-of cache)))
-  #t)
+(define-method (cache-sync! (c <nfldb-cache>)) #t)
 (define-method (cache-persist-store (c <nfldb-cache>)) #f)
-
 (define-method (cache-read-from-store (c <nfldb-cache>)) #f)
 
 (define nfldb-cache-root (format #f "./cache"))

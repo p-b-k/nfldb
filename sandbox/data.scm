@@ -5,12 +5,15 @@
 (use-modules (oop goops))
 
 (use-modules (bad-cat nfldb cache))
-(use-modules (bad-cat nfldb cache league))
 
-(use-modules (bad-cat nfldb team))
+(use-modules (bad-cat nfldb cache league))
+(use-modules (bad-cat nfldb cache schedule))
+
 (use-modules (bad-cat utils))
 
 (define league-cache ((@@ (bad-cat nfldb cache league) league)))
+(define schedule-cache ((@@ (bad-cat nfldb cache schedule) schedule)))
 
-(cache-read-from-store league-cache)
+(restore league-cache)
+(restore schedule-cache)
 

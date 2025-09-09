@@ -39,23 +39,7 @@
 (define (espn-get-page host path proc)
   (espn-get-url (format #f "https://~a/~a" host path) proc))
 
-(define-method (espn-get-games year weekno)
-  (define (read-buffer-from-port p)
-    (define (proc sofar)
-      (let ( (next (read-char p)) )
-        (if (eof-object? next)
-          (list->string (reverse sofar))
-          (proc (cons next sofar)))))
-    (proc '()))
-  ;; The xhr=1 parameter gives json instead of html
-  (let ( (path (format #f "core/nfl/schedule?xhr=1&week=~a&year=~a" weekno year)) )
-    (let ( (json (espn-get-page espn-host-cdn path port->json-obj)) )
-      (let ( (gamedays (json-ref content.schedule json)) )
-        (let ( (dates (sort (json-keys gamedays) (lambda (a b) (apply string<? (map symbol->string (list a b)))))) )
-          (map (lambda (x) (make-game x year))
-               (apply append (apply append (map (lambda (x) (hash-map->list (lambda (n v) v) x))
-                                                (map (lambda (date) (hash-ref gamedays date))
-                                                     dates))))))))))
+
 
 (define-method (espn-get-div-standings (c-idx <integer>) (d-idx <integer>))
   (let ( (json (espn-get-url "https://cdn.espn.com/core/nfl/standings?xhr=1" port->json-obj)) )

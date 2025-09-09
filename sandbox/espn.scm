@@ -135,8 +135,10 @@
   `(data sched
             ,(string->symbol (format #f "year-~a" year))
             ,(string->symbol (format #f "week-~2,'0d" week))))
+
 (define (week-mod-file year week)
   (format #f "~a/.nfldb/cache/~a.scm" (getenv "HOME") (string-join (map symbol->string (week-mod year week)) "/")))
+
 (define (write-week-schedule games year week out)
   (define (write-game g)
     (format out "~%")

@@ -5,7 +5,7 @@
   ;; *******************************************************************************************************************
 
   #:use-module (oop goops)
-; #:use-module (srfi srfi-19)
+  #:use-module (srfi srfi-19)
 
   #:use-module (web client)
   #:use-module (web response)
@@ -20,7 +20,10 @@
   #:export (espn-host-cdn)
 
   #:export (read-espn-color)
+  #:export (read-espn-gametime)
   #:export (lookup-division)
+
+  #:export (<espn-object>)
 )
 
 (define espn-host-core "sports.core.api.espn.com")
@@ -58,3 +61,15 @@
                                (string->symbol (json-ref abbreviation div-json)))) )
               (hash-set! url-map url pair)
               pair)))))))
+
+(define (tz-offset) -4)
+(define espn-date-fmt "~Y-~m-~dT~H:~MZ")
+
+(define (read-espn-gametime date-string)
+  (let ( (utc-date (string->date date-string espn-date-fmt)) )
+;   (format #t "~s => ~a~%" date-string utc-date)
+    (secs->gametime (time-second (date->time-utc (hour+ (date->time-utc utc-date) (tz-offset)))))))
+
+(define-class <espn-object> ()
+  (espn-id        #:init-form       #:espn-id)
+)
