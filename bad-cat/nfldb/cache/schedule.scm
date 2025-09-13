@@ -62,7 +62,7 @@
 ;; Individual Season Cache
 ;;
 
-(define-class <schedule-cache> (<nfldb-cache>)
+(define-class <schedule-cache> ()
   (seasons      #:init-thunk      make-hash-table
                 #:getter          sched.seasons)
 )

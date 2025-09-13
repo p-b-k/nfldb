@@ -32,7 +32,7 @@
   #:export (my-team)
 )
 
-(define-class <league-cache> (<nfldb-cache>)
+(define-class <league-cache> ()
   (teams          #:init-thunk      make-hash-table
                   #:getter          league.teams
                   #:setter          league.teams!)

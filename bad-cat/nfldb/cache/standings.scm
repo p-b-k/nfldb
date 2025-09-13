@@ -16,7 +16,7 @@
   #:use-module (bad-cat nfldb game)
 )
 
-(define-class <game-cache> (<nfldb-cache>)
+(define-class <game-cache> ()
   (game       #:init-form     #f
               #:getter        game.game
               #:setter        game.game!)
