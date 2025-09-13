@@ -19,6 +19,9 @@
   #:export (conf->index)
   #:export (div->index)
 
+  #:export (league-retrieve!)
+  #:export (league-restore)
+
   #:export (all-nfl-teams)
 
   #:export (get-team)
@@ -60,7 +63,7 @@
 ;; Leave this as is, as this should only be updated when forced to
 ;; (define-method (cache-out-of-date? (c <league-cache>)) #f)
 
-(define-method (cache-sync! (l <league-cache>))
+(define-method (league-retrieve! (l <league-cache>))
   (clear-cache l)
   (reset-conference-cache (league.conferences l))
   (map (lambda (t) (register-team l t)) (espn-get-teams))
@@ -103,7 +106,7 @@
   (format #t "cache-persist-store <league-cache> : synching cache ~a~%" (class-name (class-of c)))
   (with-output-to-file league-cache-file write-teams))
 
-(define-method (cache-read-from-store (c <league-cache>))
+(define-method (league-restore)
   (define (read-objects)
     (define (proc sofar)
       (let ( (next (read)) )
@@ -112,7 +115,7 @@
           (proc (cons next sofar)))))
     (proc '()))
   (if (file-exists? league-cache-file)
-    (map (lambda (x) (register-team c x))
+    (map (lambda (x) (register-team (league) x))
          (map nfldb-eval (with-input-from-file league-cache-file read-objects)))
     #f))
 
@@ -162,7 +165,7 @@
   (sort (apply append
                (apply append
                       (map (lambda (x) (hash-map->list _2nd x))
-                           (hash-map->list _2nd (league.conferences l)))))
+                           (hash-map->list _2nd (league.conferences (league))))))
         team-name<?))
 
 (define my-team-param (make-parameter 'PHI))

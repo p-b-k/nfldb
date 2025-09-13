@@ -1,7 +1,4 @@
-(make-instance <season-cache>
-               ;; Skip need-update because it has no #:init-keyword
-               #:year           2025
-               #:weeks          (list->array 1 (list 
+(list->array 1 (list 
 (cons (make-instance <nfl-game>
                #:id             401772510
                #:name           "Dallas Cowboys at Philadelphia Eagles"
@@ -2996,5 +2993,3 @@
 )
 ))
 
-
-)

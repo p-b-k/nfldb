@@ -18,54 +18,44 @@
 
   #:use-module (bad-cat nfldb cache league)
 
-  #:export (<season-cache>)
-  #:export (<schedule-cache>)
+; #:export (<season-cache>)
+; #:export (<schedule-cache>)
+
+  #:export (schedule-restore)
+  #:export (schedule-store)
+  #:export (schedule-retrieve)
 
   #:export (add-season)
   #:export (get-games)
 )
 
-;;
-;; Individual Season Cache
-;;
+(define season-cache-root (format #f "~a/seasons" nfldb-cache-root))
 
-(define-class <season-cache> (<nfldb-cache>)
-  (year         #:init-keyword    #:year
-                #:getter          season.year)
-  (weeks        #:init-keyword    #:weeks
-                #:init-form       (make-array #f 18)
-                #:getter          season.weeks)
-)
+(define-method (season-retrieve year)
+  (let ( (weeks (make-array #f 18)) )
+    (define (get-weeks weekno)
+      (if (<= weekno 18)
+        (begin
+          (let ( (games (espn-get-games year weekno)) )
+            (array-set! weeks games (1- weekno)))
+          (get-weeks (1+ weekno)))
+        weeks))
+    (get-weeks 1)))
 
-(define (season-cache-file year)
-  (format #f "~a/sched_~2,'0d.scm" nfldb-cache-root year))
+(define-method (season-store year weeks)
+  (define (write-cache) (write-constructor weeks (current-output-port)))
 
-(define-method (cache-sync! (c <season-cache>))
-  (define (get-weeks todo weekno)
-    (if (not (null? todo))
-      (begin
-        (let ( (games (espn-get-games (season.year c) weekno)) )
-          (array-set! (season.weeks c) games (1- weekno)))
-        (get-weeks (cdr todo) (1+ weekno)))))
-  (get-weeks (array->list (season.weeks c)) 1))
-
-(define-method (cache-persist-store (c <season-cache>))
-  (define (write-cache) (write-constructor c (current-output-port)))
-
-  (with-output-to-file (season-cache-file (season.year c)) write-cache))
-
-(define-method (cache-read-from-store (c <season-cache>))
-  (let ( (cache-file (season-cache-file (season.year c))) )
-    (if (file-exists? cache-file)
-      ;; (eval (with-input-from-file cache-file read) (current-module))
-      (nfldb-eval cache-file)
-      #f)))
+  (format #t "season-store: writing cache ~a~%" (schedule))
+  (let ( (output-file (format #f "~a/~2,'0d.scm" season-cache-root year)) )
+    (format #t "season-store: output-file = ~a~%" output-file)
+    (with-output-to-file output-file write-cache)))
 
 (define-method (read-season-from-store (year <integer>))
-  (let ( (cache-file (season-cache-file year)) )
+  (let ( (cache-file (format #f "~a/~2,'0d.scm" season-cache-root year)) )
     (if (file-exists? cache-file)
       (let ( (cache-def (with-input-from-file cache-file read)) )
-        (nfldb-eval cache-file))
+        (let ( (cache (nfldb-eval cache-def)) )
+          cache))
       #f)))
 
 ;;
@@ -74,30 +64,53 @@
 
 (define-class <schedule-cache> (<nfldb-cache>)
   (seasons      #:init-thunk      make-hash-table
-                #:getter          sched.seasons
-                #:setter          sched.seasons!)
+                #:getter          sched.seasons)
 )
 
-(define-method (cache-sync! (c <schedule-cache>))
-  (define (sync-season year season)
-    (if (needs-update? season)
-      (begin
-        (format #t "Synching Schedule cache ~a~%" c)
-        (cache-sync! season))))
-  (hash-map->list sync-season (sched.seasons c)))
+(define-method (schedule-retrieve (year <integer>))
+  (let ( (season (season-retrieve year)) )
+    (format #t "Season for ~a is a ~a~%" year (class-name (class-of season)))
+    (hash-set! (sched.seasons (schedule)) year season)
+    #t))
 
-(define schedule-cache-file (format #f "~a/schedules.scm" nfldb-cache-root))
+(define-method (schedule-store)
+  (format #t "schedule-store: calling on ~a (~a)~%" (schedule) (class-name (class-of (schedule))))
+  (let ( (seasons (sched.seasons (schedule))) )
+    (format #t "schedule-store: seasons = ~a~%" seasons)
+    (hash-map->list (lambda (a b)
+                      (format #t "cache-persist-store <schedule-cache>: b = ~a~%" b)
+                      (season-store a b))
+                    seasons)))
 
-(define-method (cache-persist-store (c <schedule-cache>))
-  (with-output-to-file
-    schedule-cache-file
-    (lambda () (format #t "~a" (hash-map->list _1st (sched.seasons c)))))
-  (hash-map->list (lambda (a b) (cache-persist-store b)) (sched.seasons c)))
+(define (list-cached-seasons)
+  (define (get-year file)
+    (if (file-exists? (format #f "~a/~a" season-cache-root file))
+      (if (not (file-is-directory? (format #f "~a/~a" season-cache-root file)))
+        (let ( (split (string-split file #\.)) )
+          (if (and (= 2 (length split)) (string=? (cadr split) "scm"))
+            (string->number (car split))
+            #f))
+        #f)
+      #f))
+  (define (read-years dir sofar)
+    (let ( (next (readdir dir)) )
+      (if (eof-object? next)
+        sofar
+        (let ( (year (get-year next)) )
+          (if year
+            (read-years dir (cons year sofar))
+            (read-years dir sofar))))))
+  (let ( (season-dir (opendir season-cache-root)) )
+    (let ( (years (read-years season-dir '())) )
+      (closedir season-dir)
+      years)))
 
-(define-method (cache-read-from-store (c <schedule-cache>))
+(define (schedule-restore)
   (define (add-season-cache year)
-    (hash-set! (sched.seasons c) year (read-season-from-store year)))
-  (let ( (years (with-input-from-file schedule-cache-file read)) )
+    (let ( (season-data (read-season-from-store year)) )
+;     (format #t "schedule-restore: season-data is a ~a~%" (class-name (class-of season-data)))
+      (hash-set! (sched.seasons (schedule)) year season-data)))
+  (let ( (years (list-cached-seasons)) )
     (map add-season-cache years)))
 
 (define-method (espn-get-games year weekno)
@@ -136,16 +149,9 @@
 
 (define schedule (make-parameter (make-instance <schedule-cache>)))
 
-(define (add-season year)
-  (if (not (hash-ref (sched.seasons (schedule)) year))
-    (hash-set! (sched.seasons (schedule)) year (make-instance <season-cache> #:year year))))
-
 (define (get-games year week-no)
-  (let ( (season (hash-ref (sched.seasons (schedule)) year)) )
-    (if season
-      (let ( (weeks (season.weeks season)) )
-        (if weeks
-          (array-ref weeks (1- week-no))
-          #f))
+  (let ( (weeks (hash-ref (sched.seasons (schedule)) year)) )
+    (if weeks
+      (array-ref weeks (1- week-no))
       #f)))
 

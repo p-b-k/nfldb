@@ -8,8 +8,8 @@
 
 (use-modules (g-golf))
 
-(use-modules (data league))
-(use-modules (data sched year-2025))
+; (use-modules (data league))
+; (use-modules (data sched year-2025))
 (use-modules (bad-cat nfldb ui init))
 
 (use-modules (bad-cat utils))
@@ -22,7 +22,6 @@
 
 
 ; (use-modules (bad-cat nfldb data))
-; (use-modules (bad-cat nfldb cache-datasource))
 
 (use-modules (bad-cat nfldb ui panels main))
 
@@ -58,6 +57,4 @@
 ;; *********************************************************************************************************************
 ;; Set the caching data source
 ;; *********************************************************************************************************************
-
-; (set-datasource (cache-datasource-new))
 
