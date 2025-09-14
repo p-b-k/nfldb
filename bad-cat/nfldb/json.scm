@@ -13,6 +13,8 @@
   #:export (json-ref)
   #:export (json-match)
   #:export (json-keys)
+
+; #:export (write-as-json)
 )
 
 ;; *********************************************************************************************************************
@@ -245,4 +247,27 @@
     ( (json-match ref-spec json-obj)
       (json-path-ref (map (lambda (x) (format #f "~a" x))  ref-spec) json-obj) )))
 
+;; ---------------------------------------------------------------------------------------------------------------------
+;; Write out the JSON data (as json)
+;; Not sure about this yet
+;; ---------------------------------------------------------------------------------------------------------------------
+
+(define-method (write-as-json object (depth <integer>) (o <output-port>))
+  (throw 'unknown-json-mapping object (class-name (class-of object))))
+
+(define-method (write-as-json (b <boolean>) (depth <integer>) (o <output-port>)) (write (if b 'true 'false) o))
+(define-method (write-as-json (n <number>)  (depth <integer>) (o <output-port>)) (write n o))
+(define-method (write-as-json (s <string>)  (depth <integer>) (o <output-port>)) (write s o))
+(define-method (write-as-json (s <symbol>)  (depth <integer>) (o <output-port>)) (write (symbol->string s) o))
+
+(define-method (write-as-json (n <null>)    (depth <integer>) (o <output-port>)) (write "[]" o))
+(define-method (write-as-json (l <list>)    (depth <integer>) (o <output-port>))
+  (define (proc-list-items sep items)
+    (if (null? items)
+      (format o "~a]~%" (make-string depth #\space))
+      (begin
+        (format o "~a " sep)
+        (write-as-json (car items) (+ 2 depth) o)
+        (proc-list-items #\, (cdr l)))))
+  (proc-list-items #\[ l))
 
