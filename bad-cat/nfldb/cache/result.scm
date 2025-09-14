@@ -1,7 +1,7 @@
-(define-module (bad-cat nfldb cache game)
+(define-module (bad-cat nfldb cache result)
 
   ;; *******************************************************************************************************************
-  ;; Cache for Schedule data
+  ;; Cache for the results of a game
   ;; Very static. Might change if a game gets flexed
   ;; *******************************************************************************************************************
 
