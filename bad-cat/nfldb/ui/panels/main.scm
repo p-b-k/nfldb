@@ -10,7 +10,7 @@
   #:use-module (bad-cat utils)
 
   #:use-module (bad-cat nfldb team)
-  #:use-module (bad-cat nfldb data)
+  #:use-module (bad-cat nfldb cache standings)
 
   #:export (get-overview-layout)
 )
@@ -111,7 +111,7 @@
              (gtk-box-append hbox score)
              (gtk-box-append root-vbox hbox)
              hbox))
-         (ds-get-standings conf div))
+         (get-standings conf div))
 
     root-vbox))
 

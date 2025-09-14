@@ -41,8 +41,6 @@
 (define (espn-get-page host path proc)
   (espn-get-url (format #f "https://~a/~a" host path) proc))
 
-
-
 (define-method (espn-get-div-standings (c-idx <integer>) (d-idx <integer>))
   (let ( (json (espn-get-url "https://cdn.espn.com/core/nfl/standings?xhr=1" port->json-obj)) )
     (let ( (standings (json-match `(content standings groups ,c-idx groups ,d-idx standings entries) json)) )
