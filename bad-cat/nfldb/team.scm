@@ -7,6 +7,7 @@
   #:use-module (oop goops)
 
   #:use-module (bad-cat utils)
+  #:use-module (bad-cat nfldb serialize)
 
   #:export (<nfl-team>)
   #:export (team-name<?)
@@ -51,6 +52,17 @@
             (symbol->string (team.nick b))))
 
 (define-class <nfl-team-record> () w l t pct home away div conf pf pa diff strk)
+
+(define-method (write-constructor (obj <nfl-team-record>) (out <output-port>))
+  (define (write-slot-value slot)
+    (let ( (n (slot-definition-name slot))
+           (v (slot-ref obj (slot-definition-name slot))) )
+      (format out "(slot-set! stats '~a " n)
+      (write-constructor v out)
+      (format out ")~%")))
+  (format out "(let ( (stats (make-instance ~a)) )~%" (class-name (class-of obj)))
+  (map write-slot-value (class-slots (class-of obj)))
+  (format out "  stats)~%"))
 
 (define (write-team-css-style team)
   (format #t ".team_~a * {~%" (team.nick team))

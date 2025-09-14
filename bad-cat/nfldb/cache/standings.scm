@@ -8,20 +8,25 @@
   #:use-module (oop goops)
 
   #:use-module (bad-cat utils)
+  #:use-module (bad-cat nfldb)
 
   #:use-module (bad-cat nfldb cache)
   #:use-module (bad-cat nfldb espn)
   #:use-module (bad-cat nfldb team)
   #:use-module (bad-cat nfldb json)
   #:use-module (bad-cat nfldb team)
+  #:use-module (bad-cat nfldb serialize)
+
   #:use-module (bad-cat nfldb cache league)
 
   #:export (standings-retrieve)
   #:export (standings-restore)
   #:export (standings-store)
+  #:export (standings-update)
 
   #:export (get-standings)
 )
+(define standings-cache-root (format #f "~a/standings" nfldb-cache-root))
 
 (define standings (make-parameter (make-hash-table)))
 
@@ -67,6 +72,33 @@
       (cons nick stats)))
   (format #t "process-division: calling on divison json: ~a~%" div-json)
   (map process-team-and-stats div-json))
+
+(define (standings-store)
+  (define (write-standing c d)
+    (let ( (file (format #f "~a/~a/~a.scm" standings-cache-root c d)) )
+      (with-output-to-file file (lambda () (write-constructor (get-standings c d) (current-output-port))))))
+  (map (lambda (conf)
+         (map (lambda (div) (write-standing conf div))
+              '(EAST NORTH SOUTH WEST)))
+       '(AFC NFC)))
+
+(define (standings-restore)
+  (define (read-standing c d)
+    (let ( (file (format #f "~a/~a/~a.scm" standings-cache-root c d)) )
+      (hash-set! (hash-ref (standings) c) d (with-input-from-file file (lambda () (nfldb-eval (read)))))))
+  (reset-cache (standings))
+  (map (lambda (conf)
+         (map (lambda (div) (read-standing conf div))
+              '(EAST NORTH SOUTH WEST)))
+       '(AFC NFC)))
+
+(define (standings-update)
+  (standings-retrieve)
+  (standings-store))
+
+;; ---------------------------------------------------------------------------------------------------------------------
+;; Public API
+;; ---------------------------------------------------------------------------------------------------------------------
 
 (define (get-standings conf div) (hash-ref (hash-ref (standings) conf) div))
 

@@ -18,5 +18,5 @@
 
 (league-restore)
 (schedule-restore)
-; (standings-restore)
+(standings-restore)
 
