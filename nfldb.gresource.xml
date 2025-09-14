@@ -16,6 +16,14 @@
           compressed="true"
           preprocess="xml-stripblanks">res/NFC.svg</file>
 
+    <!-- Win/Lose -->
+    <file alias="win"
+          compressed="true"
+          preprocess="xml-stripblanks">res/win.svg</file>
+    <file alias="lose"
+          compressed="true"
+          preprocess="xml-stripblanks">res/lose.svg</file>
+
     <!-- TEAM LOGOS -->
     <file alias="ARI/logo"
          compressed="true"

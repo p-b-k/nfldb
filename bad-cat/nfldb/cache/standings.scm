@@ -42,7 +42,7 @@
   (espn-get-div-standings (standings)))
 
 (define-method (espn-get-div-standings standings-cache)
-  (let ( (json (espn-get-url "https://cdn.espn.com/core/nfl/standings?xhr=1" port->json-obj)) )
+  (let ( (json (espn-get-url (format #f "https://~a/core/nfl/standings?xhr=1" espn-host-cdn) port->json-obj)) )
     (map (lambda (c)
            (let ( (c-idx (conf->index c))
                   (conf-hash (hash-ref standings-cache c)) )
