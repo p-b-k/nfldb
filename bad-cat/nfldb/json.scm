@@ -79,7 +79,7 @@
       (let ( (next-char (read-char)) )
         (case next-char
           ( (#\" #\\) (read-body (cons next-char sofar)) )
-          ( (#\n) (read-body (cons #\newline sofar)) )
+          ( (#\n #\r) (read-body (cons #\newline sofar)) )
           ( (#\u) (read-body (cons (read-unicode (list #\x #\#)) sofar)) )
           ( else
             (parse-err 'invalid-escape-char "Expected either quote or backslash, got ~s" next-char) ))))

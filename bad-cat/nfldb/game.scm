@@ -44,9 +44,26 @@
                       #:getter            game.away)
 )
 
+(define-class <nfl-game-data> ()
+  (espn-id            #:init-keyword      #:id
+                      #:getter            game.id)
+  (scoringPlays       #:init-keyword      #:scores
+                      #:getter            game.scores)
+  (drives             #:init-keyword      #:drives
+                      #:getter            game.drives)
+)
+
+(define-class <nfl-game-drive> ()
+  (team-id            #:init-keyword      #:team)
+  (start              #:init-keyword      #:start)
+  (end                #:init-keyword      #:end)
+  (plays              #:init-keyword      #:plays)
+)
+
 (define-method (write (g <nfl-game>) (o <output-port>))
   (format o "[~2,'0d: ~a @ ~a]" (1+ (game.week g)) (game.away g) (game.home g)))
 
 (define-method (game-date<? (g1 <nfl-game>) (g2 <nfl-game>)) (gametime<? (game.time g1) (game.time g2)))
 
 (define-method (game.teams (g <nfl-game>)) (list (game.home g) (game.away g)))
+
