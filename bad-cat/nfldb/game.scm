@@ -25,6 +25,7 @@
   #:export (games-for-week)
 )
 
+;; Overview data for a game
 (define-class <nfl-game> ()
   (espn-id            #:init-keyword      #:id
                       #:getter            game.id)
@@ -44,6 +45,7 @@
                       #:getter            game.away)
 )
 
+;; Detailed data for a game
 (define-class <nfl-game-data> ()
   (espn-id            #:init-keyword      #:id
                       #:getter            game.id)
@@ -53,11 +55,27 @@
                       #:getter            game.drives)
 )
 
+;; Details about a drive
 (define-class <nfl-game-drive> ()
   (team-id            #:init-keyword      #:team)
   (start              #:init-keyword      #:start)
   (end                #:init-keyword      #:end)
   (plays              #:init-keyword      #:plays)
+)
+
+;; Root class of a play
+(define-class <nfl-game-play> ()
+  (play-id            #:init-keyword      #:play-id)
+  (drive              #:init-keyword      #:drive)
+  (type-id            #:init-keyword      #:type-id)
+  (text               #:init-keyword      #:text)
+)
+
+;; Type of plays
+(define-class <nfl-play-type> ()
+  (id                 #:init-keyword      #:id)
+  (text               #:init-keyword      #:text)
+  (abbr               #:init-keyword      #:abbr)
 )
 
 (define-method (write (g <nfl-game>) (o <output-port>))

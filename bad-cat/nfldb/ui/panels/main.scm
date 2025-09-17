@@ -29,9 +29,9 @@
       (slot-set! banner 'vexpand #f)
       (slot-set! banner 'valign 1)
 
-      (slot-set! team-hbox 'css-classes (list "test-a"))
-      (slot-set! banner 'css-classes (list "test-c"))
-      (slot-set! game 'css-classes (list "test-b"))
+;     (slot-set! team-hbox 'css-classes (list "test-a"))
+;     (slot-set! banner 'css-classes (list "test-c"))
+;     (slot-set! game 'css-classes (list "test-b"))
       (slot-set! game 'valign 0)
 
       (gtk-box-append team-hbox banner)

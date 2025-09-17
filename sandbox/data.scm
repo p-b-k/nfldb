@@ -27,14 +27,14 @@
 (define week-2 401772510)
 (define week-3 401772839)
 
-(define (get-game-url game-id)
+(define (old-get-game-url game-id)
   (format #f "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=~a" game-id))
 
 (define (get-game-data game-id)
-  (espn-get-url (get-game-url game-id) port->json-obj))
+  (espn-get-url (old-get-game-url game-id) port->json-obj))
 
 (define (get-game-score game-id)
-  (let ( (game-json (espn-get-url (get-game-url game-id) port->json-obj)) )
+  (let ( (game-json (espn-get-url (old-get-game-url game-id) port->json-obj)) )
     (if (member 'scoringPlays (hash-map->list _1st game-json))
       (let ( (scoring-plays (json-ref scoringPlays game-json)) )
         (if (null? scoring-plays)
@@ -43,5 +43,20 @@
             (cons (json-ref awayScore final-scoring-play)
                   (json-ref homeScore final-scoring-play)))))
       #f)))
-  
+
+(define (get-game-plays game-json)
+  (apply append (map (lambda (drive) (json-ref plays drive)) (json-ref drives.previous game-json))))
+
+(define (print-plays plays)
+  (if (not (null? plays))
+    (let ( (type (json-ref type (car plays))) )
+      (let ( (id (json-ref id type))
+             (abbr (if (member 'abbreviation (json-keys type)) (json-ref abbreviation type) ""))
+             (text (json-ref text type)) )
+        (format #t "~8a : ~12a : ~a~%" id abbr text)
+        (format #t "~8a : ~a~%" "" (json-ref text (car plays)))
+        (format #t "~%")
+        (print-plays (cdr plays))))))
+
+(use-modules (bad-cat nfldb cache game-details))
 
