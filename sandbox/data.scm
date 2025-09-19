@@ -59,4 +59,5 @@
         (print-plays (cdr plays))))))
 
 (use-modules (bad-cat nfldb cache game-details))
+(use-modules (bad-cat nfldb game))
 

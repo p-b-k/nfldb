@@ -24,6 +24,7 @@
   #:export (lookup-division)
 
   #:export (<espn-object>)
+  #:export (clock->pair)
 )
 
 (define espn-host-core "sports.core.api.espn.com")
@@ -73,3 +74,8 @@
 (define-class <espn-object> ()
   (espn-id        #:init-form       #:espn-id)
 )
+
+(define (clock->pair min-sec)
+  (let ( (nums (map string->number (string-split min-sec #\:))) )
+    (cons (list-ref nums 0) (list-ref nums 1))))
+

@@ -19,10 +19,17 @@
   #:export (game.home)
   #:export (game.away)
   #:export (game.teams)
+  #:export (game.scores)
+  #:export (game.drives)
 
   #:export (game-date<?)
 
   #:export (games-for-week)
+
+  #:export (make-game-data)
+  #:export (make-game-play)
+  #:export (make-scoring-play)
+  #:export (make-drive)
 )
 
 ;; Overview data for a game
@@ -55,13 +62,29 @@
                       #:getter            game.drives)
 )
 
+(define (make-game-data game-id scoringPlays drives)
+  (make-instance <nfl-game-data> #:id game-id #:scores scoringPlays #:drives drives))
+
 ;; Details about a drive
 (define-class <nfl-game-drive> ()
   (team-id            #:init-keyword      #:team)
-  (start              #:init-keyword      #:start)
-  (end                #:init-keyword      #:end)
+  (start-clock        #:init-keyword      #:start-clock)
+  (time-clock         #:init-keyword      #:time-clock)
+  (start-position     #:init-keyword      #:start-pos)
+  (end-position       #:init-keyword      #:end-pos)
   (plays              #:init-keyword      #:plays)
+  (result             #:init-keyword      #:result)
 )
+
+(define (make-drive team-id start-clock time-clock start-pos end-pos result plays)
+  (make-instance <nfl-game-drive>
+                 #:team           team-id
+                 #:start-clock    start-clock
+                 #:time-clock      time-clock
+                 #:start-pos      start-pos
+                 #:end-pos        end-pos
+                 #:result         result
+                 #:plays          plays))
 
 ;; Root class of a play
 (define-class <nfl-game-play> ()
@@ -70,6 +93,28 @@
   (type-id            #:init-keyword      #:type-id)
   (text               #:init-keyword      #:text)
 )
+
+(define (make-game-play play-id drive-no type-id text)
+  (make-instance <nfl-game-play>
+                 #:play-id    play-id
+                 #:drive      drive-no
+                 #:type-id    type-id
+                 #:text       text))
+
+;; Scoring play
+(define-class <nfl-scoring-play> (<nfl-game-play>)
+  (away-score         #:init-keyword      #:away-score)
+  (home-score         #:init-keyword      #:home-score)
+)
+
+(define (make-scoring-play play-id drive-no type-id text away-score home-score)
+  (make-instance <nfl-scoring-play>
+                 #:play-id    play-id
+                 #:drive      drive-no
+                 #:type-id    type-id
+                 #:text       text
+                 #:away-score away-score
+                 #:home-score home-score))
 
 ;; Type of plays
 (define-class <nfl-play-type> ()
