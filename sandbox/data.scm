@@ -60,4 +60,7 @@
 
 (use-modules (bad-cat nfldb cache result))
 (use-modules (bad-cat nfldb game))
+(use-modules (bad-cat nfldb))
+
+(define (update-week-results week-no) (map update-game-details (get-games (current-season) week-no)))
 
