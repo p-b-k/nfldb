@@ -132,8 +132,8 @@
           "unplayed-resource"))
       "bye-resource"))
   (let ( (image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a.svg" (get-resource)))) )
-    (slot-set! image 'height-request 64)
-    (slot-set! image 'width-request  64)
+    (slot-set! image 'height-request 32)
+    (slot-set! image 'width-request  32)
     image))
 
 (define (get-sched-panel team)
