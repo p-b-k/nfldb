@@ -9,8 +9,12 @@
 
   #:use-module (bad-cat utils)
 
+  #:use-module (bad-cat nfldb)
   #:use-module (bad-cat nfldb team)
+  #:use-module (bad-cat nfldb game)
   #:use-module (bad-cat nfldb cache standings)
+  #:use-module (bad-cat nfldb cache schedule)
+  #:use-module (bad-cat nfldb cache result)
 
   #:export (get-overview-layout)
 )
@@ -122,7 +126,7 @@
         (if result
           (if (game-tied? result)
             "tied-resource"
-            (if (game-winner? result team)
+            (if (game-winner? game result (team.nick team))
               "winner-resource"
               "looser-resource"))
           "unplayed-resource"))
@@ -135,8 +139,9 @@
 (define (get-sched-panel team)
   (let ( (hbox  (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #t)) )
     (define (add-schedule-entry game)
-      (gtk-box-append hbox (create-schedule-entry-for-game team game)))
-    (map add-sched-entry (get-team-games (team.nick team) (current-year)))
+      (gtk-box-append hbox (create-schedule-entry-for-game team game))
+      #t)
+    (map add-schedule-entry (get-team-games (team.nick team) (current-season)))
     hbox))
 (define (get-conf-panel conf) (make-instance <gtk-label> #:label (format #f "Conference Panel (~a)" conf)))
 

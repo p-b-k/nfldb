@@ -16,6 +16,7 @@
   #:use-module (bad-cat utils)
 
   #:export (nfldb-eval)
+  #:export (current-season)
 )
 
 (define (nfldb-eval expr) (eval expr (resolve-module '(bad-cat nfldb))))

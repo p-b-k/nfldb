@@ -24,8 +24,11 @@
   #:export (game.home)
   #:export (game.away)
   #:export (game.teams)
-  #:export (game.scores)
-  #:export (game.drives)
+
+  #:export (result.home)
+  #:export (result.away)
+  #:export (result.scores)
+  #:export (result.drives)
 
   #:export (game-date<?)
 
@@ -35,6 +38,9 @@
   #:export (make-game-play)
   #:export (make-scoring-play)
   #:export (make-drive)
+
+  #:export (game-tied?)
+  #:export (game-winner?)
 )
 
 ;; Overview data for a game
@@ -62,14 +68,23 @@
 (define-class <nfl-game-result> ()
   (espn-id            #:init-keyword      #:id
                       #:getter            game.id)
+  (away-score         #:init-keyword      #:away
+                      #:getter            result.away)
+  (home-score         #:init-keyword      #:home
+                      #:getter            result.home)
   (scoringPlays       #:init-keyword      #:scores
-                      #:getter            game.scores)
+                      #:getter            result.scores)
   (drives             #:init-keyword      #:drives
-                      #:getter            game.drives)
+                      #:getter            result.drives)
 )
 
-(define (make-game-data game-id scoringPlays drives)
-  (make-instance <nfl-game-result> #:id game-id #:scores scoringPlays #:drives drives))
+(define (make-game-data game-id away-score home-score scoringPlays drives)
+  (make-instance <nfl-game-result>
+                 #:id         game-id
+                 #:home       home-score
+                 #:away       away-score
+                 #:scores     scoringPlays
+                 #:drives     drives))
 
 ;; Details about a drive
 (define-class <nfl-game-drive> ()
@@ -136,3 +151,9 @@
 
 (define-method (game.teams (g <nfl-game>)) (list (game.home g) (game.away g)))
 
+(define-method (game-tied? (r <nfl-game-result>)) (eq? (result.home r) (result.away r)))
+
+(define-method (game-winner? (g <nfl-game>) (r <nfl-game-result>) (team <symbol>))
+  (if (< (result.home r) (result.away r))
+    (eq? team (game.away g))
+    (eq? team (game.home g))))
