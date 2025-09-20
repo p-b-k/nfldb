@@ -9,6 +9,11 @@
   #:use-module (bad-cat utils)
 
   #:export (<nfl-game>)
+  #:export (<nfl-game-data>)
+  #:export (<nfl-game-drive>)
+  #:export (<nfl-game-play>)
+  #:export (<nfl-scoring-play>)
+  #:export (<nfl-play-type>)
 
   #:export (game.id)
   #:export (game.name)
@@ -50,6 +55,7 @@
                       #:getter            game.home)
   (away-team          #:init-keyword      #:away
                       #:getter            game.away)
+  (game-details       #:init-form         #f)
 )
 
 ;; Detailed data for a game
