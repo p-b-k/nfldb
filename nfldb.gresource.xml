@@ -16,13 +16,22 @@
           compressed="true"
           preprocess="xml-stripblanks">res/NFC.svg</file>
 
-    <!-- Win/Lose -->
+    <!-- Game Status -->
     <file alias="win"
           compressed="true"
-          preprocess="xml-stripblanks">res/win.svg</file>
+          preprocess="xml-stripblanks">res/game/status/win.svg</file>
     <file alias="lose"
           compressed="true"
-          preprocess="xml-stripblanks">res/lose.svg</file>
+          preprocess="xml-stripblanks">res/game/status/lose.svg</file>
+    <file alias="tie"
+          compressed="true"
+          preprocess="xml-stripblanks">res/game/status/tie.svg</file>
+    <file alias="bye"
+          compressed="true"
+          preprocess="xml-stripblanks">res/game/status/bye.svg</file>
+    <file alias="not-played"
+          compressed="true"
+          preprocess="xml-stripblanks">res/game/status/not-played.svg</file>
 
     <!-- TEAM LOGOS -->
     <file alias="ARI/logo"

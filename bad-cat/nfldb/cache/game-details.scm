@@ -17,29 +17,29 @@
 
   #:use-module (bad-cat nfldb cache league)
 
-  #:export (game-details-store)
-  #:export (game-details-restore)
-  #:export (game-details-retrieve)
-  #:export (game.details)
+  #:export (game-result-store)
+  #:export (game-result-restore)
+  #:export (game-result-retrieve)
+  #:export (game.result)
   #:export (update-game-details)
 )
 
 (define (game-cache-file game-id) (format #f "~a/games/game_~a.scm" nfldb-cache-root game-id))
 
-(define (game-details-store game-details)
+(define (game-result-store game-details)
   (if game-details
     (let ( (game-id (game.id game-details)) )
       (with-output-to-file
         (game-cache-file game-id)
         (lambda () (write-constructor game-details (current-output-port)))))))
 
-(define (game-details-restore game-id)
+(define (game-result-restore game-id)
   (let ( (cache-file (game-cache-file game-id)) )
     (if (file-exists? cache-file)
       (nfldb-eval (with-input-from-file cache-file read))
       #f)))
 
-(define (game-details-retrieve game-id)
+(define (game-result-retrieve game-id)
   (let ( (game-json (get-game-data game-id)) )
     (if game-json
       (json->game-data game-id game-json)
@@ -83,13 +83,13 @@
         (format #t "The game ~a has not been played yet~%" name)
         #f))))
 
-(define-method (game.details (g <boolean>)) g)
+(define-method (game.result (g <boolean>)) (not g))
 
-(define-method (game.details (g <nfl-game>))
+(define-method (game.result (g <nfl-game>))
   (let ( (cached-details (slot-ref g 'game-details)) )
     (if cached-details
       cached-details
-      (let ( (fresh-details (game-details-restore (game.id g))) )
+      (let ( (fresh-details (game-result-restore (game.id g))) )
         (if fresh-details
           (begin
             (slot-set! g 'game-details fresh-details)
@@ -99,9 +99,9 @@
 (define-method (update-game-details (g <nfl-game>))
   (let ( (cache-file (game-cache-file (game.id g))) )
     (if (not (file-exists? cache-file))
-      (let ( (game (game-details-retrieve (game.id g))) )
+      (let ( (game (game-result-retrieve (game.id g))) )
         (if game
           (begin
             (format #t "update data getting details for ~a~%" (game.name g))
-            (game-details-store game)))))))
+            (game-result-store game)))))))
 

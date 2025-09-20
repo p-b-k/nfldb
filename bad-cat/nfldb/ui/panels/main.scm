@@ -115,9 +115,28 @@
 
     root-vbox))
 
+(define (create-schedule-entry-for-game team game)
+  (define (get-resource)
+    (if game
+      (let ( (result (game.result game)) )
+        (if result
+          (if (game-tied? result)
+            "tied-resource"
+            (if (game-winner? result team)
+              "winner-resource"
+              "looser-resource"))
+          "unplayed-resource"))
+      "bye-resource"))
+  (let ( (image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a.svg" (get-resource)))) )
+    (slot-set! image 'height-request 64)
+    (slot-set! image 'width-request  64)
+    image))
+
 (define (get-sched-panel team)
-  (let ( (label (make-instance <gtk-label> #:label (format #f "Schedule Panel (~a)" (team.name team)))) )
-    (slot-set! label 'vexpand #f)
-    label))
+  (let ( (hbox  (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #t)) )
+    (define (add-schedule-entry game)
+      (gtk-box-append hbox (create-schedule-entry-for-game team game)))
+    (map add-sched-entry (get-team-games (team.nick team) (current-year)))
+    hbox))
 (define (get-conf-panel conf) (make-instance <gtk-label> #:label (format #f "Conference Panel (~a)" conf)))
 

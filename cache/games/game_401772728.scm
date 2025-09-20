@@ -1,4 +1,4 @@
-(make-instance <nfl-game-data>
+(make-instance <nfl-game-result>
                #:id             401772728
                #:scores         (cons (make-instance <nfl-game-play>
                #:play-id        401772728269

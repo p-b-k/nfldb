@@ -9,7 +9,7 @@
   #:use-module (bad-cat utils)
 
   #:export (<nfl-game>)
-  #:export (<nfl-game-data>)
+  #:export (<nfl-game-result>)
   #:export (<nfl-game-drive>)
   #:export (<nfl-game-play>)
   #:export (<nfl-scoring-play>)
@@ -59,7 +59,7 @@
 )
 
 ;; Detailed data for a game
-(define-class <nfl-game-data> ()
+(define-class <nfl-game-result> ()
   (espn-id            #:init-keyword      #:id
                       #:getter            game.id)
   (scoringPlays       #:init-keyword      #:scores
@@ -69,7 +69,7 @@
 )
 
 (define (make-game-data game-id scoringPlays drives)
-  (make-instance <nfl-game-data> #:id game-id #:scores scoringPlays #:drives drives))
+  (make-instance <nfl-game-result> #:id game-id #:scores scoringPlays #:drives drives))
 
 ;; Details about a drive
 (define-class <nfl-game-drive> ()

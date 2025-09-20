@@ -159,7 +159,7 @@
 (define (get-team-games team-id year)
   (define (find-game-for todo)
     (if (null? todo)
-      #t
+      #f
       (let ( (next-game (car todo)) )
         (if (member team-id (list (game.home next-game) (game.away next-game)))
           next-game

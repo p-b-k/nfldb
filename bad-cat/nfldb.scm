@@ -19,4 +19,5 @@
 )
 
 (define (nfldb-eval expr) (eval expr (resolve-module '(bad-cat nfldb))))
+(define current-season (make-parameter 2025))
 
