@@ -110,6 +110,7 @@
     (slot-set! root-vbox 'height-request 128)
     (slot-set! root-vbox 'width-request 128)
     (slot-set! root-vbox 'hexpand #f)
+    (slot-set! root-vbox 'css-classes '("standings-list"))
 
     (gtk-box-append root-vbox div-label)
 
@@ -120,9 +121,13 @@
                   (name (make-instance <gtk-label> #:label (format #f "~a" (car x))))
                   (score (make-instance <gtk-label> #:label (format #f "~a" (cdr (slot-ref (cdr x) 'pct))))) )
 
-             (slot-set! name 'width-request 64)
+             (slot-set! name 'width-request 48)
+             (slot-set! name 'css-classes '("name-label"))
+             (slot-set! name 'hexpand #t)
+             (slot-set! name 'halign 2)
              (slot-set! logo 'width-request 32)
              (slot-set! logo 'height-request 32)
+             (slot-set! logo 'css-classes '("standings-icon"))
              (slot-set! score 'halign 2)
              (slot-set! score 'hexpand #t)
              (slot-set! score 'css-classes '("score-label"))
