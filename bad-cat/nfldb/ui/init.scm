@@ -26,10 +26,12 @@
   (for-each (lambda (name) (gi-import-by-name "Gtk" name))
             '("Application"
               "ApplicationWindow"
+              "Box"
               "Button"
               "CallbackAction"
               "CssProvider"
-              "Box"
+              "DrawingArea"
+              "DrawingAreaDrawFunc"
               "FlowBox"
               "Grid"
               "IconTheme"
