@@ -32,6 +32,7 @@
               "Box"
               "FlowBox"
               "Grid"
+              "IconTheme"
               "Image"
               "Label"
 ;             "KeyvalTrigger"

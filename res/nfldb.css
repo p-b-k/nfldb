@@ -82,12 +82,18 @@
 }
 
 .team-id-name {
-  font-size         : x-large;
+  font-size         : xx-large;
   font-weight       : bold;
 }
 
 .team-id-location {
   font-size         : large;
+}
+
+.score-label {
+  padding-left      : 10px;
+  padding-right     : 10px;
+  font-weight       : bold;
 }
 
 /* UI Debugging Stuff */

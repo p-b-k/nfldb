@@ -8,20 +8,12 @@
 
 (use-modules (g-golf))
 
-; (use-modules (data league))
-; (use-modules (data sched year-2025))
 (use-modules (bad-cat nfldb ui init))
 
 (use-modules (bad-cat utils))
 
-; (use-modules (bad-cat nfldb json))
-; (use-modules (bad-cat nfldb game))
 (use-modules (bad-cat nfldb team))
-; (use-modules (bad-cat nfldb schedule))
-; (use-modules (bad-cat nfldb serialize))
 
-
-; (use-modules (bad-cat nfldb data))
 
 (use-modules (bad-cat nfldb ui panels main))
 
@@ -34,9 +26,6 @@
                                       #:title (format #f "Overview: ~a" (team.name team))
                                       #:icon "/bad-cat/nfldb/NFL"
                                       #:application app)) )
-;   (slot-set! window 'default-height 400)
-;   (slot-set! window 'default-width 600)
-
     (gtk-style-context-add-provider-for-display (gdk-display-get-default) nfldb-css-provider 0)
     (gtk-style-context-add-provider-for-display (gdk-display-get-default) team-css-provider 0)
 
