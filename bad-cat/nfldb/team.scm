@@ -14,6 +14,8 @@
 
   #:export (team.nick)
   #:export (team.name)
+  #:export (team.display-name)
+  #:export (team.location)
   #:export (team.id)
   #:export (team.conf)
   #:export (team.div)

@@ -76,6 +76,22 @@
   padding           : 4px;
 }
 
+.team-id-box {
+  font-family       : serif;
+  padding           : 40px;
+}
+
+.team-id-name {
+  font-size         : x-large;
+  font-weight       : bold;
+}
+
+.team-id-location {
+  font-size         : large;
+}
+
+/* UI Debugging Stuff */
+
 .test-a * {
   background        : red;
 }
@@ -96,13 +112,3 @@
   background        : orange;
 }
 
-/*
-#workspace-name {
-  background        : #000032;
-  color             : #c8b098;
-  font-size         : xx-large;
-  font-weight       : bold;
-  margin            : 0px;
-  padding           : 30px;
-}
-*/

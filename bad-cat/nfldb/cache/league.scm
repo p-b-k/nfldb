@@ -21,6 +21,7 @@
 
   #:export (league-retrieve!)
   #:export (league-restore)
+  #:export (league-store)
 
   #:export (all-nfl-teams)
 
@@ -103,9 +104,9 @@
 
 (define league-cache-file (format #f "~a/league.scm" nfldb-cache-root))
 
-(define-method (cache-persist-store (c <league-cache>))
+(define-method (league-store (c <league-cache>))
   (define (write-teams) (write-teams-data-file (hash-map->list _2nd (league.teams c))))
-  (format #t "cache-persist-store <league-cache> : synching cache ~a~%" (class-name (class-of c)))
+  (format #t "league-store <league-cache> : synching cache ~a~%" (class-name (class-of c)))
   (with-output-to-file league-cache-file write-teams))
 
 (define-method (league-restore)

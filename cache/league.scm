@@ -7,6 +7,8 @@
                #:id             23
                #:nick           'PIT
                #:name           "Steelers"
+               #:display-name   "Pittsburgh Steelers"
+               #:location       "Pittsburgh"
                #:conf           'AFC
                #:div            'NORTH
                #:color          (make-instance <rgb-color>
@@ -28,6 +30,8 @@
                #:id             5
                #:nick           'CLE
                #:name           "Browns"
+               #:display-name   "Cleveland Browns"
+               #:location       "Cleveland"
                #:conf           'AFC
                #:div            'NORTH
                #:color          (make-instance <rgb-color>
@@ -49,6 +53,8 @@
                #:id             4
                #:nick           'CIN
                #:name           "Bengals"
+               #:display-name   "Cincinnati Bengals"
+               #:location       "Cincinnati"
                #:conf           'AFC
                #:div            'NORTH
                #:color          (make-instance <rgb-color>
@@ -70,6 +76,8 @@
                #:id             33
                #:nick           'BAL
                #:name           "Ravens"
+               #:display-name   "Baltimore Ravens"
+               #:location       "Baltimore"
                #:conf           'AFC
                #:div            'NORTH
                #:color          (make-instance <rgb-color>
@@ -93,6 +101,8 @@
                #:id             10
                #:nick           'TEN
                #:name           "Titans"
+               #:display-name   "Tennessee Titans"
+               #:location       "Tennessee"
                #:conf           'AFC
                #:div            'SOUTH
                #:color          (make-instance <rgb-color>
@@ -114,6 +124,8 @@
                #:id             30
                #:nick           'JAX
                #:name           "Jaguars"
+               #:display-name   "Jacksonville Jaguars"
+               #:location       "Jacksonville"
                #:conf           'AFC
                #:div            'SOUTH
                #:color          (make-instance <rgb-color>
@@ -135,6 +147,8 @@
                #:id             11
                #:nick           'IND
                #:name           "Colts"
+               #:display-name   "Indianapolis Colts"
+               #:location       "Indianapolis"
                #:conf           'AFC
                #:div            'SOUTH
                #:color          (make-instance <rgb-color>
@@ -156,6 +170,8 @@
                #:id             34
                #:nick           'HOU
                #:name           "Texans"
+               #:display-name   "Houston Texans"
+               #:location       "Houston"
                #:conf           'AFC
                #:div            'SOUTH
                #:color          (make-instance <rgb-color>
@@ -179,6 +195,8 @@
                #:id             20
                #:nick           'NYJ
                #:name           "Jets"
+               #:display-name   "New York Jets"
+               #:location       "New York"
                #:conf           'AFC
                #:div            'EAST
                #:color          (make-instance <rgb-color>
@@ -200,6 +218,8 @@
                #:id             17
                #:nick           'NE
                #:name           "Patriots"
+               #:display-name   "New England Patriots"
+               #:location       "New England"
                #:conf           'AFC
                #:div            'EAST
                #:color          (make-instance <rgb-color>
@@ -221,6 +241,8 @@
                #:id             15
                #:nick           'MIA
                #:name           "Dolphins"
+               #:display-name   "Miami Dolphins"
+               #:location       "Miami"
                #:conf           'AFC
                #:div            'EAST
                #:color          (make-instance <rgb-color>
@@ -242,6 +264,8 @@
                #:id             2
                #:nick           'BUF
                #:name           "Bills"
+               #:display-name   "Buffalo Bills"
+               #:location       "Buffalo"
                #:conf           'AFC
                #:div            'EAST
                #:color          (make-instance <rgb-color>
@@ -265,6 +289,8 @@
                #:id             13
                #:nick           'LV
                #:name           "Raiders"
+               #:display-name   "Las Vegas Raiders"
+               #:location       "Las Vegas"
                #:conf           'AFC
                #:div            'WEST
                #:color          (make-instance <rgb-color>
@@ -286,6 +312,8 @@
                #:id             24
                #:nick           'LAC
                #:name           "Chargers"
+               #:display-name   "Los Angeles Chargers"
+               #:location       "Los Angeles"
                #:conf           'AFC
                #:div            'WEST
                #:color          (make-instance <rgb-color>
@@ -307,6 +335,8 @@
                #:id             12
                #:nick           'KC
                #:name           "Chiefs"
+               #:display-name   "Kansas City Chiefs"
+               #:location       "Kansas City"
                #:conf           'AFC
                #:div            'WEST
                #:color          (make-instance <rgb-color>
@@ -328,6 +358,8 @@
                #:id             7
                #:nick           'DEN
                #:name           "Broncos"
+               #:display-name   "Denver Broncos"
+               #:location       "Denver"
                #:conf           'AFC
                #:div            'WEST
                #:color          (make-instance <rgb-color>
@@ -351,6 +383,8 @@
                #:id             16
                #:nick           'MIN
                #:name           "Vikings"
+               #:display-name   "Minnesota Vikings"
+               #:location       "Minnesota"
                #:conf           'NFC
                #:div            'NORTH
                #:color          (make-instance <rgb-color>
@@ -372,6 +406,8 @@
                #:id             9
                #:nick           'GB
                #:name           "Packers"
+               #:display-name   "Green Bay Packers"
+               #:location       "Green Bay"
                #:conf           'NFC
                #:div            'NORTH
                #:color          (make-instance <rgb-color>
@@ -393,6 +429,8 @@
                #:id             8
                #:nick           'DET
                #:name           "Lions"
+               #:display-name   "Detroit Lions"
+               #:location       "Detroit"
                #:conf           'NFC
                #:div            'NORTH
                #:color          (make-instance <rgb-color>
@@ -414,6 +452,8 @@
                #:id             3
                #:nick           'CHI
                #:name           "Bears"
+               #:display-name   "Chicago Bears"
+               #:location       "Chicago"
                #:conf           'NFC
                #:div            'NORTH
                #:color          (make-instance <rgb-color>
@@ -437,6 +477,8 @@
                #:id             27
                #:nick           'TB
                #:name           "Buccaneers"
+               #:display-name   "Tampa Bay Buccaneers"
+               #:location       "Tampa Bay"
                #:conf           'NFC
                #:div            'SOUTH
                #:color          (make-instance <rgb-color>
@@ -458,6 +500,8 @@
                #:id             18
                #:nick           'NO
                #:name           "Saints"
+               #:display-name   "New Orleans Saints"
+               #:location       "New Orleans"
                #:conf           'NFC
                #:div            'SOUTH
                #:color          (make-instance <rgb-color>
@@ -479,6 +523,8 @@
                #:id             29
                #:nick           'CAR
                #:name           "Panthers"
+               #:display-name   "Carolina Panthers"
+               #:location       "Carolina"
                #:conf           'NFC
                #:div            'SOUTH
                #:color          (make-instance <rgb-color>
@@ -500,6 +546,8 @@
                #:id             1
                #:nick           'ATL
                #:name           "Falcons"
+               #:display-name   "Atlanta Falcons"
+               #:location       "Atlanta"
                #:conf           'NFC
                #:div            'SOUTH
                #:color          (make-instance <rgb-color>
@@ -523,6 +571,8 @@
                #:id             28
                #:nick           'WSH
                #:name           "Commanders"
+               #:display-name   "Washington Commanders"
+               #:location       "Washington"
                #:conf           'NFC
                #:div            'EAST
                #:color          (make-instance <rgb-color>
@@ -544,6 +594,8 @@
                #:id             21
                #:nick           'PHI
                #:name           "Eagles"
+               #:display-name   "Philadelphia Eagles"
+               #:location       "Philadelphia"
                #:conf           'NFC
                #:div            'EAST
                #:color          (make-instance <rgb-color>
@@ -565,6 +617,8 @@
                #:id             19
                #:nick           'NYG
                #:name           "Giants"
+               #:display-name   "New York Giants"
+               #:location       "New York"
                #:conf           'NFC
                #:div            'EAST
                #:color          (make-instance <rgb-color>
@@ -586,6 +640,8 @@
                #:id             6
                #:nick           'DAL
                #:name           "Cowboys"
+               #:display-name   "Dallas Cowboys"
+               #:location       "Dallas"
                #:conf           'NFC
                #:div            'EAST
                #:color          (make-instance <rgb-color>
@@ -609,6 +665,8 @@
                #:id             25
                #:nick           'SF
                #:name           "49ers"
+               #:display-name   "San Francisco 49ers"
+               #:location       "San Francisco"
                #:conf           'NFC
                #:div            'WEST
                #:color          (make-instance <rgb-color>
@@ -630,6 +688,8 @@
                #:id             26
                #:nick           'SEA
                #:name           "Seahawks"
+               #:display-name   "Seattle Seahawks"
+               #:location       "Seattle"
                #:conf           'NFC
                #:div            'WEST
                #:color          (make-instance <rgb-color>
@@ -651,6 +711,8 @@
                #:id             14
                #:nick           'LAR
                #:name           "Rams"
+               #:display-name   "Los Angeles Rams"
+               #:location       "Los Angeles"
                #:conf           'NFC
                #:div            'WEST
                #:color          (make-instance <rgb-color>
@@ -672,6 +734,8 @@
                #:id             22
                #:nick           'ARI
                #:name           "Cardinals"
+               #:display-name   "Arizona Cardinals"
+               #:location       "Arizona"
                #:conf           'NFC
                #:div            'WEST
                #:color          (make-instance <rgb-color>
