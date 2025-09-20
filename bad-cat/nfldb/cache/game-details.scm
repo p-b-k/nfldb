@@ -83,6 +83,8 @@
         (format #t "The game ~a has not been played yet~%" name)
         #f))))
 
+(define-method (game.details (g <boolean>)) g)
+
 (define-method (game.details (g <nfl-game>))
   (let ( (cached-details (slot-ref g 'game-details)) )
     (if cached-details
