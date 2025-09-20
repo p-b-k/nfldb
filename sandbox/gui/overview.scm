@@ -48,11 +48,18 @@
 ;; Main entry point to start UI
 ;; *********************************************************************************************************************
 
-(define (nfldb-show-overview)
-  (define (proc app) (show-overview-window app (my-team)))
-  (let ( (app (make <gtk-application> #:application-id "bad-cat.nfldb.overview")) )
-    (connect app 'activate proc)
-    (g-application-run app '())))
+(define (nfldb-show-overview-for team-nick)
+  (let ( (team (get-team team-nick)) )
+    (define (proc app) (show-overview-window app team))
+    (if team
+      (let ( (app (make <gtk-application> #:application-id "bad-cat.nfldb.overview")) )
+        (connect app 'activate proc)
+        (g-application-run app '()))
+      (begin
+        (format #t "No team found for ~a~%" team-nick)
+        #f))))
+
+(define (nfldb-show-overview) (nfldb-show-overview-for (team.nick (my-team))))
 
 ;; *********************************************************************************************************************
 ;; Set the caching data source

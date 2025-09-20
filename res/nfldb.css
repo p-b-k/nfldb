@@ -72,6 +72,10 @@
   color             : #ffff3f;
 }
 
+.schedule-record-entry {
+  padding           : 4px;
+}
+
 .test-a * {
   background        : red;
 }

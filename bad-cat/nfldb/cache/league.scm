@@ -84,6 +84,8 @@
                          #:id id
                          #:nick (string->symbol (json-ref abbreviation json))
                          #:name (json-ref name json)
+                         #:display-name (json-ref displayName json)
+                         #:location (json-ref location json)
                          #:color (read-espn-color (json-ref color json))
                          #:alt-color (read-espn-color (json-ref alternateColor json))
                          #:conf (car division)

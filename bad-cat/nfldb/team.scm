@@ -33,6 +33,10 @@
                   #:getter        team.nick)
   (name           #:init-keyword  #:name
                   #:getter        team.name)
+  (display-name   #:init-keyword  #:display-name
+                  #:getter        team.display-name)
+  (location       #:init-keyword  #:location
+                  #:getter        team.location)
   (conference     #:init-keyword  #:conf
                   #:getter        team.conf)
   (division       #:init-keyword  #:div

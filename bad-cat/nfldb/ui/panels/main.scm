@@ -59,9 +59,9 @@
          (logo-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (team.nick team))))
          (word-image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/title" (team.nick team))))
          (word-picture (gtk-picture-new-for-resource (format #f "/bad-cat/nfldb/~a/title" (team.nick team)))) )
-      (slot-set! logo-image 'height-request 64)
-      (slot-set! logo-image 'width-request 64)
-      (slot-set! word-image 'height-request 96)
+      (slot-set! logo-image 'height-request 128)
+      (slot-set! logo-image 'width-request 128)
+      (slot-set! word-image 'height-request 128)
 ;     (slot-set! word-image 'width-request 64)
 
       (slot-set! logo-image 'hexpand #f)
@@ -125,16 +125,19 @@
       (let ( (result (game.result game)) )
         (if result
           (if (game-tied? result)
-            "tied-resource"
+            "tied"
             (if (game-winner? game result (team.nick team))
-              "winner-resource"
-              "looser-resource"))
-          "unplayed-resource"))
-      "bye-resource"))
-  (let ( (image (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a.svg" (get-resource)))) )
-    (slot-set! image 'height-request 32)
-    (slot-set! image 'width-request  32)
-    image))
+              "win"
+              "lose"))
+          "not-played"))
+      "bye"))
+  (let ( (res (format #f "/bad-cat/nfldb/~a" (get-resource))) )
+    (format #t "Resource is ~a~%" res)
+    (let ( (image (gtk-image-new-from-resource res)) )
+      (slot-set! image 'height-request 32)
+      (slot-set! image 'width-request  32)
+      (slot-set! image 'css-classes '("schedule-record-entry"))
+      image)))
 
 (define (get-sched-panel team)
   (let ( (hbox  (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #t)) )
