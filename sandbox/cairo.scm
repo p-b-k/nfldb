@@ -41,6 +41,27 @@
     (connect app 'activate proc)
     (g-application-run app '())))
 
+(define (nfldb-show-game-for-team-in-week team-nick week)
+  (define (find-game-with-team games)
+    (if (null? games)
+      #f
+      (let ( (next-game (car games)) )
+        (if (member team-nick (list (game.home next-game) (game.away next-game)))
+          next-game
+          (find-game-with-team (cdr games))))))
+  (let ( (game (find-game-with-team (get-games (current-season) week))) )
+    (if game
+      (let ( (result (game.result game)) )
+        (if result
+          (nfldb-show-game-diagram game result)
+          (format #t "The result of game ~a has not been recored yet~%" (game.name game))))
+      (format #t "It does not appear that ~a has any games in week ~a~%" team-nick week))))
+
+
+;; *********************************************************************************************************************
+;; Proof of Concept
+;; *********************************************************************************************************************
+
 ;; DEFINE PARAMETERS
 (define margin-left       10)
 (define margin-right      10)
@@ -52,7 +73,7 @@
 (define ezone-width       (* 2 yard-width-5))
 (define pitch-width       (* 20 yard-width-5))
 (define drive-bar-width   4)
-(define drive-bar-stroke  1.5)
+(define drive-bar-stroke  2)
 (define ezone-line-width  8)
 (define ezone-line-off    (/ ezone-line-width 2))
 
@@ -119,12 +140,12 @@
 (define (draw-gridlines cr height)
   (define (width-for-yard yard)
     (case yard
-      ( (0 10 20) 2.0 )
+      ( (10) 2.0 )
       ( (4 16) 1.5 )
       ( else (if (even? yard) 0.75 0.25) )))
   (let ( (left-edge (+ margin-left ezone-width)) )
     (define (draw-next-line offset)
-      (if (<= offset 20)
+      (if (< offset 20)
         (let ( (x (+ left-edge (* offset yard-width-5)))
                (width (width-for-yard offset)) )
           (cairo-set-line-width cr width)
@@ -133,7 +154,7 @@
           (cairo-stroke cr)
           (draw-next-line (1+ offset)))))
     (cairo-set-source-rgb cr 1 1 1)
-    (draw-next-line 0)))
+    (draw-next-line 1)))
 
 (define (draw-drives cr away-nick home-nick result)
   (define (set-color color-list) (apply cairo-set-source-rgb (cons cr color-list)))
@@ -148,12 +169,14 @@
             (let ( (drive (car todo)) )
               (let ( (y (+ margin-top (/ drive-height 2) (* drive-height drive-no)))
                      (start (+ margin-left
+                               drive-bar-stroke
                                ezone-width
-                               (* yard-width (- 100 (slot-ref drive 'start-position)))))
-                     (end (+ margin-left
-                               ezone-width
-                               (* yard-width (- 100 (slot-ref drive 'end-position))))) )
-                (cairo-rectangle cr start (- y drive-bar-width) (- end start) (* 2 drive-bar-width))
+                               (* yard-width (min (- 100 (slot-ref drive 'start-position))
+                                                  (- 100 (slot-ref drive 'end-position))))))
+                     (width (- (* yard-width (abs (- (slot-ref drive 'end-position)
+                                                     (slot-ref drive 'start-position))))
+                               (* 2 drive-bar-stroke))) )
+                (cairo-rectangle cr start (- y drive-bar-width) width (* 2 drive-bar-width))
                 (set-color  (if (eq? (slot-ref drive 'team-id) (team.id home)) color-home color-away))
                 (cairo-fill-preserve cr)
                 (set-color  (if (eq? (slot-ref drive 'team-id) (team.id home)) color-home-alt color-away-alt))
@@ -166,6 +189,6 @@
 ;; Setup session data
 ;; =====================================================================================================================
 
-(define this-game (list-ref (get-games 2025 1) 6))
+(define this-game (list-ref (get-games 2025 1) 0))
 (define this-result (game.result this-game))
 
