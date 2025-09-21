@@ -10,21 +10,21 @@
 
 .team_ATL * {
   background            : #a71930;
-  color                 : #FFFFFF;
+  color                 : #000000;
 }
 
 .team_ATL_alt * {
-  background            : #FFFFFF;
+  background            : #000000;
   color                 : #a71930;
 }
 
 .team_BAL * {
   background            : #29126f;
-  color                 : #FFFFFF;
+  color                 : #000000;
 }
 
 .team_BAL_alt * {
-  background            : #FFFFFF;
+  background            : #000000;
   color                 : #29126f;
 }
 
@@ -250,11 +250,11 @@
 
 .team_PHI * {
   background            : #06424d;
-  color                 : #FFFFFF;
+  color                 : #000000;
 }
 
 .team_PHI_alt * {
-  background            : #FFFFFF;
+  background            : #000000;
   color                 : #06424d;
 }
 

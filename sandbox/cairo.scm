@@ -9,18 +9,21 @@
 
 (use-modules (g-golf))
 
-(use-modules (bad-cat nfldb ui init))
-
 (use-modules (bad-cat utils))
 
 (use-modules (bad-cat nfldb game))
 (use-modules (bad-cat nfldb team))
+
+(use-modules (bad-cat nfldb ui init))
 
 (define (show-game-diagram-window app game result)
   (let ( (window (make-instance <gtk-application-window>
                                       #:title (format #f "Overview: ~a" (game.name game))
                                       #:icon "/bad-cat/nfldb/NFL"
                                       #:application app)) )
+
+    (gtk-style-context-add-provider-for-display (gdk-display-get-default) nfldb-css-provider 0)
+
     (set-child window (get-game-diagram game result))
 
     (present window)))
@@ -39,23 +42,28 @@
     (g-application-run app '())))
 
 ;; DEFINE PARAMETERS
-(define margin-left   10)
-(define margin-right  10)
-(define margin-top    10)
-(define margin-bottom 10)
-(define drive-height  10)
-(define yard-width-5  20)
+(define margin-left       10)
+(define margin-right      10)
+(define margin-top        40)
+(define margin-bottom     10)
+(define drive-height      40)
+(define yard-width        6)
+(define yard-width-5      (* 5 yard-width))
+(define ezone-width       (* 2 yard-width-5))
+(define pitch-width       (* 20 yard-width-5))
+(define drive-bar-width   4)
+(define drive-bar-stroke  1.5)
+(define ezone-line-width  8)
+(define ezone-line-off    (/ ezone-line-width 2))
 
-(define total-width (+ margin-left
-                       (* 2 yard-width-5)
-                       (* 20 yard-width-5)
-                       (* 2 yard-width-5)
-                       margin-right))
+(define field-width (+ ezone-width pitch-width ezone-width))
+
+(define (field-height drive-count) (* drive-count drive-height))
+
+(define total-width (+ margin-left field-width margin-right))
 
 (define (total-height drive-count)
-  (+ margin-top
-     (* drive-count drive-height)
-     margin-bottom))
+  (+ margin-top (field-height drive-count) margin-bottom))
 
 (define (get-game-diagram game result)
   (let ( (drawing-area (make-instance <gtk-drawing-area>
@@ -70,17 +78,94 @@
   (lambda (drawing-area cr-ptr width height user-data)
     (format #t "make-game-draw-func: drawing-area cr-ptr width height user_data = ~a ~a ~a ~a ~a~%"
             drawing-area cr-ptr width height user-data)
-    (let ( (cr (cairo-pointer->context cr-ptr)) )
-      (draw-base-rectangle cr game result)
-      
-      (cairo-paint cr))))
+    (let ( (cr (cairo-pointer->context cr-ptr))
+           (pitch-height (field-height (length (result.drives result)))) )
+      (draw-base-rectangle cr pitch-height)
+      (draw-endzones cr (game.away game) (game.home game) pitch-height)
+      (draw-gridlines cr pitch-height)
+      (draw-drives cr (game.away game) (game.home game) result))))
 
-(define (draw-base-rectangle cr game result)
-  (format #t "make-game-draw-func: cr = ~a~%" cr)
+(define (draw-base-rectangle cr height)
   (cairo-set-line-width cr 0.1)
   (cairo-set-source-rgb cr 0 0.4 0)
-  (cairo-rectangle cr 0.25 0.25 0.3 0.3)
-  (cairo-stroke cr))
+  (cairo-rectangle cr margin-left margin-top field-width height)
+  (cairo-fill cr))
 
-(define this-game (car (get-games 2025 1)))
+(define (draw-endzones cr away-nick home-nick height)
+  (cairo-set-line-width cr ezone-line-width)
+  (let ( (start-x (+ margin-left ezone-width pitch-width))
+         (away (get-team away-nick))
+         (home (get-team home-nick)) )
+    (let ( (x (+ margin-left ezone-line-off))
+           (y (+ margin-top ezone-line-off))
+           (adj-width (- ezone-width ezone-line-width))
+           (adj-height (- height ezone-line-width)) )
+      (cairo-rectangle cr x y adj-width adj-height))
+    (apply cairo-set-source-rgb (cons cr (rgb->list (team.color away))))
+    (cairo-fill-preserve cr)
+    (apply cairo-set-source-rgb (cons cr (rgb->list (team.alt-color away))))
+    (cairo-stroke cr)
+
+    (let ( (x (+ start-x ezone-line-off))
+           (y (+ margin-top ezone-line-off))
+           (adj-width (- ezone-width ezone-line-width))
+           (adj-height (- height ezone-line-width)) )
+      (cairo-rectangle cr x y adj-width adj-height))
+    (apply cairo-set-source-rgb (cons cr (rgb->list (team.color home))))
+    (cairo-fill-preserve cr)
+    (apply cairo-set-source-rgb (cons cr (rgb->list (team.alt-color home))))
+    (cairo-stroke cr)))
+
+(define (draw-gridlines cr height)
+  (define (width-for-yard yard)
+    (case yard
+      ( (0 10 20) 2.0 )
+      ( (4 16) 1.5 )
+      ( else (if (even? yard) 0.75 0.25) )))
+  (let ( (left-edge (+ margin-left ezone-width)) )
+    (define (draw-next-line offset)
+      (if (<= offset 20)
+        (let ( (x (+ left-edge (* offset yard-width-5)))
+               (width (width-for-yard offset)) )
+          (cairo-set-line-width cr width)
+          (cairo-move-to cr x margin-top)
+          (cairo-line-to cr x (+ margin-top height))
+          (cairo-stroke cr)
+          (draw-next-line (1+ offset)))))
+    (cairo-set-source-rgb cr 1 1 1)
+    (draw-next-line 0)))
+
+(define (draw-drives cr away-nick home-nick result)
+  (define (set-color color-list) (apply cairo-set-source-rgb (cons cr color-list)))
+  (let ( (home (get-team home-nick))
+         (away (get-team away-nick)) )
+      (let ( (color-away      (rgb->list (team.color away)))
+             (color-away-alt  (rgb->list (team.alt-color away)))
+             (color-home      (rgb->list (team.color home)))
+             (color-home-alt  (rgb->list (team.alt-color home))) )
+        (define (draw-next-drive drive-no todo)
+          (if (not (null? todo))
+            (let ( (drive (car todo)) )
+              (let ( (y (+ margin-top (/ drive-height 2) (* drive-height drive-no)))
+                     (start (+ margin-left
+                               ezone-width
+                               (* yard-width (- 100 (slot-ref drive 'start-position)))))
+                     (end (+ margin-left
+                               ezone-width
+                               (* yard-width (- 100 (slot-ref drive 'end-position))))) )
+                (cairo-rectangle cr start (- y drive-bar-width) (- end start) (* 2 drive-bar-width))
+                (set-color  (if (eq? (slot-ref drive 'team-id) (team.id home)) color-home color-away))
+                (cairo-fill-preserve cr)
+                (set-color  (if (eq? (slot-ref drive 'team-id) (team.id home)) color-home-alt color-away-alt))
+                (cairo-stroke cr))
+              (draw-next-drive (1+ drive-no) (cdr todo)))))
+        (cairo-set-line-width cr drive-bar-stroke)
+        (draw-next-drive 0 (result.drives result)))))
+
+;; =====================================================================================================================
+;; Setup session data
+;; =====================================================================================================================
+
+(define this-game (list-ref (get-games 2025 1) 6))
 (define this-result (game.result this-game))
+

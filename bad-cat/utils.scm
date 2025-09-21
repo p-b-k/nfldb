@@ -29,6 +29,7 @@
   #:export (rgb.g)
   #:export (rgb.b)
   #:export (html-color)
+  #:export (rgb->list)
 )
 
 (define (_1st a b) a)
@@ -86,4 +87,6 @@
 )
 
 (define-method (html-color (c <rgb-color>)) (format #f "#~2,'0x~2,'0x~2,'0x" (rgb.r c) (rgb.g c) (rgb.b c)))
+
+(define-method (rgb->list (c <rgb-color>)) (map (lambda (x) (/ x 256)) (list (rgb.r c) (rgb.g c) (rgb.b c))))
 
