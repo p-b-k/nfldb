@@ -248,23 +248,23 @@
              (color-home-alt  (rgb->list (team.alt-color home))) )
         (define (draw-next-play drive-no todo)
           (if (not (null? todo))
-            (let ( (drive (car todo)) )
-              (let ( (y (+ margin-top (/ drive-height 2) (* drive-height drive-no)))
+            (let ( (play (car todo)) )
+              (let ( (y (+ margin-top (/ drive-height 2) (* play-height drive-no)))
                      (start (+ margin-left
-                               drive-bar-stroke
+                               play-bar-stroke
                                ezone-width
-                               (* yard-width (min (- 100 (slot-ref drive 'start-position))
-                                                  (- 100 (slot-ref drive 'end-position))))))
-                     (width (- (* yard-width (abs (- (slot-ref drive 'end-position)
-                                                     (slot-ref drive 'start-position))))
-                               (* 2 drive-bar-stroke))) )
-                (cairo-rectangle cr start (- y drive-bar-width) width (* 2 drive-bar-width))
-                (set-color  (if (eq? (slot-ref drive 'team-id) (team.id home)) color-home color-away))
+                               (* yard-width (min (- 100 (slot-ref play 'start-position))
+                                                  (- 100 (slot-ref play 'end-position))))))
+                     (width (- (* yard-width (abs (- (slot-ref play 'end-position)
+                                                     (slot-ref play 'start-position))))
+                               (* 2 play-bar-stroke))) )
+                (cairo-rectangle cr start (- y play-bar-width) width (* 2 play-bar-width))
+                (set-color  (if (eq? (slot-ref play 'team-id) (team.id home)) color-home color-away))
                 (cairo-fill-preserve cr)
-                (set-color  (if (eq? (slot-ref drive 'team-id) (team.id home)) color-home-alt color-away-alt))
+                (set-color  (if (eq? (slot-ref play 'team-id) (team.id home)) color-home-alt color-away-alt))
                 (cairo-stroke cr))
               (draw-next-play (1+ drive-no) (cdr todo)))))
-        (cairo-set-line-width cr drive-bar-stroke)
+        (cairo-set-line-width cr play-bar-stroke)
         (draw-next-play 0 (result-plays result)))))
 
 ;; =====================================================================================================================

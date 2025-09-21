@@ -114,6 +114,7 @@
 ;; Root class of a play
 (define-class <nfl-game-play> ()
   (play-id            #:init-keyword      #:play-id)
+  (team-id            #:init-keyword      #:team-id)
   (drive              #:init-keyword      #:drive)
   (type-id            #:init-keyword      #:type-id)
   (text               #:init-keyword      #:text)
@@ -124,9 +125,10 @@
   (yards              #:init-keyword      #:yards)
 )
 
-(define (make-game-play play-id drive-no type-id text down togo start end yards)
+(define (make-game-play play-id team-id drive-no type-id text down togo start end yards)
   (make-instance <nfl-game-play>
                  #:play-id        play-id
+                 #:team-id        team-id
                  #:drive          drive-no
                  #:type-id        type-id
                  #:text           text
