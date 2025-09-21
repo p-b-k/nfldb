@@ -21,17 +21,17 @@
   #:export (game-result-restore)
   #:export (game-result-retrieve)
   #:export (game.result)
-  #:export (update-game-details)
+  #:export (update-game-result)
 )
 
 (define (game-cache-file game-id) (format #f "~a/games/game_~a.scm" nfldb-cache-root game-id))
 
-(define (game-result-store game-details)
-  (if game-details
-    (let ( (game-id (game.id game-details)) )
+(define (game-result-store game-result )
+  (if game-result 
+    (let ( (game-id (game.id game-result )) )
       (with-output-to-file
         (game-cache-file game-id)
-        (lambda () (write-constructor game-details (current-output-port)))))))
+        (lambda () (write-constructor game-result (current-output-port)))))))
 
 (define (game-result-restore game-id)
   (let ( (cache-file (game-cache-file game-id)) )
@@ -41,6 +41,7 @@
 
 (define (game-result-retrieve game-id)
   (let ( (game-json (get-game-data game-id)) )
+    (format #t "Trying game data for game ~a~%" game-id)
     (if game-json
       (json->game-data game-id game-json)
       #f)))
@@ -52,13 +53,24 @@
   (espn-get-url (get-game-url game-id) port->json-obj))
 
 (define (json->game-data game-id game-json)
-  (define (json->play scoring-play-json)
-    (let ( (quarter (1- (json-ref period.number scoring-play-json)))
-           (type-id (string->number (json-ref type.id scoring-play-json)))
-           (type-text (json-ref type.text scoring-play-json))
-           (play-id (string->number (json-ref id scoring-play-json)))
-           (play-text (json-ref text scoring-play-json)) )
-      (make-game-play play-id quarter type-id play-text)))
+  (define (json->play play-json)
+    (let ( (quarter     (1- (json-ref period.number play-json)))
+           (type-id     (string->number (json-ref type.id play-json)))
+           (type-text   (json-ref type.text play-json))
+           (play-id     (string->number (json-ref id play-json)))
+           (play-text   (json-ref text play-json))
+           (play-down   (json-ref end.down play-json))
+           (play-togo   (json-ref end.distance play-json))
+           (play-start  (json-ref start.yardLine play-json))
+           (play-end    (json-ref end.yardLine play-json))
+           (play-yards  (json-ref statYardage play-json)) )
+      (make-game-play play-id quarter type-id play-text play-down play-togo play-start play-end play-yards)))
+  (define (json->scoring-play play-json)
+    (let ( (play-id     (string->number (json-ref id play-json)))
+           (type-id     (string->number (json-ref type.id play-json)))
+           (away-score  (json-ref awayScore play-json))
+           (home-score  (json-ref homeScore play-json)) )
+      (make-scoring-play play-id type-id away-score home-score)))
   (define (json-list->drives drive-no todo sofar)
     (if (null? todo)
       (reverse sofar)
@@ -70,6 +82,7 @@
                (end-pos       (json-ref end.yardLine drive-json))
                (result        (json-ref displayResult drive-json))
                (plays         (map json->play (json-ref plays drive-json))) )
+;         (map print-play-slot-info plays)
           (let ( (drive (make-drive team-id start-clock time-clock start-pos end-pos result plays)) )
             (json-list->drives (1+ drive-no) (cdr todo) (cons drive sofar)))))))
   (let ( (name (format #f "~a@~a" (json-ref boxscore.teams.0.team.name game-json)
@@ -83,7 +96,7 @@
         (format #t "The game ~a had ~a scoring plays and ~a drives~%"
                 name (length scoring-plays-json) (length drives-json))
         (let ( (final (get-final-score))
-               (scoring-plays (map json->play scoring-plays-json))
+               (scoring-plays (map json->scoring-play scoring-plays-json))
                (drives (json-list->drives 0 drives-json '())) )
           (make-game-data game-id (car final) (cdr final) scoring-plays drives)))
       (begin
@@ -93,17 +106,17 @@
 (define-method (game.result (g <boolean>)) (not g))
 
 (define-method (game.result (g <nfl-game>))
-  (let ( (cached-details (slot-ref g 'game-details)) )
+  (let ( (cached-details (slot-ref g 'game-result )) )
     (if cached-details
       cached-details
       (let ( (fresh-details (game-result-restore (game.id g))) )
         (if fresh-details
           (begin
-            (slot-set! g 'game-details fresh-details)
+            (slot-set! g 'game-result  fresh-details)
             fresh-details)
           #f)))))
 
-(define-method (update-game-details (g <nfl-game>))
+(define-method (update-game-result (g <nfl-game>))
   (let ( (cache-file (game-cache-file (game.id g))) )
     (if (not (file-exists? cache-file))
       (let ( (game (game-result-retrieve (game.id g))) )
@@ -111,4 +124,11 @@
           (begin
             (format #t "update data getting details for ~a~%" (game.name g))
             (game-result-store game)))))))
+
+(define (print-play-slot-info obj)
+  (format #t "print-play-slot-info: object ~a~%" (class-name (class-of obj)))
+  (map (lambda (x)
+         (let ( (name (slot-definition-name x)) )
+           (format #t "print-play-slot-info: ~16a : bound? ~a~%" name (if (slot-bound? obj name) 'Yes 'No))))
+       (class-slots (class-of obj))))
 

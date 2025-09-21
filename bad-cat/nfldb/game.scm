@@ -41,6 +41,8 @@
 
   #:export (game-tied?)
   #:export (game-winner?)
+
+  #:export (result-plays)
 )
 
 ;; Overview data for a game
@@ -61,7 +63,7 @@
                       #:getter            game.home)
   (away-team          #:init-keyword      #:away
                       #:getter            game.away)
-  (game-details       #:init-form         #f)
+  (game-result        #:init-form         #f)
 )
 
 ;; Detailed data for a game
@@ -97,11 +99,13 @@
   (result             #:init-keyword      #:result)
 )
 
+(define (result-plays result) (apply append (map (lambda (x) (slot-ref x 'plays)) (result.drives result))))
+
 (define (make-drive team-id start-clock time-clock start-pos end-pos result plays)
   (make-instance <nfl-game-drive>
                  #:team           team-id
                  #:start-clock    start-clock
-                 #:time-clock      time-clock
+                 #:time-clock     time-clock
                  #:start-pos      start-pos
                  #:end-pos        end-pos
                  #:result         result
@@ -113,27 +117,37 @@
   (drive              #:init-keyword      #:drive)
   (type-id            #:init-keyword      #:type-id)
   (text               #:init-keyword      #:text)
+  (down               #:init-keyword      #:down)
+  (yds-to-go          #:init-keyword      #:yds-to-go)
+  (start-position     #:init-keyword      #:start-position)
+  (end-position       #:init-keyword      #:end-position)
+  (yards              #:init-keyword      #:yards)
 )
 
-(define (make-game-play play-id drive-no type-id text)
+(define (make-game-play play-id drive-no type-id text down togo start end yards)
   (make-instance <nfl-game-play>
-                 #:play-id    play-id
-                 #:drive      drive-no
-                 #:type-id    type-id
-                 #:text       text))
+                 #:play-id        play-id
+                 #:drive          drive-no
+                 #:type-id        type-id
+                 #:text           text
+                 #:down           down
+                 #:yds-to-go      togo
+                 #:start-position start
+                 #:end-position   end
+                 #:yards          yards))
 
 ;; Scoring play
-(define-class <nfl-scoring-play> (<nfl-game-play>)
+(define-class <nfl-scoring-play> ()
+  (play-id            #:init-keyword      #:play-id)
+  (type-id            #:init-keyword      #:type-id)
   (away-score         #:init-keyword      #:away-score)
   (home-score         #:init-keyword      #:home-score)
 )
 
-(define (make-scoring-play play-id drive-no type-id text away-score home-score)
+(define (make-scoring-play play-id type-id away-score home-score)
   (make-instance <nfl-scoring-play>
                  #:play-id    play-id
-                 #:drive      drive-no
                  #:type-id    type-id
-                 #:text       text
                  #:away-score away-score
                  #:home-score home-score))
 
