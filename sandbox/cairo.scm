@@ -100,7 +100,7 @@
 
 (define drive-height      40)
 (define drive-bar-width   4)
-(define drive-bar-stroke  2)
+(define drive-bar-stroke  1)
 
 (define play-height       10)
 (define play-bar-width    2)
@@ -124,14 +124,11 @@
                                       #:content-height (total-drive-height (length (result.drives result)))
                                       #:content-width total-width)) )
     (let ( (game-draw-func (make-drives-draw-func game result)) )
-      (format #t "game-draw-func = ~a~%" game-draw-func)
       (gtk-drawing-area-set-draw-func drawing-area game-draw-func #f #f)
       drawing-area)))
 
 (define (make-drives-draw-func game result)
   (lambda (drawing-area cr-ptr width height user-data)
-    (format #t "make-drives-draw-func: drawing-area cr-ptr width height user_data = ~a ~a ~a ~a ~a~%"
-            drawing-area cr-ptr width height user-data)
     (let ( (cr (cairo-pointer->context cr-ptr))
            (pitch-height (drive-field-height (length (result.drives result)))) )
       (draw-base-rectangle cr pitch-height)
@@ -150,8 +147,6 @@
 
 (define (make-plays-draw-func game result)
   (lambda (drawing-area cr-ptr width height user-data)
-    (format #t "make-drives-draw-func: drawing-area cr-ptr width height user_data = ~a ~a ~a ~a ~a~%"
-            drawing-area cr-ptr width height user-data)
     (let ( (cr (cairo-pointer->context cr-ptr))
            (pitch-height (play-field-height (length (result-plays result)))) )
       (draw-base-rectangle cr pitch-height)

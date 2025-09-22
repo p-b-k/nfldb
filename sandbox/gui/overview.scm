@@ -15,7 +15,7 @@
 (use-modules (bad-cat nfldb team))
 
 
-(use-modules (bad-cat nfldb ui panels main))
+(use-modules (bad-cat nfldb ui panels dashboard))
 
 ;; *********************************************************************************************************************
 ;; Startup Hook

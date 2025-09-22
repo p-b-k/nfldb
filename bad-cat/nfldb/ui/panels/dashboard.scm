@@ -1,4 +1,4 @@
-(define-module (bad-cat nfldb ui panels main)
+(define-module (bad-cat nfldb ui panels dashboard)
 
   ;; *******************************************************************************************************************
   ;; Main Panel with home team info on top and general upcoming games of interest bellow
@@ -24,7 +24,7 @@
          (game   (get-game-panel t))
          (sched  (get-sched-panel t))
          (div    (get-div-panel (team.conf t) (team.div t)))
-         (conf   (get-conf-panel (team.conf t)))
+         (conf   (get-conf-panel (team.conf t) (team.div t)))
          (team-css (format #f "team_~a" (team.nick t))) )
     (let ( (root-grid (make-instance <gtk-grid> #:halign 'center #:valign 'center))
            (team-hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
@@ -58,6 +58,33 @@
       (gtk-grid-attach root-grid league-hbox 1 2 2 1)
       
       root-grid)))
+
+(define (add-standings-table root-vbox standings-list)
+  (let ( (hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
+        (logo (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (car standings-list))))
+        (team-css (format #f "team_~a" (car standings-list)))
+        (name (make-instance <gtk-label> #:label (format #f "~a" (car standings-list))))
+        (score (make-instance <gtk-label> #:label (format #f "~a" (cdr (slot-ref (cdr standings-list) 'pct))))) )
+
+   (slot-set! name 'width-request 48)
+   (slot-set! name 'css-classes '("name-label"))
+   (slot-set! name 'hexpand #t)
+   (slot-set! name 'halign 2)
+   (slot-set! logo 'width-request 32)
+   (slot-set! logo 'height-request 32)
+   (slot-set! logo 'css-classes '("standings-icon"))
+   (slot-set! score 'halign 2)
+   (slot-set! score 'hexpand #t)
+   (slot-set! score 'css-classes '("score-label"))
+
+   (let ( (b (make-instance <gtk-box>)) )
+     (slot-set! b 'css-classes (list team-css))
+     (gtk-box-append b logo)
+     (gtk-box-append hbox b))
+   (gtk-box-append hbox name)
+   (gtk-box-append hbox score)
+   (gtk-box-append root-vbox hbox)
+   hbox))
 
 (define (get-team-banner team)
   (let ( (hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
@@ -114,33 +141,7 @@
 
     (gtk-box-append root-vbox div-label)
 
-    (map (lambda (x)
-           (let ( (hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
-                  (logo (gtk-image-new-from-resource (format #f "/bad-cat/nfldb/~a/logo" (car x))))
-                  (team-css (format #f "team_~a" (car x)))
-                  (name (make-instance <gtk-label> #:label (format #f "~a" (car x))))
-                  (score (make-instance <gtk-label> #:label (format #f "~a" (cdr (slot-ref (cdr x) 'pct))))) )
-
-             (slot-set! name 'width-request 48)
-             (slot-set! name 'css-classes '("name-label"))
-             (slot-set! name 'hexpand #t)
-             (slot-set! name 'halign 2)
-             (slot-set! logo 'width-request 32)
-             (slot-set! logo 'height-request 32)
-             (slot-set! logo 'css-classes '("standings-icon"))
-             (slot-set! score 'halign 2)
-             (slot-set! score 'hexpand #t)
-             (slot-set! score 'css-classes '("score-label"))
-
-             (let ( (b (make-instance <gtk-box>)) )
-               (slot-set! b 'css-classes (list team-css))
-               (gtk-box-append b logo)
-               (gtk-box-append hbox b))
-             (gtk-box-append hbox name)
-             (gtk-box-append hbox score)
-             (gtk-box-append root-vbox hbox)
-             hbox))
-         (get-standings conf div))
+    (map (lambda (x) (add-standings-table root-vbox x)) (get-standings conf div))
 
     root-vbox))
 
@@ -170,5 +171,26 @@
       #t)
     (map add-schedule-entry (get-team-games (team.nick team) (current-season)))
     hbox))
-(define (get-conf-panel conf) (make-instance <gtk-label> #:label (format #f "Conference Panel (~a)" conf)))
+
+(define (get-conf-panel conf div)
+  (let ( (grid (make-instance <gtk-grid>
+                              #:row-homogenous    #f
+                              #:row-spacing       2
+                              #:column-homogenous #t
+                              #:column-spacing    20)) )
+    (let ( (divs (filter (lambda (x) (not (eq? div x))) '(EAST NORTH SOUTH WEST))) )
+      (let ( (lists (map (lambda (x)
+                           (let ( (standings (get-standings conf x))
+                                 (vbox      (make-instance <gtk-box> #:homogenous #f #:orientation 'vertical)) )
+                             (gtk-box-append vbox (get-div-panel conf x))
+                             vbox))
+                         divs)) )
+        (define (add-divs index todo)
+          (if (not (null? todo))
+            (let ( (next-div (car todo)) )
+              (gtk-grid-attach grid next-div index 0 1 1)
+              (add-divs (1+ index) (cdr todo)))))
+        (add-divs 0 lists)))
+    grid))
+
 
