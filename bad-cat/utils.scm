@@ -30,6 +30,7 @@
   #:export (rgb.b)
   #:export (html-color)
   #:export (rgb->list)
+  #:export (seconds->hms)
 )
 
 (define (_1st a b) a)
@@ -57,8 +58,9 @@
 (define (secs->gametime secs)
 ; (format #t "secs = ~a~%" secs)
   (make-instance <gametime> #:secs secs))
+
 (define (gametime->secs gt)
-  (if (not (is-a? gt <gametime>)) (throw 'invalid-type 'expecting '<gametime> 'got (class-of (class-name gt))))
+  (if (not (is-a? gt <gametime>)) (throw 'invalid-type 'expecting '<gametime> 'got (class-name (class-of gt))))
   (gametime.secs gt))
 
 (define-method (gametime-year         (gt <gametime>)) (date-year     (gametime.date gt)))
@@ -90,3 +92,11 @@
 
 (define-method (rgb->list (c <rgb-color>)) (map (lambda (x) (/ x 256)) (list (rgb.r c) (rgb.g c) (rgb.b c))))
 
+(define (seconds->hms seconds)
+  (let ( (total-seconds-remain (modulo seconds 60))
+         (total-seconds-over   (floor (/ seconds 60))) )
+    (let ( (total-minutes-remain (modulo total-seconds-over 60))
+           (total-minutes-over   (floor (/ total-seconds-over 60))) )
+      (let ( (total-hours-remain (modulo total-minutes-over 24))
+             (total-days-over   (floor (/ total-minutes-over 24))) )
+        (list total-days-over total-hours-remain total-minutes-remain total-seconds-remain)))))

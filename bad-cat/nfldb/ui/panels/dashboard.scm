@@ -34,25 +34,20 @@
       (slot-set! banner 'vexpand #f)
       (slot-set! banner 'valign 1)
 
-;     (slot-set! team-hbox 'css-classes (list team-css))
       (slot-set! game 'valign 0)
 
-;     (gtk-box-append team-hbox banner)
-;     (gtk-box-append team-hbox game)
-      
       (slot-set! div-hbox 'vexpand #f)
       (slot-set! div-hbox 'hexpand #t)
 
       (gtk-box-append div-hbox div)
       (gtk-box-append div-hbox conf)
 
-;     (gtk-grid-attach root-grid team-hbox 0 0 2 1)
       (gtk-grid-attach root-grid banner 0 0 2 1)
       (gtk-grid-attach root-grid game 2 0 1 1)
 
       (slot-set! sched 'css-classes `("schedule-bar"))
       (slot-set! sched 'halign 'center)
-      (gtk-grid-attach root-grid sched 0 1 3 1)
+      (gtk-grid-attach root-grid sched 0 1 2 1)
 
       (gtk-grid-attach root-grid div-hbox 0 2 1 1)
       (gtk-grid-attach root-grid league-hbox 1 2 2 1)

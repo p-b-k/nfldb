@@ -64,3 +64,5 @@
 
 (define (update-week-results week-no) (map update-game-result (get-games (current-season) week-no)))
 
+(use-modules (bad-cat nfldb schedule))
+
