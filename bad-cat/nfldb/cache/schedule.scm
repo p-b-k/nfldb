@@ -17,6 +17,7 @@
   #:use-module (bad-cat nfldb serialize)
 
   #:use-module (bad-cat nfldb cache league)
+  #:use-module (bad-cat nfldb cache schedule)
 
 ; #:export (<season-cache>)
 ; #:export (<schedule-cache>)
@@ -170,3 +171,4 @@
       (let ( (game (find-game-for (get-games year week-no))) )
         (get-game-for-week (1+ week-no) (cons game sofar)))))
   (get-game-for-week 1 '()))
+

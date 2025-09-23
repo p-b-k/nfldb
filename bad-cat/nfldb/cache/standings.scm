@@ -25,6 +25,7 @@
   #:export (standings-update)
 
   #:export (get-standings)
+  #:export (get-team-record)
 )
 (define standings-cache-root (format #f "~a/standings" nfldb-cache-root))
 
@@ -101,4 +102,20 @@
 ;; ---------------------------------------------------------------------------------------------------------------------
 
 (define (get-standings conf div) (hash-ref (hash-ref (standings) conf) div))
+
+(define (get-team-record team-nick)
+  (define (find-team todo)
+    (if (null? todo)
+      #f
+      (let ( (next (car todo)) )
+        (if (eq? (car next) team-nick)
+          (cdr next)
+          (find-team (cdr todo))))))
+  (let ( (team (get-team team-nick)) )
+    (if team
+      (let ( (div-standings (get-standings (team.conf team) (team.div team))) )
+        (find-team div-standings))
+      #f)))
+
+  
 

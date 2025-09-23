@@ -12,9 +12,11 @@
   #:use-module (bad-cat nfldb)
   #:use-module (bad-cat nfldb team)
   #:use-module (bad-cat nfldb game)
+  #:use-module (bad-cat nfldb schedule)
+
   #:use-module (bad-cat nfldb cache standings)
-  #:use-module (bad-cat nfldb cache schedule)
   #:use-module (bad-cat nfldb cache result)
+  #:use-module (bad-cat nfldb cache schedule)
 
   #:export (get-overview-layout)
 )
@@ -116,11 +118,21 @@
 
 (define (get-game-panel team)
   (let ( (vbox (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f))
-         (record-label (make-instance <gtk-label> #:label "0 - 0"))
-         (status-label (make-instance <gtk-label> #:label "No Game Playing")) )
+         (record-label (make-instance <gtk-label>))
+         (status-label (make-instance <gtk-label>)) )
     (slot-set! vbox 'css-classes '("game-status"))
     (slot-set! vbox 'vexpand #f)
     (slot-set! vbox 'height-request 96)
+
+    (let ( (record (get-team-record (team.nick team))) )
+      (slot-set! record-label 'label (format #f "~a - ~a" (car (slot-ref record 'w)) (car (slot-ref record 'l)))))
+    (let ( (game (get-next-game (team.nick team))) )
+      (let ( (hms (seconds->hms (- (gametime->secs (game.time game)) (current-time)))) )
+        (slot-set! status-label 'label
+                   (format #f "~a Days, ~a Hours, ~a Minutes, ~a Seconds"
+                           (list-ref hms 0) (list-ref hms 1) (list-ref hms 2) (list-ref hms 3)))))
+                         
+
     (gtk-box-append vbox record-label)
     (gtk-box-append vbox status-label)
     vbox))
