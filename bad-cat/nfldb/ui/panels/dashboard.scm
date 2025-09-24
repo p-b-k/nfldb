@@ -23,7 +23,7 @@
 
 (define-method (get-overview-layout (t <nfl-team>))
   (let ( (banner (get-team-banner t))
-         (game   (get-game-panel t))
+         (game   (get-next-game-panel t))
          (sched  (get-sched-panel t))
          (div    (get-div-panel (team.conf t) (team.div t)))
          (conf   (get-conf-panel (team.conf t) (team.div t)))
@@ -32,7 +32,7 @@
            (team-hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
            (div-hbox  (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
            (league-hbox  (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f)) )
-      (slot-set! banner 'height-request 96)
+      (slot-set! banner 'height-request 128)
       (slot-set! banner 'vexpand #f)
       (slot-set! banner 'valign 1)
 
@@ -44,16 +44,17 @@
       (gtk-box-append div-hbox div)
       (gtk-box-append div-hbox conf)
 
-      (gtk-grid-attach root-grid banner 0 0 2 1)
-      (gtk-grid-attach root-grid game 2 0 1 1)
+      (slot-set! game 'valign 4)
 
       (slot-set! sched 'css-classes `("schedule-bar"))
       (slot-set! sched 'halign 'center)
-      (gtk-grid-attach root-grid sched 0 1 2 1)
 
-      (gtk-grid-attach root-grid div-hbox 0 2 1 1)
-      (gtk-grid-attach root-grid league-hbox 1 2 2 1)
-      
+      (gtk-grid-attach root-grid banner       0 0 2 1)
+      (gtk-grid-attach root-grid game         4 0 1 3)
+      (gtk-grid-attach root-grid sched        0 1 2 1)
+      (gtk-grid-attach root-grid div-hbox     0 2 1 1)
+      (gtk-grid-attach root-grid league-hbox  1 2 2 1)
+
       root-grid)))
 
 (define (add-standings-table root-vbox standings-list)
@@ -116,26 +117,87 @@
 
       hbox))
 
-(define (get-game-panel team)
-  (let ( (vbox (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f))
-         (record-label (make-instance <gtk-label>))
-         (status-label (make-instance <gtk-label>)) )
-    (slot-set! vbox 'css-classes '("game-status"))
-    (slot-set! vbox 'vexpand #f)
-    (slot-set! vbox 'height-request 96)
+(define (get-next-game-panel team)
+  (let ( (record-label  (make-instance <gtk-label>  #:label "Record to Date"))
+         (record-panel  (make-instance <gtk-label>))
+         (time-to-game  (make-instance <gtk-label>  #:label "Time to next game"))
+         (days-label    (make-instance <gtk-label>  #:label "Days"))
+         (hours-label   (make-instance <gtk-label>  #:label "Hours"))
+         (mins-label    (make-instance <gtk-label>  #:label "Minutes"))
+         (secs-label    (make-instance <gtk-label>  #:label "Seconds"))
+         (days-val      (make-instance <gtk-label>))
+         (hours-val     (make-instance <gtk-label>))
+         (mins-val      (make-instance <gtk-label>))
+         (secs-val      (make-instance <gtk-label>)) )
 
-    (let ( (record (get-team-record (team.nick team))) )
-      (slot-set! record-label 'label (format #f "~a - ~a" (car (slot-ref record 'w)) (car (slot-ref record 'l)))))
-    (let ( (game (get-next-game (team.nick team))) )
-      (let ( (hms (seconds->hms (- (gametime->secs (game.time game)) (current-time)))) )
-        (slot-set! status-label 'label
-                   (format #f "~a Days, ~a Hours, ~a Minutes, ~a Seconds"
-                           (list-ref hms 0) (list-ref hms 1) (list-ref hms 2) (list-ref hms 3)))))
-                         
+    (let ( (grid (make-instance <gtk-grid>
+                                #:row-homogenous    #f
+                                #:row-spacing       2
+                                #:column-homogenous #f
+                                #:column-spacing    2)) )
+      (slot-set! record-label 'css-classes '("list-header"))
+      (slot-set! record-panel 'css-classes '("game-status"))
+      (slot-set! time-to-game 'css-classes '("list-header"))
+      (slot-set! days-label   'xalign 0)
+      (slot-set! hours-label  'xalign 0)
+      (slot-set! mins-label   'xalign 0)
+      (slot-set! secs-label   'xalign 0)
+      (slot-set! days-val     'xalign 0)
+      (slot-set! hours-val    'xalign 0)
+      (slot-set! mins-val     'xalign 0)
+      (slot-set! secs-val     'xalign 0)
+      (slot-set! days-val     'css-classes '("game-status"))
+      (slot-set! hours-val    'css-classes '("game-status"))
+      (slot-set! mins-val     'css-classes '("game-status"))
+      (slot-set! secs-val     'css-classes '("game-status"))
+      (slot-set! grid         'vexpand #f)
+      (slot-set! grid         'width-request 96)
 
-    (gtk-box-append vbox record-label)
-    (gtk-box-append vbox status-label)
-    vbox))
+
+      (let ( (record (get-team-record (team.nick team))) )
+        (slot-set! record-panel 'label (format #f "~a - ~a" (car (slot-ref record 'w)) (car (slot-ref record 'l)))))
+
+      (let ( (game (get-next-game (team.nick team))) )
+        (let ( (hms (seconds->hms (- (gametime->secs (game.time game)) (current-time)))) )
+          (slot-set! days-val   'label (number->string (list-ref hms 0)))
+          (slot-set! hours-val  'label (number->string (list-ref hms 1)))
+          (slot-set! mins-val   'label (number->string (list-ref hms 2)))
+          (slot-set! secs-val   'label (number->string (list-ref hms 3)))))
+
+      (gtk-grid-attach grid record-label 0 0 2 1)
+      (gtk-grid-attach grid record-panel 0 1 2 1)
+      (gtk-grid-attach grid time-to-game 0 2 2 1)
+      (gtk-grid-attach grid days-label   0 3 1 1)
+      (gtk-grid-attach grid hours-label  0 4 1 1)
+      (gtk-grid-attach grid mins-label   0 5 1 1)
+      (gtk-grid-attach grid secs-label   0 6 1 1)
+      (gtk-grid-attach grid days-val     1 3 1 1)
+      (gtk-grid-attach grid hours-val    1 4 1 1)
+      (gtk-grid-attach grid mins-val     1 5 1 1)
+      (gtk-grid-attach grid secs-val     1 6 1 1)
+
+      grid)))
+
+; (define (get-game-panel team)
+;   (let ( (vbox (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f))
+;          (record-label (make-instance <gtk-label>))
+;          (status-label (make-instance <gtk-label>)) )
+;     (slot-set! vbox 'css-classes '("game-status"))
+;     (slot-set! vbox 'vexpand #f)
+;     (slot-set! vbox 'height-request 96)
+
+;     (let ( (record (get-team-record (team.nick team))) )
+;       (slot-set! record-label 'label (format #f "~a - ~a" (car (slot-ref record 'w)) (car (slot-ref record 'l)))))
+;     (let ( (game (get-next-game (team.nick team))) )
+;       (let ( (hms (seconds->hms (- (gametime->secs (game.time game)) (current-time)))) )
+;         (slot-set! status-label 'label
+;                    (format #f "~a Days, ~a Hours, ~a Minutes, ~a Seconds"
+;                            (list-ref hms 0) (list-ref hms 1) (list-ref hms 2) (list-ref hms 3)))))
+;                          
+
+;     (gtk-box-append vbox record-label)
+;     (gtk-box-append vbox status-label)
+;     vbox))
 
 (define (get-div-panel conf div)
   (let ( (root-vbox (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f)) 
@@ -199,5 +261,4 @@
               (add-divs (1+ index) (cdr todo)))))
         (add-divs 0 lists)))
     grid))
-
 

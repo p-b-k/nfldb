@@ -29,6 +29,8 @@
     (gtk-style-context-add-provider-for-display (gdk-display-get-default) nfldb-css-provider 0)
     (gtk-style-context-add-provider-for-display (gdk-display-get-default) team-css-provider 0)
 
+    (slot-set! window 'resizable #f)
+
     (set-child window (get-overview-layout team))
 
     (present window)))
