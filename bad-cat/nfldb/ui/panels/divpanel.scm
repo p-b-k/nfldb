@@ -9,14 +9,7 @@
 
   #:use-module (bad-cat utils)
 
-; #:use-module (bad-cat nfldb)
-; #:use-module (bad-cat nfldb team)
-; #:use-module (bad-cat nfldb game)
-; #:use-module (bad-cat nfldb schedule)
-
   #:use-module (bad-cat nfldb cache standings)
-; #:use-module (bad-cat nfldb cache result)
-; #:use-module (bad-cat nfldb cache schedule)
 
   #:export (get-div-panel)
 )

@@ -19,6 +19,7 @@
   #:use-module (bad-cat nfldb cache schedule)
 
   #:use-module (bad-cat nfldb ui panels divpanel)
+  #:use-module (bad-cat nfldb ui panels schedulebar)
 
   #:export (get-overview-layout)
 )
@@ -58,7 +59,6 @@
       (gtk-grid-attach root-grid league-hbox  1 2 2 1)
 
       root-grid)))
-
 
 (define (get-team-banner team)
   (let ( (hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
@@ -153,56 +153,6 @@
       (gtk-grid-attach grid secs-val     1 6 1 1)
 
       grid)))
-
-; (define (get-game-panel team)
-;   (let ( (vbox (make-instance <gtk-box> #:orientation 'vertical #:homogenous #f))
-;          (record-label (make-instance <gtk-label>))
-;          (status-label (make-instance <gtk-label>)) )
-;     (slot-set! vbox 'css-classes '("game-status"))
-;     (slot-set! vbox 'vexpand #f)
-;     (slot-set! vbox 'height-request 96)
-
-;     (let ( (record (get-team-record (team.nick team))) )
-;       (slot-set! record-label 'label (format #f "~a - ~a" (car (slot-ref record 'w)) (car (slot-ref record 'l)))))
-;     (let ( (game (get-next-game (team.nick team))) )
-;       (let ( (hms (seconds->hms (- (gametime->secs (game.time game)) (current-time)))) )
-;         (slot-set! status-label 'label
-;                    (format #f "~a Days, ~a Hours, ~a Minutes, ~a Seconds"
-;                            (list-ref hms 0) (list-ref hms 1) (list-ref hms 2) (list-ref hms 3)))))
-;                          
-
-;     (gtk-box-append vbox record-label)
-;     (gtk-box-append vbox status-label)
-;     vbox))
-
-
-
-(define (create-schedule-entry-for-game team game)
-  (define (get-resource)
-    (if game
-      (let ( (result (game.result game)) )
-        (if result
-          (if (game-tied? result)
-            "tied"
-            (if (game-winner? game result (team.nick team))
-              "win"
-              "lose"))
-          "not-played"))
-      "bye"))
-  (let ( (res (format #f "/bad-cat/nfldb/~a" (get-resource))) )
-    (let ( (image (gtk-image-new-from-resource res)) )
-      (slot-set! image 'height-request 32)
-      (slot-set! image 'width-request  32)
-      (slot-set! image 'css-classes '("schedule-record-entry"))
-      image)))
-
-(define (get-sched-panel team)
-  (let ( (hbox  (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #t)) )
-    (define (add-schedule-entry game)
-      (gtk-box-append hbox (create-schedule-entry-for-game team game))
-      #t)
-    (map add-schedule-entry (get-team-games (team.nick team) (current-season)))
-    hbox))
 
 (define (get-conf-panel conf div)
   (let ( (grid (make-instance <gtk-grid>
