@@ -14,7 +14,14 @@
 (use-modules (bad-cat nfldb game))
 (use-modules (bad-cat nfldb team))
 
+(use-modules (bad-cat nfldb data))
+
 (use-modules (bad-cat nfldb ui init))
+
+(use-modules (bad-cat nfldb cache schedule))
+(use-modules (bad-cat nfldb cache result))
+(use-modules (bad-cat nfldb cache league))
+(use-modules (bad-cat nfldb))
 
 (define (show-game-diagram-window app component-proc game result)
   (let ( (window (make-instance <gtk-application-window>
