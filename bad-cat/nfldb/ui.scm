@@ -1,21 +1,20 @@
-;; *********************************************************************************************************************
-;; Test accessing data, parsing json, etc, from espn nfl api
-;; *********************************************************************************************************************
+(define-module (bad-cat nfldb ui)
+  #:use-module (oop goops)
+  #:use-module (srfi srfi-19)
+  #:use-module (g-golf)
 
-(use-modules (oop goops))
+  #:use-module (bad-cat utils)
 
-(use-modules (srfi srfi-19))
+  #:use-module (bad-cat nfldb ui init)
 
-(use-modules (g-golf))
+  #:use-module (bad-cat nfldb team)
+  #:use-module (bad-cat nfldb cache league)
 
-(use-modules (bad-cat nfldb ui init))
+  #:use-module (bad-cat nfldb ui panels dashboard)
 
-(use-modules (bad-cat utils))
-
-(use-modules (bad-cat nfldb team))
-
-
-(use-modules (bad-cat nfldb ui panels dashboard))
+  #:export (nfldb-show-overview-for)
+  #:export (nfldb-show-overview)
+)
 
 ;; *********************************************************************************************************************
 ;; Startup Hook
@@ -50,9 +49,5 @@
         (format #t "No team found for ~a~%" team-nick)
         #f))))
 
-; (define (nfldb-show-overview) (nfldb-show-overview-for (team.nick (my-team))))
-
-;; *********************************************************************************************************************
-;; Set the caching data source
-;; *********************************************************************************************************************
+(define (nfldb-show-overview) (nfldb-show-overview-for (team.nick (my-team))))
 

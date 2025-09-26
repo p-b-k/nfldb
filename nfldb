@@ -1,0 +1,23 @@
+#! /bin/sh
+# -*- mode: scheme; coding: utf-8 -*-
+exec guile -L $(dirname $0) -e main -s "$0" "$@"
+!#
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Run the main nfldb project
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-modules (bad-cat nfldb ui))
+(use-modules (bad-cat nfldb data))
+
+(define (get-parameters args)
+  (let ( (params (make-hash-table)) )
+      (hash-set! params 'my-team (if (null? args) 'PHI (string->symbol (car args))))
+
+      params))
+
+(define (main file . args)
+  (format #t "file = ~s, args = ~s~%" file args)
+  (let ( (params (get-parameters args)) )
+    (nfldb-show-overview-for (hash-ref params 'my-team))))
+
