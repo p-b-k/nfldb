@@ -1,7 +1,7 @@
 #! /bin/sh
 # -*- mode: scheme; coding: utf-8 -*-
-# echo "exec guile -L $(dirname $0) -e main -s $0 $@"
-exec guile -L $(dirname $0) -e main -s "$0" "$@"
+# echo "exec guile -L $(dirname $0) -e show-overview -s $0 $@"
+exec guile -L $(dirname $0) -e show-overview -s "$0" "$@"
 !#
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -13,11 +13,11 @@ exec guile -L $(dirname $0) -e main -s "$0" "$@"
 
 (define (get-parameters args)
   (let ( (params (make-hash-table)) )
-      (hash-set! params 'my-team (if (null? args) 'PHI (string->symbol (string-upcase (car args)))))
+    (hash-set! params 'my-team (if (null? args) 'PHI (string->symbol (string-upcase (car args)))))
 
-      params))
+    params))
 
-(define (main args)
+(define (show-overview args)
   (let ( (file   (car args))
          (params (get-parameters (cdr args))) )
     (nfldb-show-overview-for (hash-ref params 'my-team))))

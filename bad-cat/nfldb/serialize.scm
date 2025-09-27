@@ -48,3 +48,15 @@
   (map write-slot-value (class-slots (class-of obj)))
   (format out ")~%"))
 
+(define-method (write-constructor (h <hashtable>) (out <output-port>))
+  (format out "(cons-list->hash (list ")
+  (hash-map->list (lambda (n v)
+                    (format out "(cons ")
+                    (write-constructor n out)
+                    (format out " ")
+                    (write-constructor v out)
+                    (format out ") "))
+                  h)
+  (format out "))"))
+
+
