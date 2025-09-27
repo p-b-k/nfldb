@@ -29,6 +29,10 @@
     hbox))
 
 (define (create-schedule-entry-for-game team game)
+  (define (get-opponent)
+    (if (eq? (game.home game) (team.nick team))
+      (game.away game)
+      (game.home game)))
   (define (get-resource)
     (if game
       (let ( (result (game.result game)) )
@@ -40,10 +44,20 @@
               "lose"))
           "not-played"))
       "bye"))
-  (let ( (res (format #f "/bad-cat/nfldb/~a" (get-resource))) )
-    (let ( (image (gtk-image-new-from-resource res)) )
-      (slot-set! image 'height-request 32)
-      (slot-set! image 'width-request  32)
-      (slot-set! image 'css-classes '("schedule-record-entry"))
-      image)))
+  (let ( (res (format #f "/bad-cat/nfldb/~a" (get-resource)))
+         (opp (if game (format #f "/bad-cat/nfldb/~a/logo" (get-opponent)) #f)) )
+    (let ( (vbox  (make-instance <gtk-box> #:orientation 'vertical #:homogeneous #t))
+           (status-image (gtk-image-new-from-resource res))
+           (opponent-image (if opp (gtk-image-new-from-resource opp) (make-instance <gtk-image>))) )
+      (slot-set! status-image 'height-request 32)
+      (slot-set! status-image 'width-request  32)
+      (slot-set! status-image 'css-classes '("schedule-record-entry"))
+      (slot-set! opponent-image 'height-request 32)
+      (slot-set! opponent-image 'width-request  32)
+      (slot-set! opponent-image 'css-classes '("schedule-record-entry"))
+
+      (gtk-box-append vbox opponent-image)
+      (gtk-box-append vbox status-image)
+      
+      vbox)))
 
