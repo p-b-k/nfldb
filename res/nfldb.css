@@ -15,6 +15,10 @@
   font-family       : monospace;
 }
 
+.game-graph {
+  padding           : 15px;
+}
+
 .to-game {
   padding-right     : 15px;
 }
