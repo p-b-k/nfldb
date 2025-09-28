@@ -39,23 +39,19 @@
       layout)))
 
 (define (make-game-play-draw-func game result)
-  (format #t "make-game-play-draw-func: calling on ~a ~a~%" game result)
   (lambda (drawing-area cr-ptr width height user-data)
     (let ( (cr (cairo-pointer->context cr-ptr))
            (rl (make-result-layout result)) )
       (draw-field cr width height)
       (draw-endzones cr width height)
-      (draw-lines cr width height)
-      (draw-breaks cr width rl)
-      (draw-timeouts cr width rl)
-      (draw-plays cr width rl)
+      (draw-yard-lines cr width height)
+      (format #t "make-game-play-draw-func: game = ~a, result = ~a~%" game result)
+      (draw-events cr game result width rl)
       #t)))
 
 (define-class <play-renderer> ())
 
-(define-method (play-renderer-height (p <play-renderer>))
-; (format #t "play-renderer-height: calling on ~a~%" (class-name (class-of p)))
-  0)
+(define-method (play-renderer-height (p <play-renderer>)) 0)
 
 (define-method (play-renderer-draw (pr <play-renderer>)
                                    cr
@@ -63,8 +59,7 @@
                                    (g <nfl-game>)
                                    (r <nfl-game-result>)
                                    (top <integer>)
-                                   (width <integer>)
-                                   (height <integer>)))
+                                   (width <integer>)))
 
 (define-class <non-play-renderer> (<play-renderer>))
 (define-class <timeout-renderer> (<non-play-renderer>))
@@ -209,20 +204,13 @@
       (make-instance <play-renderer>) )))
 
 ;; =====================================================================================================================
-;; Start implementing the rendering and sizing functions
+;; Implement play graph drawing subroutines
 ;; =====================================================================================================================
-
-(define-method (play-renderer-height (p <normal-renderer>)) 20)
-(define-method (play-renderer-height (p <turnover-renderer>)) 30)
-
-
 
 (define (draw-field cr width height)
   (define (draw-light yard)
-    (format #t "draw-light: drawing light at ~a~%" yard)
     (if (< yard 10)
       (let ( (offset (+ (endzone-width) (* (yard-width) (* yard 10)) (* (if (< yard 5) 0 5) (yard-width)))) )
-        (format #t "draw-light: about to draw rectangle NW = ~a ~a, WH = ~a ~a~%" offset 0 (* 5 (yard-width)) height)
         (cairo-rectangle cr offset 0 (* 5 (yard-width)) height)
         (cairo-fill cr)
         (draw-light (1+ yard)))))
@@ -232,7 +220,6 @@
   (cairo-fill cr)
   (cairo-set-source-rgb cr 0.0 0.42 0.12)
   (draw-light 0))
-  
 
 (define (draw-endzones cr width height)
   (cairo-set-source-rgb cr 0 0 0)
@@ -247,7 +234,7 @@
   (cairo-set-source-rgb cr 1 1 1)
   (cairo-stroke cr))
 
-(define (draw-lines cr width height)
+(define (draw-yard-lines cr width height)
   (define (width-for-yard yard)
     (case yard
       ( (10) 2.0 )
@@ -266,9 +253,28 @@
     (cairo-set-source-rgb cr 1 1 1)
     (draw-next-line 1)))
 
-(define (draw-breaks cr width rl) #f)
+(define (draw-events cr game result width rl)
+  (define (proc-events top todo)
+    (if (not (null? todo))
+      (let ( (event (car todo)) )
+        (let ( (renderer (play-type->renderer (slot-ref event 'type-id))) )
+          (play-renderer-draw renderer cr event game result top width)
+          (proc-events (+ (play-renderer-height renderer) top) (cdr todo))))))
+  (proc-events 0 (result-plays result)))
 
-(define (draw-timeouts cr width rl) #f)
+;; =====================================================================================================================
+;; Start implementing the rendering and sizing functions
+;; =====================================================================================================================
 
-(define (draw-plays cr width rl) #f)
+(define-method (play-renderer-height (p <normal-renderer>)) 20)
+(define-method (play-renderer-height (p <turnover-renderer>)) 30)
+
+(define-method (play-renderer-draw (pr <normal-renderer>)
+                                   cr
+                                   (p <nfl-game-play>)
+                                   (g <nfl-game>)
+                                   (r <nfl-game-result>)
+                                   (top <integer>)
+                                   (width <integer>))
+  (format #t "Called play-renderer on ~a~%" (slot-ref p 'text)))
 

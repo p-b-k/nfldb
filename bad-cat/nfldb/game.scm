@@ -99,7 +99,8 @@
   (result             #:init-keyword      #:result)
 )
 
-(define (result-plays result) (apply append (map (lambda (x) (slot-ref x 'plays)) (result.drives result))))
+(define (result-plays result)
+  (apply append (map (lambda (x) (slot-ref x 'plays)) (result.drives result))))
 
 (define (make-drive team-id start-clock time-clock start-pos end-pos result plays)
   (make-instance <nfl-game-drive>
