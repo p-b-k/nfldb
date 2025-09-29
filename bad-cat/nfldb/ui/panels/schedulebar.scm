@@ -38,7 +38,7 @@
       (let ( (result (game.result game)) )
         (if result
           (if (game-tied? result)
-            "tied"
+            "tie"
             (if (game-winner? game result (team.nick team))
               "win"
               "lose"))

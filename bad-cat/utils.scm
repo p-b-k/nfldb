@@ -25,6 +25,7 @@
   #:export (gametime-format)
 
   #:export (<rgb-color>)
+  #:export (rgb)
   #:export (rgb.r)
   #:export (rgb.g)
   #:export (rgb.b)
@@ -87,6 +88,8 @@
             #:getter          rgb.b
             #:setter          rgb.b!)
 )
+
+(define-method (rgb (r <integer>) (g <integer>) (b <integer>)) (make-instance <rgb-color> #:r r #:g g #:b b))
 
 (define-method (html-color (c <rgb-color>)) (format #f "#~2,'0x~2,'0x~2,'0x" (rgb.r c) (rgb.g c) (rgb.b c)))
 

@@ -7,9 +7,14 @@
   #:use-module (oop goops)
   #:use-module (cairo)
 
+  #:use-module (bad-cat utils)
+
   #:use-module (bad-cat nfldb play)
   #:use-module (bad-cat nfldb game)
   #:use-module (bad-cat nfldb ui parameters)
+
+  #:use-module (bad-cat nfldb cache league)
+  #:use-module (bad-cat nfldb team)
 
   #:export (make-game-play-draw-func)
   #:export (play-type->renderer)
@@ -43,7 +48,7 @@
     (let ( (cr (cairo-pointer->context cr-ptr))
            (rl (make-result-layout result)) )
       (draw-field cr width height)
-      (draw-endzones cr width height)
+      (draw-endzones cr width height game)
       (draw-yard-lines cr width height)
       (format #t "make-game-play-draw-func: game = ~a, result = ~a~%" game result)
       (draw-events cr game result width rl)
@@ -59,37 +64,47 @@
                                    (g <nfl-game>)
                                    (r <nfl-game-result>)
                                    (top <integer>)
-                                   (width <integer>)))
+                                   (width <integer>))
+  (format #t "Undefined renderer for ~a~%" (class-name (class-of pr)))
+  (if #f #t))
 
 (define-class <non-play-renderer> (<play-renderer>))
 (define-class <timeout-renderer> (<non-play-renderer>))
-(define-class <break-renderer> (<non-play-renderer>))
+(define-class <quarter-renderer> (<non-play-renderer>))
+(define-class <half-renderer> (<non-play-renderer>))
 
-(define-class <normal-renderer> (<play-renderer>))
-(define-class <rush-renderer> (<normal-renderer>))
-(define-class <pass-renderer> (<normal-renderer>))
+(define-class <scrimmage-renderer> (<play-renderer>))
+(define-class <rush-renderer> (<scrimmage-renderer>))
+(define-class <pass-renderer> (<scrimmage-renderer>))
+(define-class <fumble-own-renderer> (<scrimmage-renderer>))
 
-(define-class <back-renderer> (<normal-renderer>))
-(define-class <sack-renderer> (<back-renderer>))
+(define-class <no-prog-renderer> (<scrimmage-renderer>))
+(define-class <incomplete-renderer> (<no-prog-renderer>))
 
-(define-class <kick-renderer> (<normal-renderer>))
+(define-class <loss-renderer> (<scrimmage-renderer>))
+(define-class <sack-renderer> (<loss-renderer>))
+
+(define-class <kick-renderer> (<scrimmage-renderer>))
 (define-class <blocked-renderer> (<kick-renderer>))
 
 (define-class <turnover-renderer> (<play-renderer>))
 (define-class <return-renderer> (<turnover-renderer>))
+(define-class <fumble-loss-renderer> (<turnover-renderer>))
+(define-class <interception-loss-renderer> (<turnover-renderer>))
 
-(define-class <no-prog-renderer> (<play-renderer>))
+(define-class <penalty-renderer> (<play-renderer>))
+
 
 (define (play-type->renderer type-id)
   (cond
     ;; End Period
     ( (= type-id
          nfldb-pt-end-period)
-      (make-instance <break-renderer>) )
+      (make-instance <quarter-renderer>) )
     ;; Pass Incompletion
     ( (= type-id
          nfldb-pt-pass-incompletion)
-      (make-instance <no-prog-renderer>) )
+      (make-instance <incomplete-renderer>) )
     ;; Rush
     ( (= type-id
          nfldb-pt-rush)
@@ -101,11 +116,11 @@
     ;; Penalty
     ( (= type-id
          nfldb-pt-penalty)
-      (make-instance <no-prog-renderer>) )
+      (make-instance <penalty-renderer>) )
     ; ;; Fumble Recovery (Own)
     ( (= type-id
          nfldb-pt-fumble-recovery-own)
-      (make-instance <normal-renderer>) )
+      (make-instance <fumble-own-renderer>) )
     ; ;; Blocked Punt
     ( (= type-id
          nfldb-pt-blocked-punt)
@@ -125,11 +140,11 @@
     ;; Pass Interception Return
     ( (= type-id
          nfldb-pt-pass-interception-return)
-      (make-instance <turnover-renderer>) )
+      (make-instance <interception-loss-renderer>) )
     ;; Fumble Recovery (Opponent)
     ( (= type-id
          nfldb-pt-fumble-recovery-opponent)
-      (make-instance <turnover-renderer>) )
+      (make-instance <fumble-loss-renderer>) )
     ;; Muffed Punt Recovery (Opponent)
     ( (= type-id
          nfldb-pt-muffed-punt-recovery-opponent)
@@ -145,11 +160,11 @@
     ;; Interception Return Touchdown
     ( (= type-id
          nfldb-pt-interception-return-touchdown)
-      (make-instance <turnover-renderer>) )
+      (make-instance <interception-loss-renderer>) )
     ;; Fumble Return Touchdown
     ( (= type-id
          nfldb-pt-fumble-return-touchdown)
-      (make-instance <turnover-renderer>) )
+      (make-instance <fumble-loss-renderer>) )
     ;; Punt
     ( (= type-id
          nfldb-pt-punt)
@@ -169,7 +184,7 @@
     ;; End of Half
     ( (= type-id
          nfldb-pt-end-of-half)
-      (make-instance <break-renderer>) )
+      (make-instance <half-renderer>) )
     ;; End of Game
     ( (= type-id
          nfldb-pt-end-of-game)
@@ -193,7 +208,7 @@
     ;; End of Regulation
     ( (= type-id
          nfldb-pt-end-of-regulation)
-      (make-instance <break-renderer>) )
+      (make-instance <half-renderer>) )
     ;; Sack Opp Fumble Recovery
     ( (= type-id
          nfldb-pt-sack-opp-fumble-recovery)
@@ -221,18 +236,20 @@
   (cairo-set-source-rgb cr 0.0 0.42 0.12)
   (draw-light 0))
 
-(define (draw-endzones cr width height)
-  (cairo-set-source-rgb cr 0 0 0)
-  (cairo-rectangle cr 0 0 (endzone-width) height)
-  (cairo-fill-preserve cr)
-  (cairo-set-source-rgb cr 1 1 1)
-  (cairo-stroke cr)
+(define (draw-endzones cr width height game)
+  (let ( (home-team (get-team (game.home game)))
+         (away-team (get-team (game.away game))) )
+    (cairo-rectangle cr 0 0 (endzone-width) height)
+    (apply cairo-set-source-rgb (cons cr (rgb->list (team.color away-team))))
+    (cairo-fill-preserve cr)
+    (apply cairo-set-source-rgb (cons cr (rgb->list (team.alt-color away-team))))
+    (cairo-stroke cr)
 
-  (cairo-set-source-rgb cr 0 0 0)
-  (cairo-rectangle cr (+ (endzone-width) (field-width))  0 (endzone-width) height)
-  (cairo-fill-preserve cr)
-  (cairo-set-source-rgb cr 1 1 1)
-  (cairo-stroke cr))
+    (apply cairo-set-source-rgb (cons cr (rgb->list (team.color home-team))))
+    (cairo-rectangle cr (+ (endzone-width) (field-width))  0 (endzone-width) height)
+    (cairo-fill-preserve cr)
+    (apply cairo-set-source-rgb (cons cr (rgb->list (team.alt-color home-team))))
+    (cairo-stroke cr)))
 
 (define (draw-yard-lines cr width height)
   (define (width-for-yard yard)
@@ -266,15 +283,113 @@
 ;; Start implementing the rendering and sizing functions
 ;; =====================================================================================================================
 
-(define-method (play-renderer-height (p <normal-renderer>)) 20)
+(define-method (play-renderer-height (p <scrimmage-renderer>)) (play-bar-total-height))
 (define-method (play-renderer-height (p <turnover-renderer>)) 30)
+(define-method (play-renderer-height (p <quarter-renderer>)) 10)
+(define-method (play-renderer-height (p <half-renderer>)) 15)
+(define-method (play-renderer-height (p <timeout-renderer>)) 5)
+(define-method (play-renderer-height (p <penalty-renderer>)) 5)
 
-(define-method (play-renderer-draw (pr <normal-renderer>)
+(define-method (draw-progress (pr <scrimmage-renderer>) cr top start-pos end-pos team home?)
+  (draw-progress-bar cr top start-pos end-pos team home?))
+
+(define-method (draw-yds-to-first-down (pr <scrimmage-renderer>) cr start-pos yds-to-go top height width)
+  (draw-yds-to-go cr start-pos yds-to-go top height width))
+
+(define-method (draw-start-pos (pr <scrimmage-renderer>) cr start-pos main-color alt-color top height width)
+  (draw-bulb pr cr start-pos main-color alt-color top height width))
+
+(define-method (play-renderer-draw (pr <scrimmage-renderer>)
                                    cr
                                    (p <nfl-game-play>)
                                    (g <nfl-game>)
                                    (r <nfl-game-result>)
                                    (top <integer>)
                                    (width <integer>))
-  (format #t "Called play-renderer on ~a~%" (slot-ref p 'text)))
+  (define (get-offense) (get-team (slot-ref p 'team-id)))
+  (let ( (height (play-renderer-height pr))
+         (start-pos (- 100 (slot-ref p 'start-position)))
+         (team (get-offense))
+         (end-pos (slot-ref p 'end-position)) )
+    (let ( (main-color (team.color team))
+           (home?      (eq? (game.home g) (team.nick team)))
+           (alt-color  (team.alt-color team)) )
+      (let ( (yds-to-go  (* (if home? 1 -1) (slot-ref p 'yds-to-go))) )
+        (draw-progress pr cr top start-pos end-pos team home?)
+        (draw-yds-to-first-down pr cr start-pos yds-to-go top height width)
+        (draw-start-pos pr cr start-pos main-color alt-color top height width))
+      )))
+
+(define-method (draw-progress (pr <no-prog-renderer>) cr top start-pos end-pos team home?))
+(define-method (draw-start-pos (pr <incomplete-renderer>) cr start-pos main-color alt-color top height width)
+  (draw-bulb pr cr start-pos alt-color main-color top height width))
+
+
+(define-method (play-renderer-draw (pr <penalty-renderer>)
+                                   cr
+                                   (p <nfl-game-play>)
+                                   (g <nfl-game>)
+                                   (r <nfl-game-result>)
+                                   (top <integer>)
+                                   (width <integer>))
+  (format #t "play-renderer-draw.~a: start-pos = ~a, end-pos = ~a, yards = ~a~%"
+          (class-name (class-of pr)) (slot-ref p 'start-position) (slot-ref p 'end-position) (slot-ref p 'yards)))
+
+
+(define (draw-regress cr top start end team home?)
+  (let ( (x (+ (endzone-width) (* (yard-width) start)))
+         (y (+ top (play-bar-margin)))
+         (w (- end start))
+         (h (+ (* 2 (play-bar-stroke-width)) (play-bar-height))) )
+    (cairo-rectangle cr x y w h)
+    (apply cairo-set-source-rgb cr (rgb->list (team.alt-color team)))
+    (cairo-fill-preserve cr)
+    (apply cairo-set-source-rgb cr (rgb->list (team.color team)))
+    (cairo-stroke cr)))
+
+(define (draw-progress-bar cr top start end team home?)
+  (let ( (x (+ (endzone-width) (* (yard-width) start)))
+         (y (+ top (play-bar-margin)))
+         (w (- end start))
+         (h (+ (* 2 (play-bar-stroke-width)) (play-bar-height))) )
+    (cairo-rectangle cr x y w h)
+    (apply cairo-set-source-rgb cr (rgb->list (team.color team)))
+    (cairo-fill-preserve cr)
+    (apply cairo-set-source-rgb cr (rgb->list (team.alt-color team)))
+    (cairo-stroke cr)))
+
+(define (draw-yds-to-go cr start-pos yds-to-go top height width)
+  (cairo-set-line-width cr (yds-to-go-stroke-width))
+  (cairo-set-source-rgba cr 1 1 0 0.85)
+  (cairo-move-to cr (+ (endzone-width) (* (yard-width) start-pos)) (+ top (/ height 2)))
+  (cairo-line-to cr (+ (endzone-width) (* (yard-width) (+ start-pos yds-to-go))) (+ top (/ height 2)))
+  (cairo-stroke cr))
+
+(define (draw-bulb pr cr start-pos main-color alt-color top height width)
+  (cairo-set-line-width cr (play-bar-stroke-width))
+  (let ( (x (+ (endzone-width) (* (yard-width) start-pos)))
+         (y (+ top (/ height 2))) )
+    (cairo-arc cr x y (play-bar-bulb) 0.0 (* 2 (hacky-pi))))
+  (cairo-close-path cr)
+  (apply cairo-set-source-rgb cr (rgb->list main-color))
+  (cairo-fill-preserve cr)
+  (apply cairo-set-source-rgb cr (rgb->list alt-color))
+  (cairo-stroke cr))
+
+(define-method (non-play-set-color (p <non-play-renderer>) cr)
+  (cairo-set-source-rgba cr 0.3 0.3 0.3 0.73))
+  
+(define-method (non-play-set-color (p <timeout-renderer>) cr)
+  (cairo-set-source-rgba cr 0.3 0.53 0.43 0.73))
+
+(define-method (play-renderer-draw (pr <non-play-renderer>)
+                                   cr
+                                   (p <nfl-game-play>)
+                                   (g <nfl-game>)
+                                   (r <nfl-game-result>)
+                                   (top <integer>)
+                                   (width <integer>))
+  (non-play-set-color pr cr)
+  (cairo-rectangle cr (endzone-width) top (- width (* 2 (endzone-width))) (play-renderer-height pr))
+  (cairo-fill cr))
 
