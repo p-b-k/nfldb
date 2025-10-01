@@ -123,3 +123,6 @@
 ;; Sack Opp Fumble Recovery
 (define nfldb-pt-sack-opp-fumble-recovery          80)
 
+;; Extra fields that do not have numbers
+(define nfldb-pt-UNKNOWN-blocked-1pt-goal        1000)
+

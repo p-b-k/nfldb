@@ -29,6 +29,8 @@
 (define (game-cache-file game-id) (format #f "~a/games/game_~a.scm" nfldb-cache-root game-id))
 
 (define type-cache-file (format #f "~a/play-types.scm" nfldb-cache-root))
+(define type-extras-file (format #f "~a/play-type-extras.scm" nfldb-cache-root))
+(define type-exceptions-file (format #f "~a/play-type-exceptions.scm" nfldb-cache-root))
 
 ;; ---------------------------------------------------------------------------------------------------------------------
 ;; Type Name Cache
@@ -37,7 +39,16 @@
 (define (type-cache-restore)
   (if (file-exists? type-cache-file) (nfldb-eval (with-input-from-file type-cache-file read)) (make-hash-table)))
 
+(define (type-extras-restore)
+  (if (file-exists? type-extras-file) (nfldb-eval (with-input-from-file type-extras-file read)) (make-hash-table)))
+
+(define (type-exceptions-restore)
+  (if (file-exists? type-exceptions-file)
+    (nfldb-eval (with-input-from-file type-exceptions-file read)) (make-hash-table)))
+
 (define play-type-cache (type-cache-restore))
+(define play-extra-cache (type-extras-restore))
+(define play-exception-cache (type-exceptions-restore))
 
 (define (type-cache-store)
   (with-output-to-file type-cache-file (lambda () (write-constructor play-type-cache (current-output-port)))))
@@ -93,10 +104,16 @@
            (play-end    (json-ref end.yardLine play-json))
            (play-yards  (json-ref statYardage play-json)) )
       (if (not type-id)
-        (begin
-          (play-type->text! play-id type-text)
-          (set! type-id play-id)
-          (set! type-text play-text)))
+        (let ( (exception-id (hash-ref play-exception-cache play-id)) )
+          (format #t "NO PLAY TYPE ID FOR ~a (~a)~%" play-id play-text)
+          (sleep 5)
+          (if exception-id
+            (begin
+              (set! type-id exception-id)
+              (set! type-text (hash-ref play-extra-cache exception-id))
+              (format #t "USING EXTRA TYPE DESCRIPTION ~a~%" type-text)
+              (sleep 5))
+            (throw 'unknown-play-type play-id play-text))))
       (if (not (play-type->text type-id)) (play-type->text! type-id type-text))
       (make-game-play play-id team-id quarter type-id play-text play-down play-togo play-start play-end play-yards)))
   (define (json->scoring-play play-json)
