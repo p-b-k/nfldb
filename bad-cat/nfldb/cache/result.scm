@@ -99,7 +99,7 @@
            (play-id     (string->number (json-ref id play-json)))
            (play-text   (json-ref text play-json))
            (play-down   (json-ref end.down play-json))
-           (play-togo   (json-ref end.distance play-json))
+           (play-togo   (json-ref start.distance play-json))
            (play-start  (json-ref start.yardLine play-json))
            (play-end    (json-ref end.yardLine play-json))
            (play-yards  (json-ref statYardage play-json)) )

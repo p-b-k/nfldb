@@ -94,7 +94,6 @@
 
 (define-class <penalty-renderer> (<play-renderer>))
 
-
 (define (play-type->renderer type-id)
   (cond
     ;; End Period
@@ -372,7 +371,7 @@
   (cairo-set-line-width cr (yds-to-go-stroke-width))
   (cairo-set-source-rgba cr 1 1 0 0.85)
   (cairo-move-to cr (+ (endzone-width) (* (yard-width) start-pos)) (+ top (/ height 2)))
-  (cairo-line-to cr (+ (endzone-width) (* (yard-width) (+ start-pos yds-to-go))) (+ top (/ height 2)))
+  (cairo-line-to cr (+ (endzone-width) (* (yard-width) (- start-pos yds-to-go))) (+ top (/ height 2)))
   (cairo-stroke cr))
 
 (define (draw-bulb pr cr start-pos main-color alt-color top height width home?)
