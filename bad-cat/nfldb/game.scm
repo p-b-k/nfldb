@@ -90,8 +90,11 @@
 
 ;; Details about a drive
 (define-class <nfl-game-drive> ()
+  (qstart             #:init-keyword      #:qstart)
+  (qend               #:init-keyword      #:qend)
   (team-id            #:init-keyword      #:team)
   (start-clock        #:init-keyword      #:start-clock)
+  (end-clock          #:init-keyword      #:end-clock)
   (time-clock         #:init-keyword      #:time-clock)
   (start-position     #:init-keyword      #:start-pos)
   (end-position       #:init-keyword      #:end-pos)
@@ -102,10 +105,13 @@
 (define (result-plays result)
   (apply append (map (lambda (x) (slot-ref x 'plays)) (result.drives result))))
 
-(define (make-drive team-id start-clock time-clock start-pos end-pos result plays)
+(define (make-drive qstart qend team-id start-clock end-clock time-clock start-pos end-pos result plays)
   (make-instance <nfl-game-drive>
+                 #:qstart         qstart
+                 #:qend           qend
                  #:team           team-id
                  #:start-clock    start-clock
+                 #:end-clock      end-clock
                  #:time-clock     time-clock
                  #:start-pos      start-pos
                  #:end-pos        end-pos

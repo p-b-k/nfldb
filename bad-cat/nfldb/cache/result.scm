@@ -129,15 +129,29 @@
     (if (null? todo)
       (reverse sofar)
       (let ( (drive-json (car todo)) )
-        (let ( (team-id (string->number (json-ref team.id drive-json)))
+        (let ( (qstart        (json-ref start.period.number drive-json))
+               (qend          (json-ref end.period.number drive-json))
+               (team-id (string->number (json-ref team.id drive-json)))
                (start-clock   (clock->pair (json-ref start.clock.displayValue drive-json)))
+               (end-clock     (if (member 'clock (json-keys (json-ref end drive-json)))
+                                (clock->pair (json-ref end.clock.displayValue drive-json))
+                                (cons 0 0)))
                (time-clock    (clock->pair (json-ref timeElapsed.displayValue drive-json)))
                (start-pos     (json-ref start.yardLine drive-json))
                (end-pos       (json-ref end.yardLine drive-json))
                (result        (json-ref displayResult drive-json)) )
           (let ( (plays (map (lambda (x) (json->play team-id x))
                              (json-ref plays drive-json))) )
-            (let ( (drive (make-drive team-id start-clock time-clock start-pos end-pos result plays)) )
+            (let ( (drive (make-drive qstart
+                                      qend
+                                      team-id
+                                      start-clock
+                                      end-clock
+                                      time-clock
+                                      start-pos
+                                      end-pos
+                                      result
+                                      plays)) )
               (json-list->drives (1+ drive-no) (cdr todo) (cons drive sofar))))))))
   (let ( (name (format #f "~a@~a" (json-ref boxscore.teams.0.team.name game-json)
                          (json-ref boxscore.teams.1.team.name game-json))) )
@@ -177,5 +191,6 @@
         (if game
           (begin
             (format #t "update data getting details for ~a~%" (game.name g))
-            (game-result-store game)))))))
+            (game-result-store game))
+          #f)))))
 

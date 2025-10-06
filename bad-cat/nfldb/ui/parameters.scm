@@ -22,6 +22,9 @@
   #:export (hacky-pi)
 
   #:export (yds-to-go-stroke-width)
+
+  #:export (drive-break-4-mins)
+  #:export (drive-break-2-mins)
 )
 
 ;;
@@ -37,7 +40,7 @@
 (define drive-height            (make-parameter 400))
 
 ;; Plays
-(define play-bar-height         (make-parameter 6))
+(define play-bar-height         (make-parameter 3))
 (define play-bar-stroke-width   (make-parameter 2))
 (define play-bar-margin         (make-parameter 12))
 (define play-bar-bulb           (make-parameter 8))
@@ -54,4 +57,8 @@
 
 ;; There's got to be a better way
 (define (hacky-pi) 3.14159)
+
+;; Drive quarter and half break sizes
+(define drive-break-4-mins      (make-parameter 2))
+(define drive-break-2-mins      (make-parameter 10))
 

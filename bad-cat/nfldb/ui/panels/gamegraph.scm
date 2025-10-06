@@ -53,7 +53,7 @@
       (let ( (root-hbox (make-instance <gtk-box> #:orientation 'horizontal #:homogeneous #f)) )
         (gtk-scrolled-window-set-child play-scroll play-panel)
 
-        (slot-set! play-scroll 'hexpand #f)
+        (slot-set! play-scroll 'hexpand #t)
         (slot-set! play-scroll 'css-classes '("game-graph" "play-graph"))
         (slot-set! play-scroll 'min-content-width (play-panel-width))
         (slot-set! drive-panel 'hexpand #f)

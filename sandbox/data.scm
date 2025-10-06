@@ -66,3 +66,17 @@
 
 (use-modules (bad-cat nfldb schedule))
 
+(define (drive-map-for-team-in-week func team-nick week-no)
+  (let ( (games-for-week (get-games (current-season) week-no)) )
+    (let ( (games-for-team (filter (lambda (g) (member team-nick (list (game.home g) (game.away g))))
+                                   games-for-week)) )
+      (if (null? games-for-team)
+        '()
+        (if (null? (cdr games-for-team))
+          (let ( (game (car games-for-team)) )
+            (let ( (result (game.result game)) )
+              (if result
+                (map func (result.drives result))
+                '())))
+          (throw 'cant-get-here 'multiple-games-for-team-in-week games-for-team))))))
+

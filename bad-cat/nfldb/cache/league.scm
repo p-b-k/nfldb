@@ -28,6 +28,7 @@
   #:export (get-team)
   #:export (get-conf)
   #:export (get-div)
+  #:export (team-nick->id)
 
   #:export (set-my-team)
   #:export (my-team)
@@ -181,3 +182,8 @@
 
 (define (my-team) (get-team (my-team-param)))
 
+(define (team-nick->id nick)
+  (let ( (team (get-team nick)) )
+    (if team
+      (team.id team)
+      (throw 'unknown-team-nickname nick))))

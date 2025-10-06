@@ -296,7 +296,24 @@
   (draw-yds-to-go cr start-pos yds-to-go top height width home?))
 
 (define-method (draw-start-pos (pr <scrimmage-renderer>) cr start-pos main-color alt-color top height width home?)
+  (throw 'dont-know-how-to-draw (class-name (class-of pr))))
+
+(define-method (draw-start-pos (pr <rush-renderer>) cr start-pos main-color alt-color top height width home?)
   (draw-bulb pr cr start-pos main-color alt-color top height width home?))
+
+(define-method (draw-start-pos (pr <pass-renderer>) cr start-pos main-color alt-color top height width home?)
+  (draw-bulb pr cr start-pos main-color alt-color top height width home?)
+  (let ( (x (+ (endzone-width) (* (yard-width) start-pos)))
+         (y (+ top (/ height 2))) )
+
+;   (apply cairo-set-source-rgb cr (rgb->list alt-color))
+;   (cairo-set-source-rgb cr 1 0 1)
+    (cairo-arc cr x y (/ (play-bar-bulb) 3) 0.0 (* 2 (hacky-pi)))
+    (cairo-fill cr)))
+
+(define-method (draw-start-pos (pr <fumble-own-renderer>) cr start-pos main-color alt-color top height width home?))
+(define-method (draw-start-pos (pr <kick-renderer>) cr start-pos main-color alt-color top height width home?))
+(define-method (draw-start-pos (pr <sack-renderer>) cr start-pos main-color alt-color top height width home?))
 
 (define-method (play-renderer-draw (pr <scrimmage-renderer>)
                                    cr
@@ -306,8 +323,6 @@
                                    (top <integer>)
                                    (width <integer>))
   (define (get-offense) (get-team (slot-ref p 'team-id)))
-  (format #t "play-renderer-draw.~a: start-pos = ~a, end-pos = ~a, yards = ~a~%"
-          (class-name (class-of pr)) (slot-ref p 'start-position) (slot-ref p 'end-position) (slot-ref p 'yards))
   (let ( (height (play-renderer-height pr))
          (start-pos (- 100 (slot-ref p 'start-position)))
          (team (get-offense))
@@ -323,8 +338,12 @@
 
 (define-method (draw-progress (pr <no-prog-renderer>) cr top start-pos end-pos team home?))
 (define-method (draw-start-pos (pr <incomplete-renderer>) cr start-pos main-color alt-color top height width home?)
-  (draw-bulb pr cr start-pos alt-color main-color top height width home?))
-
+  (let ( (x (+ (endzone-width) (* (yard-width) start-pos)))
+         (y (+ top (/ height 2)))
+         (size (play-bar-bulb)) )
+    (cairo-rectangle cr (- x size) (- y size) (* 2 size) (* 2 size))
+    (apply cairo-set-source-rgb cr (rgb->list alt-color))
+    (cairo-fill cr)))
 
 (define-method (play-renderer-draw (pr <penalty-renderer>)
                                    cr
@@ -362,10 +381,9 @@
          (w (- end start))
          (h (+ (* 2 (play-bar-stroke-width)) (play-bar-height))) )
     (cairo-rectangle cr x y w h)
-    (apply cairo-set-source-rgb cr (rgb->list (team.color team)))
-    (cairo-fill-preserve cr)
+
     (apply cairo-set-source-rgb cr (rgb->list (team.alt-color team)))
-    (cairo-stroke cr)))
+    (cairo-fill cr)))
 
 (define (draw-yds-to-go cr start-pos yds-to-go top height width home?)
   (cairo-set-line-width cr (yds-to-go-stroke-width))
