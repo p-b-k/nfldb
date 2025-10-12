@@ -151,9 +151,4 @@
 (define (calc-span-pct-from-start time-pair)
   (let ( (elapsed-time (- (* 60 (- 15 (car time-pair))) (- 60 (cdr time-pair)))) )
     (/ elapsed-time (* 60 60))))
- 
-
-
-
-
 
