@@ -19,7 +19,7 @@
   #:use-module (bad-cat nfldb cache result)
   #:use-module (bad-cat nfldb cache schedule)
 
-  #:use-module (bad-cat nfldb ui controls game-drives)
+; #:use-module (bad-cat nfldb ui controls game-drives)
   #:use-module (bad-cat nfldb ui controls game-plays)
   #:use-module (bad-cat nfldb ui parameters)
 
@@ -44,8 +44,8 @@
     (let ( (panel (make-instance <gtk-drawing-area>
                                  #:content-height (drive-height)
                                  #:content-width  (drive-panel-width))) )
-      (let ( (draw-func (make-game-drive-draw-func game result)) )
-        (gtk-drawing-area-set-draw-func panel draw-func #f #f))
+;     (let ( (draw-func (make-game-drive-draw-func game result)) )
+;       (gtk-drawing-area-set-draw-func panel draw-func #f #f))
       panel))
   (let ( (play-panel (get-play-panel))
          (drive-panel (get-drive-panel)) )
