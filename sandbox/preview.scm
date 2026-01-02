@@ -24,6 +24,8 @@
 (use-modules (bad-cat nfldb cache standings))
 (use-modules (bad-cat nfldb))
 
+(define PI 3.14)
+
 (define (show-week-preview-window app component-proc year-no week-no)
   (let ( (window (make-instance <gtk-application-window>
                                       #:title (format #f "Preview: week ~a" week-no)
@@ -259,6 +261,10 @@
       (match.home-loc m)
       (match.away-loc m)))
 
+(define-method (match-at-afc? (m <match>))
+  (format #t "Does ~a = ~a?~%" (team.conf (match.home m)) 'AFC)
+  (eq? (team.conf (match.home m)) 'AFC))
+
 (define-method (loc-span (m <match>))
   (abs (- (box-rank (match.home-loc m)) (box-rank (match.away-loc m)))))
 
@@ -403,7 +409,7 @@
                             (add-match new-lane next)
                             (set! league (cons new-lane league))))))
               (pop-league-lanes (cdr todo)))))
-      (define (draw-conf-matches afc? lane-no offset spacing lanes)
+      (define (draw-conf-matches afc? lane-no rad offset spacing lanes)
         (if (not (null? lanes))
           (let ( (next (car lanes)) )
             (let ( (x0 (+ box-width left-margin (if afc? 0 graph-width)))
@@ -414,15 +420,25 @@
                               (- graph-width (+ offset (* lane-no spacing)))))) )
               (define (draw-conf-match m)
                 (let ( (y0 (mooring-y (first-loc m)))
-                       (y1 (mooring-y (second-loc m))) )
+                       (y1 (mooring-y (second-loc m)))
+                       (arc-start 0)
+                       (arc-finish (/ PI 4)) )
                   (cairo-move-to cr x0 y0)
-                  (cairo-line-to cr x1 y0)
-                  (cairo-line-to cr x1 y1)
+
+                  (cairo-line-to cr (if afc? (- x1 rad) (+ x1 rad)) y0)
+                  (cairo-curve-to cr x1 y0 x1 y0 x1 (+ y0 rad))
+                  
+                  (cairo-move-to cr x1 (+ y0 rad))
+
+                  (cairo-line-to cr x1 (- y1 rad))
+                  ; (cairo-move-to cr (if afc? (- x1 rad) (+ x1 rad)) y1)
+                  (cairo-curve-to cr x1 y1 x1 y1 (if afc? (- x1 rad) (+ x1 rad)) y1)
+
                   (cairo-line-to cr x0 y1)
                   (cairo-stroke cr)))
               (map draw-conf-match (lane.matches next)))
-          (draw-conf-matches afc? (1+ lane-no) offset spacing (cdr lanes)))))
-      (define (draw-league-matches spacing lanes)
+          (draw-conf-matches afc? (1+ lane-no) rad offset spacing (cdr lanes)))))
+      (define (draw-league-matches rad spacing lanes)
         (let ( (start-x (+ box-width
                            left-margin
                            (/ (- graph-width (* spacing (- (length lanes) 1))) 2))) )
@@ -431,6 +447,9 @@
                 (let ( (next (car lanes)))
                   (let ( (xm (+ start-x (* spacing offset))) )
                     (define (draw-match m)
+                      (if (match-at-afc? m)
+                          (cairo-set-source-rgb cr 0.4 0 0)
+                          (cairo-set-source-rgb cr 0 0 0.4))
                       (let ( (l0 (first-loc m))
                              (l1 (second-loc m)) )
                         (let ( (x0 (if (box.afc? l0)
@@ -441,11 +460,25 @@
                                        (+ box-width left-margin graph-width)))
                                (y0 (mooring-y l0))
                                (y1 (mooring-y l1)) )
-                          (cairo-move-to cr x0 y0)
-                          (cairo-line-to cr xm y0)
-                          (cairo-line-to cr xm y1)
-                          (cairo-line-to cr x1 y1)
-                          (cairo-stroke cr))))
+                          (let ( (afc0? (box.afc? l0))
+                                 (afc1? (box.afc? l1)) )
+                            (if (> (loc-span m) 1)
+                                (begin
+                                  (cairo-move-to cr x0 y0)
+                                  (cairo-line-to cr (if afc0? (- xm rad) (+ xm rad)) y0)
+                                  (cairo-curve-to cr xm y0 xm y0 xm (+ y0 rad))
+                                  (cairo-line-to cr xm (- y1 rad))
+                                  (cairo-curve-to cr xm y1 xm y1 (if afc1? (- xm rad) (+ xm rad)) y1)
+                                  (cairo-line-to cr x1 y1)
+                                  (cairo-stroke cr))
+                                (begin
+                                  (cairo-move-to cr x0 y0)
+                                  (cairo-line-to cr (if afc0? (- xm rad) (+ xm rad)) y0)
+                                  (cairo-curve-to cr xm y0 xm y0 xm (floor (/ (+ y0 y1) 2)))
+                                  (cairo-curve-to cr xm y1 xm y1 (if afc1? (- xm rad) (+ xm rad)) y1)
+                                  (cairo-line-to cr x1 y1)
+                                  (cairo-stroke cr))
+                                  )))))
                     (map draw-match (lane.matches next)))
                   (draw-league-lanes (1+ offset) (cdr lanes)))))
           (draw-league-lanes 0 lanes)))
@@ -473,22 +506,24 @@
       (format #t "conf-nfc  : ~a~%" conf-nfc)
       (format #t "div-nfc   : ~a~%" div-nfc)
 
-      (cairo-set-source-rgb cr 0 0.1 0)
+      (let ( (div-rad 15)
+             (conf-rad 30)
+             (league-rad 45) )
+        (cairo-set-source-rgb cr 0.4 0 0)
+        (cairo-set-line-width cr 3)
+        (draw-conf-matches #t 0 div-rad 20 20 div-afc)
 
-      (cairo-set-line-width cr 3)
-      (draw-conf-matches #t 0 20 20 div-afc)
+        (cairo-set-line-width cr 1.5)
+        (draw-conf-matches #t 0 conf-rad 60 20 conf-afc)
 
-      (cairo-set-line-width cr 1.5)
-      (draw-conf-matches #t 0 60 20 conf-afc)
+        (cairo-set-line-width cr 1)
+        (draw-league-matches league-rad 30 league)
+        (if (not (null? straight)) (draw-straight-matches (lane.matches (car straight))))
 
-      (cairo-set-line-width cr 0.5)
-      (draw-league-matches 30 league)
-      (if (not (null? straight)) (draw-straight-matches (lane.matches (car straight))))
+        (cairo-set-source-rgb cr 0 0 0.4)
+        (cairo-set-line-width cr 1.5)
+        (draw-conf-matches #f 0 conf-rad 60 20 conf-nfc)
 
-      (cairo-set-line-width cr 1.5)
-      (draw-conf-matches #f 0 60 20 conf-nfc)
-
-      (cairo-set-line-width cr 3)
-      (draw-conf-matches #f 0 20 20 div-nfc)
-      )))
+        (cairo-set-line-width cr 3)
+        (draw-conf-matches #f 0 div-rad 20 20 div-nfc)))))
 
