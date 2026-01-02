@@ -274,8 +274,6 @@
         (if (< r1 r2) m1 m2))))
 
 (define-class <lane> ()
-  (through    #:init-form    0
-              #:getter       lane.through)
   (matches    #:init-form    '()
               #:getter       lane.matches)
 )
@@ -288,24 +286,39 @@
           (format out "~a ~a-~a " sep (box-rank (first-loc next)) (box-rank (second-loc next)))
           (write-matches "|" (cdr todo)))))
   (let ( (matches (lane.matches l)) )
-    (if (null? matches)
-        (format out "[ ]")
-        (write-matches "[" matches))))
+    (format out "[ (~a) " (length matches))
+    (write-matches ":" matches)))
 
 (define-method (add-match (l <lane>) (m <match>))
   (let ( (end (box-rank (second-loc m))) )
-    (slot-set! l 'through end)
     (slot-set! l 'matches (append (lane.matches l) (list m)))))
 
-(define (find-available-lane lanes start)
-  (format #t "find-available-lane: called on ~a, ~a~%" lanes start)
+(define (span-fits-in-lane? start end todo)
+  (if (null? todo)
+      #t
+      (let ( (next (car todo)) )
+        (if (or (< end (box-rank (first-loc next)))
+                (> start (box-rank (second-loc next))))
+            (span-fits-in-lane? start end (cdr todo))
+            #f))))
+
+(define (find-available-lane lanes start end)
+  (format #t "find-available-lane: called on ~a, ~a-~a~%" lanes start end)
   (if (null? lanes)
-      #f
+      (begin
+        (format #t "find-available-lane: unable to find a lane for ~a-~a~%" start end)
+        #f)
       (let ( (next (car lanes)) )
-        (format #t "find-available-lane: start = ~a, (lane.through next) = ~a~%" start (lane.through next))
-        (if (> start (lane.through next))
-            next
-            (find-available-lane (cdr lanes) start)))))
+        ; (format #t "find-available-lane: range = ~a-~a, (lane.through next) = ~a~%" start end (lane.through next))
+        (if (span-fits-in-lane? start end (lane.matches next))
+            (begin
+              (format #t "find-available-lane: found lane ~a for ~a~%" next start)
+              next)
+            (find-available-lane (cdr lanes) start end)))))
+
+(define (sort-league-lanes lanes)
+  ;; TODO: implement sort
+  lanes)
 
 (define (draw-matches-newly cr box-locations games)
   (define (game-conf g)
@@ -333,19 +346,19 @@
            (conf-nfc '())
            (div-nfc '()) )
       (define (pop-afc-lanes todo)
-        (format #t "pop-afc-lanes called on ~a~%" todo)
+        ; (format #t "pop-afc-lanes called on ~a~%" todo)
         (if (not (null? todo))
             (let ( (next (car todo)) )
               (if (div-match? next)
-                  (let ( (lane (find-available-lane div-afc (box-rank (first-loc next)))) )
-                    (format #t "nfc div    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
+                  (let ( (lane (find-available-lane div-afc (box-rank (first-loc next)) (box-rank (second-loc next)))) )
+                    ; (format #t "nfc div    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
                     (if lane
                         (add-match lane next)
                         (let ( (new-lane (make-instance <lane>)) )
                           (add-match new-lane next)
                           (set! div-afc (cons new-lane div-afc)))))
-                  (let ( (lane (find-available-lane conf-afc (box-rank (first-loc next)))) )
-                    (format #t "nfc conf    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
+                  (let ( (lane (find-available-lane conf-afc (box-rank (first-loc next)) (box-rank (second-loc next)))) )
+                    ; (format #t "nfc conf    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
                     (if lane
                         (add-match lane next)
                         (let ( (new-lane (make-instance <lane>)) )
@@ -353,19 +366,19 @@
                           (set! conf-afc (cons new-lane conf-afc))))))
               (pop-afc-lanes (cdr todo)))))
       (define (pop-nfc-lanes todo)
-        (format #t "pop-nfc-lanes called on ~a~%" todo)
+        ; (format #t "pop-nfc-lanes called on ~a~%" todo)
         (if (not (null? todo))
             (let ( (next (car todo)) )
               (if (div-match? next)
-                  (let ( (lane (find-available-lane div-nfc (box-rank (first-loc next)))) )
-                    (format #t "afc div    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
+                  (let ( (lane (find-available-lane div-nfc (box-rank (first-loc next)) (box-rank (second-loc next)))) )
+                    ; (format #t "afc div    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
                     (if lane
                         (add-match lane next)
                         (let ( (new-lane (make-instance <lane>)) )
                           (add-match new-lane next)
                           (set! div-nfc (cons new-lane div-nfc)))))
-                  (let ( (lane (find-available-lane conf-nfc (box-rank (first-loc next)))) )
-                    (format #t "afc conf    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
+                  (let ( (lane (find-available-lane conf-nfc (box-rank (first-loc next)) (box-rank (second-loc next)))) )
+                    ; (format #t "afc conf    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
                     (if lane
                         (add-match lane next)
                         (let ( (new-lane (make-instance <lane>)) )
@@ -373,16 +386,17 @@
                           (set! conf-nfc (cons new-lane conf-nfc))))))
               (pop-nfc-lanes (cdr todo)))))
       (define (pop-league-lanes todo)
-        (format #t "pop-league-lanes called on ~a~%" todo)
-        (if (not (null? todo))
+        ; (format #t "pop-league-lanes called on ~a~%" todo)
+        (if (null? todo)
+            (set! league (sort-league-lanes league))
             (let ( (next (car todo)) )
-              (format #t "league    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
+              ; (format #t "league    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
               (if (eq? (box-rank (first-loc next)) (box-rank (second-loc next)))
                   (begin
                     (if (null? straight)
                       (set! straight (list (make-instance <lane>))))
                     (add-match (car straight) next))
-                  (let ( (lane (find-available-lane league (box-rank (first-loc next)))) )
+                  (let ( (lane (find-available-lane league (box-rank (first-loc next)) (box-rank (second-loc next)))) )
                       (if lane
                           (add-match lane next)
                           (let ( (new-lane (make-instance <lane>)) )
@@ -444,9 +458,13 @@
                 (cairo-stroke cr))
               (draw-straight-matches (cdr todo)))))
 
+      (format #t "draw-matches-newly: about to populate afc lanes~%")
       (pop-afc-lanes afc-games)
+      (format #t "draw-matches-newly: about to populate nfc lanes~%")
       (pop-nfc-lanes nfc-games)
+      (format #t "draw-matches-newly: about to populate league lanes~%")
       (pop-league-lanes league-games)
+      (format #t "draw-matches-newly: finished populating lanes~%")
 
       (format #t "div-afc   : ~a~%" div-afc)
       (format #t "conf-afc  : ~a~%" conf-afc)
@@ -456,11 +474,21 @@
       (format #t "div-nfc   : ~a~%" div-nfc)
 
       (cairo-set-source-rgb cr 0 0.1 0)
+
+      (cairo-set-line-width cr 3)
       (draw-conf-matches #t 0 20 20 div-afc)
+
+      (cairo-set-line-width cr 1.5)
       (draw-conf-matches #t 0 60 20 conf-afc)
-      (draw-league-matches 20 league)
+
+      (cairo-set-line-width cr 0.5)
+      (draw-league-matches 30 league)
       (if (not (null? straight)) (draw-straight-matches (lane.matches (car straight))))
+
+      (cairo-set-line-width cr 1.5)
       (draw-conf-matches #f 0 60 20 conf-nfc)
+
+      (cairo-set-line-width cr 3)
       (draw-conf-matches #f 0 20 20 div-nfc)
       )))
 
