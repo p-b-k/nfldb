@@ -254,12 +254,22 @@
       (match.home-loc m)
       (match.away-loc m)))
 
+(define-method (first-conf (m <match>))
+  (if (< (box-rank (match.home-loc m)) (box-rank (match.away-loc m)))
+      (team.conf (match.home m))
+      (team.conf (match.away m))))
+
 (define-method (second-loc (m <match>))
   ; (format #t "second-loc: (box-rank (match.home-loc m)) = ~a, (box-rank (match.away-loc m)) = ~a~%"
   ;         (box-rank (match.home-loc m)) (box-rank (match.away-loc m)))
   (if (> (box-rank (match.home-loc m)) (box-rank (match.away-loc m)))
       (match.home-loc m)
       (match.away-loc m)))
+
+(define-method (second-conf (m <match>))
+  (if (< (box-rank (match.home-loc m)) (box-rank (match.away-loc m)))
+      (team.conf (match.away m))
+      (team.conf (match.home m))))
 
 (define-method (match-at-afc? (m <match>))
   (format #t "Does ~a = ~a?~%" (team.conf (match.home m)) 'AFC)
@@ -274,7 +284,7 @@
 (define (compare-matches m1 m2)
   (let ( (r1 (box-rank (first-loc m1)))
          (r2 (box-rank (first-loc m2))) )
-    (format #t "compare-matches: r1 = ~a, r2 = ~a, span1 = ~a, span2 = ~a~%" r1 r2 (loc-span m1) (loc-span m2))
+    ; (format #t "compare-matches: r1 = ~a, r2 = ~a, span1 = ~a, span2 = ~a~%" r1 r2 (loc-span m1) (loc-span m2))
     (if (eq? r1 r2)
         (if (< (loc-span m1) (loc-span m2)) m1 m2)
         (if (< r1 r2) m1 m2))))
@@ -309,22 +319,140 @@
             #f))))
 
 (define (find-available-lane lanes start end)
-  (format #t "find-available-lane: called on ~a, ~a-~a~%" lanes start end)
+  ; (format #t "find-available-lane: called on ~a, ~a-~a~%" lanes start end)
   (if (null? lanes)
       (begin
-        (format #t "find-available-lane: unable to find a lane for ~a-~a~%" start end)
+        ; (format #t "find-available-lane: unable to find a lane for ~a-~a~%" start end)
         #f)
       (let ( (next (car lanes)) )
         ; (format #t "find-available-lane: range = ~a-~a, (lane.through next) = ~a~%" start end (lane.through next))
         (if (span-fits-in-lane? start end (lane.matches next))
             (begin
-              (format #t "find-available-lane: found lane ~a for ~a~%" next start)
+              ; (format #t "find-available-lane: found lane ~a for ~a~%" next start)
               next)
             (find-available-lane (cdr lanes) start end)))))
 
 (define (sort-league-lanes lanes)
-  ;; TODO: implement sort
-  lanes)
+  (let ( (cross-ranks (make-cross-ranks lanes)) )
+    (define (find-pairs rank todo sofar)
+      (if (null? todo)
+          sofar
+          (let ( (next (car todo)) )
+            (let ( (afc (car next))
+                   (nfc (cadr next)) )
+              (if (and (car next) (cadr next))
+                  (find-pairs (1+ rank)
+                              (cdr todo)
+                              (cons rank sofar))
+                  (find-pairs (1+ rank) (cdr todo) sofar))))))
+
+    (format #t "cross-ranks: ~a~%" cross-ranks)
+    (let ( (pairs (find-pairs 0 (array->list cross-ranks) '())) )
+      (if (null? pairs)
+          lanes
+          ;; TODO: Find some sort
+          (begin
+            (format #t "Found Conflicts: ~a~%" pairs)
+            (let ( (lane-ids (find-lane-ids cross-ranks pairs)))
+              (format #t "lane-ids = ~a~%" lane-ids)
+              (let ( (perms (permutations (length lane-ids))) )
+                (format #t "perms = ~a~%" perms)
+                (let ( (perm (find-valid-perm perms lane-ids pairs cross-ranks)) )
+                  (if perm
+                      (begin
+                        (format #t "found valid perm: ~a~%" (hash-map->list cons perm))
+                        (reorder-lanes lanes perm))
+                      (begin
+                        (format #t "no valid perm found~%")
+                        ;; Nothing to be done, so return the original order
+                        lanes))))))))))
+
+(define (reorder-lanes lanes mapping)
+  (let ( (num-lanes (length lanes)) )
+    (define (proc next sofar)
+      (if (>= next num-lanes)
+          (reverse sofar)
+          (let ( (lane-idx (hash-ref mapping next)) )
+            (if lane-idx
+                (proc (1+ next) (cons (list-ref lanes lane-idx) sofar))
+                (proc (1+ next) (cons (list-ref lanes next) sofar))))))
+    (proc 0 '())))
+
+(define (find-valid-perm perms lanes pairs cross-ranks)
+  (define (check-mapping mapping ranks)
+    (define (proc todo)
+      (format #t "check-mapping.proc: called on ~a~%" todo)
+      (if (null? todo)
+          mapping
+          (let ( (next (car todo)) )
+            (let ( (a (array-ref next 0))
+                   (n (array-ref next 1)) )
+              (format #t "check-mapping.proc: is ~a < ~a (from m(~a) < m(~a), where m = ~a)~%"
+                      (hash-ref mapping a) (hash-ref mapping n) a n (hash-map->list cons mapping))
+              (if (< (hash-ref mapping a)
+                     (hash-ref mapping n))
+                  (proc (cdr todo))
+                  #f)))))
+      (proc ranks))
+
+  (format #t "find-valid-perms called on ~a, ~a~%" lanes pairs)
+  (let ( (lane-pairs (map (lambda (a) (cons (array-ref cross-ranks a 0)
+                                            (array-ref cross-ranks a 1)))
+                          pairs)) )
+    (define (is-valid-perm? perm)
+      (let ( (mapping (make-hash-table)) )
+        (map (lambda (a b) (hash-set! mapping a b))
+             lanes
+             (perm-map perm lanes))
+        (format #t "mapping for ~a is ~a~%" perm (hash-map->list cons mapping))
+        (check-mapping mapping (map (lambda (x) (array-slice cross-ranks x)) pairs))))
+    (define (proc todo)
+      (if (null? todo)
+          #f
+          (let ( (valid-perm (is-valid-perm? (car todo))) )
+            (if valid-perm
+                valid-perm
+                (proc (cdr todo))))))
+    (format #t "lane-pairs = ~a~%" lane-pairs)
+    (let ( (valid-perm (proc perms)) )
+      (format #f "valid perm? ~a~%" valid-perm)
+      valid-perm)))
+
+(define (find-lane-ids cross-ranks lane-ids)
+  (define (proc todo sofar)
+    (if (null? todo)
+        sofar
+        (let ( (next (car todo)) )
+          (let ( (a (array-ref cross-ranks next 0))
+                 (n (array-ref cross-ranks next 1)) )
+            (let ( (al (if (and a (not (member a sofar))) (list a) '()))
+                   (nl (if (and n (not (member n sofar))) (list n) '())) )
+              (proc (cdr todo) (append al nl sofar)))))))
+    (proc lane-ids '()))
+
+(define (make-cross-ranks lanes)
+  (let ( (cross-ranks (make-array #f 16 2)) )
+    (format #t "cross-ranks = ~a~%" cross-ranks)
+    (define (register-matches at matches)
+      (format #t "register-matches called on ~a, ~a~%" at matches)
+      (if (not (null? matches))
+          (let ( (m (car matches)) )
+            ; (format #t "make-cross-ranks: about to set first~%")
+            (array-set! cross-ranks at (box-rank (first-loc m)) (if (eq? 'AFC (first-conf m)) 0 1))
+            ; (format #t "make-cross-ranks: about to set second~%")
+            (array-set! cross-ranks at (box-rank (second-loc m)) (if (eq? 'AFC (second-conf m)) 0 1))
+            ; (format #t "make-cross-ranks: set both~%")
+            (register-matches at (cdr matches)))))
+    (define (register-lanes at todo)
+      ; (format #t "register-lanes called on ~a, ~a~%" at todo)
+      (if (not (null? todo))
+          (let ( (l (car todo)) )
+            ; (format #t "register-lanes: l = ~a~%" l)
+            (register-matches at (lane.matches l))
+            (register-lanes (1+ at) (cdr todo)))))
+    (register-lanes 0 lanes)
+    ; (format #t "cross-ranks is now ~a~%" cross-ranks)
+    cross-ranks))
 
 (define (draw-matches-newly cr box-locations games)
   (define (game-conf g)
@@ -394,7 +522,10 @@
       (define (pop-league-lanes todo)
         ; (format #t "pop-league-lanes called on ~a~%" todo)
         (if (null? todo)
-            (set! league (sort-league-lanes league))
+            (begin
+              (format #t "before sort, league lanes = ~a~%" league)
+              (set! league (sort-league-lanes league))
+              (format #t "after sort, league lanes = ~a~%" league))
             (let ( (next (car todo)) )
               ; (format #t "league    : adding ~a - ~a~%" (box-rank (first-loc next)) (box-rank (second-loc next)))
               (if (eq? (box-rank (first-loc next)) (box-rank (second-loc next)))
@@ -527,3 +658,27 @@
         (cairo-set-line-width cr 3)
         (draw-conf-matches #f 0 div-rad 20 20 div-nfc)))))
 
+(define (list-insert-at item index lst)
+  ; (format #t "list-insert-at: called on ~a, ~a, ~a~%" item index lst)
+  (call-with-values (lambda () (split-at lst index))
+                    (lambda (front back)
+                            ; (format #t "list-insert-at._: called on ~a, ~a~%" front back)
+                            (append front (list item) back))))
+
+(define (list-insert-at-all val lst)
+  ; (format #t "list-insert-at-all: called on ~a, ~a~%" val lst)
+  (let ( (len (length lst)) )
+    ; (format #t "list-insert-at-all: len = ~a~%" len)
+    (define (sub next sofar)
+      ; (format #t "list-insert-at-all.sub: called on ~a, ~a~%" next sofar)
+      (if (> next len)
+          sofar
+          (sub (1+ next) (cons (list-insert-at val next lst) sofar))))
+    (sub 0 '())))
+
+(define (permutations to)
+  (if (<= to 1)
+      '((0))
+      (apply append (map (lambda (l) (list-insert-at-all (1- to) l)) (permutations (1- to))))))
+
+(define (perm-map p l) (map (lambda (a) (list-ref l a)) p))
