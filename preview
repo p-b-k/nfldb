@@ -1,0 +1,28 @@
+#! /bin/sh
+# -*- mode: scheme; coding: utf-8 -*-
+# echo "exec guile -L $(dirname $0) -e show-overview -s $0 $@"
+exec guile -L $(dirname $0) -e show-preview -s "$0" "$@"
+!#
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Run the main nfldb project
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-modules (bad-cat nfldb ui))
+(use-modules (bad-cat nfldb ui week-preview))
+(use-modules (bad-cat nfldb ui panels preview))
+(use-modules (bad-cat nfldb data))
+(use-modules (bad-cat nfldb))
+
+(define (get-parameters args)
+  (let ( (params (make-hash-table)) )
+    (if (null? args) (throw 'invalid-params 'week-no-required))
+    (hash-set! params 'week-no (string->number (car args)))
+
+    params))
+
+(define (show-preview args)
+  (let ( (file   (car args))
+         (params (get-parameters (cdr args))) )
+    (nfldb-show-week-preview-for (current-season) (hash-ref params 'week-no))))
+

@@ -14,6 +14,8 @@
 
   #:export (nfldb-show-overview-for)
   #:export (nfldb-show-overview)
+
+  #:export (nfldb-show-preview)
 )
 
 ;; *********************************************************************************************************************
@@ -23,6 +25,20 @@
 (define (show-overview-window app team)
   (let ( (window (make-instance <gtk-application-window>
                                       #:title (format #f "Overview: ~a" (team.name team))
+                                      #:icon "/bad-cat/nfldb/NFL"
+                                      #:application app)) )
+    (gtk-style-context-add-provider-for-display (gdk-display-get-default) nfldb-css-provider 0)
+    (gtk-style-context-add-provider-for-display (gdk-display-get-default) team-css-provider 0)
+
+    (slot-set! window 'resizable #f)
+
+    (set-child window (get-overview-layout team))
+
+    (present window)))
+
+(define (show-preview-window app year-no week-no)
+  (let ( (window (make-instance <gtk-application-window>
+                                      #:title (format #f "Week ~a of ~a Season" week-no year-no)
                                       #:icon "/bad-cat/nfldb/NFL"
                                       #:application app)) )
     (gtk-style-context-add-provider-for-display (gdk-display-get-default) nfldb-css-provider 0)
@@ -51,3 +67,7 @@
 
 (define (nfldb-show-overview) (nfldb-show-overview-for (team.nick (my-team))))
 
+(define (nfldb-show-preview year week)
+  (let ( (app (make <gtk-application> #:application-id "bad-cat.nfldb.preview")) )
+    (connect app 'activate (show-preview-window app year week))
+    (g-application-run app '())))

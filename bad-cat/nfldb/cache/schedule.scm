@@ -29,6 +29,7 @@
   #:export (add-season)
   #:export (get-games)
   #:export (get-team-games)
+  #:export (get-team-game-for-week)
 )
 
 (define season-cache-root (format #f "~a/seasons" nfldb-cache-root))
@@ -172,3 +173,13 @@
         (get-game-for-week (1+ week-no) (cons game sofar)))))
   (get-game-for-week 1 '()))
 
+(define (get-team-game-for-week team-nick year-no week-no)
+  (define (game-for-team list-of-games)
+    (if (null? list-of-games)
+        #f
+        (let ( (next (car list-of-games)) )
+          (if (or (eq? team-nick (slot-ref next 'home-team))
+                  (eq? team-nick (slot-ref next 'away-team)))
+              next
+              (game-for-team (cdr list-of-games))))))
+  (game-for-team (get-games year-no week-no)))

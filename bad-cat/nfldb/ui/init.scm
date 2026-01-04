@@ -32,6 +32,7 @@
               "CssProvider"
               "DrawingArea"
               "DrawingAreaDrawFunc"
+              "Fixed"
               "FlowBox"
               "Grid"
               "IconTheme"
