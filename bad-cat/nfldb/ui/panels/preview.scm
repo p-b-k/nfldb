@@ -41,7 +41,7 @@
 (define box-height        (make-parameter 32))
 (define team-space        (make-parameter 2))
 (define div-space         (make-parameter 16))
-(define box-width         (make-parameter 80))
+(define box-width         (make-parameter 88))
 (define graph-width       (make-parameter 600))
 (define h-margin          (make-parameter 30))
 (define v-margin          (make-parameter 30))
@@ -59,23 +59,23 @@
 (define (preview-height) (+ (* 2 (v-margin)) (conf-height) (info-margin) (info-height)))
 (define (preview-width)  (+ (* 2 (h-margin)) (info-width)))
 
-(format #t "===== HEIGHT DIMS~%")
-(format #t "DIMS: ~20a : ~a~%" 'v-margin (v-margin))
-(format #t "DIMS: ~20a : ~a~%" 'box-height (box-height))
-(format #t "DIMS: ~20a : ~a~%" 'team-space (team-space))
-(format #t "DIMS: ~20a : ~a~%" 'div-height (div-height))
-(format #t "DIMS: ~20a : ~a~%" 'div-space (div-space))
-(format #t "DIMS: ~20a : ~a~%" 'info-height (info-height))
-(format #t "DIMS: ~20a : ~a~%" 'info-margin (info-margin))
-(format #t "DIMS: ~20a : ~a~%" 'conf-height (conf-height))
-(format #t "DIMS: ~20a : ~a~%" 'preview-height (preview-height))
-(format #t "===== WIDTH DIMS~%")
-(format #t "DIMS: ~20a : ~a~%" 'h-margin (h-margin))
-(format #t "DIMS: ~20a : ~a~%" 'box-width (box-width))
-(format #t "DIMS: ~20a : ~a~%" 'graph-width (graph-width))
-(format #t "DIMS: ~20a : ~a~%" 'conf-width (conf-width))
-(format #t "DIMS: ~20a : ~a~%" 'info-width (info-width))
-(format #t "DIMS: ~20a : ~a~%" 'preview-width (preview-width))
+; (format #t "===== HEIGHT DIMS~%")
+; (format #t "DIMS: ~20a : ~a~%" 'v-margin (v-margin))
+; (format #t "DIMS: ~20a : ~a~%" 'box-height (box-height))
+; (format #t "DIMS: ~20a : ~a~%" 'team-space (team-space))
+; (format #t "DIMS: ~20a : ~a~%" 'div-height (div-height))
+; (format #t "DIMS: ~20a : ~a~%" 'div-space (div-space))
+; (format #t "DIMS: ~20a : ~a~%" 'info-height (info-height))
+; (format #t "DIMS: ~20a : ~a~%" 'info-margin (info-margin))
+; (format #t "DIMS: ~20a : ~a~%" 'conf-height (conf-height))
+; (format #t "DIMS: ~20a : ~a~%" 'preview-height (preview-height))
+; (format #t "===== WIDTH DIMS~%")
+; (format #t "DIMS: ~20a : ~a~%" 'h-margin (h-margin))
+; (format #t "DIMS: ~20a : ~a~%" 'box-width (box-width))
+; (format #t "DIMS: ~20a : ~a~%" 'graph-width (graph-width))
+; (format #t "DIMS: ~20a : ~a~%" 'conf-width (conf-width))
+; (format #t "DIMS: ~20a : ~a~%" 'info-width (info-width))
+; (format #t "DIMS: ~20a : ~a~%" 'preview-width (preview-width))
 
 (define-method (get-preview-layout (year <integer>) (week <integer>))
   (let ( (info-panel (get-week-info-panel year week))
@@ -110,12 +110,23 @@
             "not-played"))
         "bye")))
 
+(define left-align )
+
+(define gtk-align-fill            0)
+(define gtk-align-start           1)
+(define gtk-align-end             2)
+(define gtk-align-center          3)
+(define gtk-align-baseline-fill   4)
+(define gtk-align-baseline        5)
+(define gtk-align-baseline-center 6)
+
 (define (get-team-panel is-afc? year-no week-no team-standing-pair)
   (define (get-game-status-resource)
     (let ( (box (make-instance <gtk-box>))
            (image (gtk-image-new-from-resource
                   (format #f "/bad-cat/nfldb/~a" (get-game-status year-no week-no (car team-standing-pair))))) )
       (gtk-widget-set-size-request image (floor (/ (* 2 (box-height)) 3)) (floor (/ (* 2 (box-height)) 3)))
+      (gtk-widget-set-size-request box (box-height) (box-height))
 
       (gtk-box-append box image)
       box))
@@ -132,34 +143,54 @@
         (gtk-box-append box image)
         box)))
 
-  (let ( (panel (make-instance <gtk-grid>
-                               #:row-homogenous #t
-                               #:row-spacing 2
-                               #:column-homogenous #t
-                               #:column-spacing 2))
+  (define (get-team-win-loss-tie-record team)
+    (format #t "get-team-win-loss-tie-record: called on ~a~%" team)
+    (let ( (team-id (team.nick team)) )
+      (format #t "get-team-win-loss-tie-record: team-id = ~a~%" team-id)
+      (let ( (record (get-team-record team-id)) )
+        (format #t "get-team-win-loss-tie-record: record for ~a is ~a~%" team-id record)
+        (format #f "~2,' d - ~2,' d - ~1,' d"
+                (car (slot-ref record 'w)) (car (slot-ref record 'l)) (car (slot-ref record 't))))))
+
+  (let ( (panel      (make-instance <gtk-box> #:orientation 'horizontal #:homogenous #f))
+         (cbox       (make-instance <gtk-center-box>))
          (team       (get-team (car team-standing-pair)))
          (standings  (cdr team-standing-pair)) )
-    (let ( (wins-label (make-instance <gtk-label> #:label (format #f "~d" 13)))
-           (loss-label (make-instance <gtk-label> #:label (format #f "~d" 3)))
-           (ties-label (make-instance <gtk-label> #:label (format #f "~d" 0)))
+    (let ( (wltr-label  (make-instance <gtk-label> #:label (get-team-win-loss-tie-record team)))
            (game-status (get-game-status-resource))
-           (team-logo (get-team-image))
-           (name-label (make-instance <gtk-label> #:label (format #f "~a" (team.name team)))) )
+           (team-logo   (get-team-image))
+           (name-label  (make-instance <gtk-label> #:label (format #f "~a" (team.name team)))) )
       
-      (let ( (state-x (if is-afc? 3 1))
-             (image-x (if is-afc? 4 0))
-             (label-x (if is-afc? 0 2)))
-        ; (gtk-grid-attach panel name-label label-x 0 3 1)
-        (gtk-grid-attach panel wins-label (+ 0 label-x) 0 1 1)
-        (gtk-grid-attach panel loss-label (+ 1 label-x) 0 1 1)
-        (gtk-grid-attach panel ties-label (+ 2 label-x) 0 1 1)
+      (slot-set! cbox 'halign gtk-align-fill)
+      (if is-afc?
+          (begin
+            (gtk-center-box-set-end-widget cbox panel)
 
-        (gtk-grid-attach panel game-status state-x 0 1 1)
-        (gtk-grid-attach panel team-logo image-x 0 1 1))
+            (gtk-box-append panel wltr-label)
+            (gtk-box-append panel game-status)
+            (gtk-box-append panel team-logo)
+
+            (slot-set! wltr-label  'halign gtk-align-fill)
+            (slot-set! game-status 'halign gtk-align-start)
+            (slot-set! team-logo   'halign gtk-align-start)
+
+            (slot-set! wltr-label 'css-classes '("afc-preview-team")))
+          (begin
+            (gtk-center-box-set-start-widget cbox panel)
+
+            (gtk-box-append panel team-logo)
+            (gtk-box-append panel game-status)
+            (gtk-box-append panel wltr-label)
+
+            (slot-set! wltr-label  'halign gtk-align-fill)
+            (slot-set! game-status 'halign gtk-align-end)
+            (slot-set! team-logo   'halign gtk-align-end)
+
+            (slot-set! wltr-label 'css-classes '("nfc-preview-team"))))
 
       (gtk-widget-set-size-request panel (+ (box-width) (* 2 (box-height))) (box-height))
 
-      panel)))
+      cbox)))
 
 (define (add-conference panel year-no week-no conf)
   (define (get-div-teams div)
@@ -189,5 +220,5 @@
   (make-instance <gtk-label> #:label "Week Info Panel"))
 
 (define (get-game-graph-panel year week)
-  (make-week-preview-control year week (graph-width) (conf-height)))
+  (make-week-preview-control year week (graph-width) (conf-height) (box-height) (team-space) (div-space)))
 

@@ -125,6 +125,16 @@
   margin            : 2px;
 }
 
+.afc-preview-team {
+  /* background: red; */
+  font-family       : monospace;
+}
+
+.nfc-preview-team {
+  /* background: blue; */
+  font-family       : monospace;
+}
+
 /* UI Debugging Stuff */
 
 .test-a {

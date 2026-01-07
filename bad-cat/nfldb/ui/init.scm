@@ -29,6 +29,7 @@
               "Box"
               "Button"
               "CallbackAction"
+              "CenterBox"
               "CssProvider"
               "DrawingArea"
               "DrawingAreaDrawFunc"

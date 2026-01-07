@@ -25,30 +25,30 @@
   ; #:export (play-renderer-draw)
 )
 
-(define (make-week-preview-control year-no week-no w h)
+(define (make-week-preview-control year-no week-no w h bh ts ds)
   (let ( (panel (make-instance <gtk-drawing-area>
                                #:content-height w
                                #:content-width  h)) )
-    (let ( (draw-func (make-week-preview-draw-func year-no week-no)) )
+    (let ( (draw-func (make-week-preview-draw-func year-no week-no w h bh ts ds)) )
       (gtk-drawing-area-set-draw-func panel draw-func #f #f))
     panel))
 
 ;; Primary Values
-(define box-height      32)
-(define info-width      48)
-(define team-space      4)
-(define div-space       16)
-(define graph-width     500)
+(define box-height      (make-parameter 32))
+(define team-space      (make-parameter 4))
+(define div-space       (make-parameter 16))
+(define graph-width     (make-parameter 500))
 
-;; Derived Values
-(define box-width (+ info-width (* 2 box-height)))
-
-(define (make-week-preview-draw-func year-no week-no)
+(define (make-week-preview-draw-func year-no week-no w h bh ts ds)
+  (box-height bh)
+  (team-space ts)
+  (div-space ds)
+  (graph-width w)
   (lambda (drawing-area cr-ptr width height user-data)
     (let ( (cr (cairo-pointer->context cr-ptr)) )
       (let ( (box-locations (get-locations year-no week-no))
              (games (get-games year-no week-no)) )
-        (hash-map->list (lambda (a b) (format #t "~8a => ~a~%" a b) #t) box-locations)
+        ; (hash-map->list (lambda (a b) (format #t "~8a => ~a~%" a b) #t) box-locations)
         ; (draw-matches cr box-locations games)
         (draw-matches-newly cr box-locations games)))))
 
@@ -66,18 +66,17 @@
 
 (define-method (mooring-x (loc <box-location>))
   (if (box.afc? loc)
-      box-width
-      (- (+ box-width graph-width))))
+      (- (graph-width))))
 
 (define-method (mooring-y (loc <box-location>))
   (+ (* (box.div-no loc)
-        (+ (* 4 box-height)
-           (* 3 team-space)
-           div-space))
+        (+ (* 4 (box-height))
+           (* 3 (team-space))
+           (div-space)))
      (* (box.team-no loc)
-        (+ box-height
-           team-space))
-     (+ (floor (/ box-height 2)))))
+        (+ (box-height)
+           (team-space)))
+     (+ (floor (/ (box-height) 2)))))
 
 (define-method (box-rank (loc <box-location>))
   (+ (* 4 (box.div-no loc)) (box.team-no loc)))
@@ -194,11 +193,10 @@
       (define (draw-conf-matches afc? lane-no rad offset spacing lanes)
         (if (not (null? lanes))
           (let ( (next (car lanes)) )
-            (let ( (x0 (+ box-width (if afc? 0 graph-width)))
-                   (x1 (+ box-width
-                          (if afc?
-                              (+ offset (* lane-no spacing))
-                              (- graph-width (+ offset (* lane-no spacing)))))) )
+            (let ( (x0 (if afc? 0 (graph-width)))
+                   (x1 (if afc?
+                           (+ offset (* lane-no spacing))
+                           (- (graph-width) (+ offset (* lane-no spacing))))) )
               (define (draw-conf-match m)
                 (let ( (y0 (mooring-y (first-loc m)))
                        (y1 (mooring-y (second-loc m))) )
@@ -218,8 +216,7 @@
               (map draw-conf-match (lane.matches next)))
           (draw-conf-matches afc? (1+ lane-no) rad offset spacing (cdr lanes)))))
       (define (draw-league-matches rad spacing lanes)
-        (let ( (start-x (+ box-width
-                           (/ (- graph-width (* spacing (- (length lanes) 1))) 2))) )
+        (let ( (start-x (/ (- (graph-width) (* spacing (- (length lanes) 1))) 2)) )
           (define (draw-league-lanes offset lanes)
             (if (not (null? lanes))
                 (let ( (next (car lanes)))
@@ -230,12 +227,8 @@
                           (cairo-set-source-rgb cr 0 0 0.4))
                       (let ( (l0 (first-loc m))
                              (l1 (second-loc m)) )
-                        (let ( (x0 (if (box.afc? l0)
-                                       box-width
-                                       (+ box-width graph-width)))
-                               (x1 (if (box.afc? l1)
-                                       box-width
-                                       (+ box-width graph-width)))
+                        (let ( (x0 (if (box.afc? l0) 0 (graph-width)))
+                               (x1 (if (box.afc? l1) 0 (graph-width)))
                                (y0 (mooring-y l0))
                                (y1 (mooring-y l1)) )
                           (let ( (afc0? (box.afc? l0))
@@ -264,8 +257,8 @@
         (if (not (null? todo))
             (let ( (next (car todo)) )
               (let ( (y (mooring-y (first-loc next))) )
-                (cairo-move-to cr box-width y)
-                (cairo-line-to cr (+ box-width graph-width) y)
+                (cairo-move-to cr 0 y)
+                (cairo-line-to cr (+ 0 (graph-width)) y)
                 (cairo-stroke cr))
               (draw-straight-matches (cdr todo)))))
 
